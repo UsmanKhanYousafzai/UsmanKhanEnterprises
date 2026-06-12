@@ -6,6 +6,8 @@
 :root {
   --gold: #c9a84c;
   --gold-light: #e2c97e;
+  --burgundy: #7a2e2e;
+  --emerald: #2e5e4e;
   --black: #080808;
   --dark: #111111;
   --grey: #888;
@@ -16,14 +18,18 @@
 body {
   font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden;
   background-image:
-    linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
+    radial-gradient(circle at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 35%),
+    radial-gradient(circle at 85% 15%, rgba(122,46,46,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(46,94,78,0.07) 0%, transparent 40%),
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: auto, auto, auto, 48px 48px, 48px 48px;
+  background-attachment: fixed;
 }
 
 /* INTRO */
 .intro { position: fixed; inset: 0; z-index: 1000; background: var(--black); display: flex; align-items: center; justify-content: center; animation: introFade 0.8s ease 2s forwards; }
-.intro-content { text-align: center; }
+.intro-content { text-align: center; position: relative; }
 .intro-usman { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 900; color: var(--white); letter-spacing: 8px; animation: introUp 1s ease 0.2s both; }
 .intro-khan { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; color: var(--gold); letter-spacing: 10px; animation: introUp 1s ease 0.4s both; }
 .intro-line { width: 0; height: 1px; background: var(--gold); margin: 1.5rem auto; animation: introLine 0.8s ease 0.8s forwards; }
@@ -45,9 +51,14 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 
 /* HOME */
 .hero { min-height: calc(100vh - 70px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 4rem 2rem; }
-.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.09) 0%, transparent 70%); animation: pulseGlow 8s ease-in-out infinite; }
-.hero::after { content: 'USMAN KHAN ENTERPRISES'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(80px, 22vw, 320px); font-weight: 900; color: rgba(201,168,76,0.025); white-space: nowrap; letter-spacing: 20px; pointer-events: none; z-index: 0; }
-@keyframes pulseGlow { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%); }
+.hero-watermark {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(70px, 11vw, 150px);
+  font-weight: 900; color: rgba(201,168,76,0.035);
+  letter-spacing: 14px; white-space: nowrap; pointer-events: none; z-index: 0;
+  width: 100%; text-align: center;
+}
 .hero-tag { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; animation: fadeUp 1s ease both; position: relative; z-index: 1; }
 .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 10vw, 110px); font-weight: 900; line-height: 0.95; animation: fadeUp 1s ease 0.2s both; position: relative; z-index: 1; }
 .hero-title .gold { color: var(--gold); font-weight: 300; }
@@ -65,32 +76,55 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .btn-outline { padding: 14px 36px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: all 0.3s; }
 .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
 
-.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); background: rgba(8,8,8,0.6); position: relative; z-index: 1; }
+.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); background: rgba(8,8,8,0.6); backdrop-filter: blur(2px); position: relative; z-index: 1; }
 .stat { padding: 2.5rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.15); }
 .stat:last-child { border-right: none; }
 .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 900; color: var(--gold); }
 .stat-label { font-size: 9px; color: #666; letter-spacing: 3px; margin-top: 4px; }
 
 .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.pillar { background: rgba(8,8,8,0.8); padding: 3rem 2rem; border-bottom: 2px solid transparent; transition: all 0.4s; }
-.pillar:hover { border-bottom-color: var(--gold); background: var(--dark); }
+.pillar { background: rgba(8,8,8,0.7); backdrop-filter: blur(2px); padding: 3rem 2rem; border-bottom: 2px solid transparent; transition: all 0.4s; position: relative; overflow: hidden; }
+.pillar::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); transform: scaleY(0); transition: transform 0.4s; }
+.pillar:hover::before { transform: scaleY(1); }
+.pillar:nth-child(1) { --accent: var(--gold); }
+.pillar:nth-child(2) { --accent: var(--burgundy); }
+.pillar:nth-child(3) { --accent: var(--emerald); }
+.pillar:nth-child(4) { --accent: var(--gold); }
+.pillar:hover { border-bottom-color: var(--accent); background: var(--dark); }
 .pillar-num { font-size: 10px; color: var(--gold); letter-spacing: 3px; margin-bottom: 1.5rem; }
 .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin-bottom: 1rem; }
 .pillar-text { font-size: 12px; color: #666; line-height: 1.8; font-weight: 300; }
 
 /* FOUNDER QUOTE */
-.quote-section { padding: 5rem 3rem; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; background: rgba(8,8,8,0.6); z-index: 1; }
+.quote-section { padding: 5rem 3rem; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 80px; color: var(--gold); opacity: 0.3; line-height: 0; }
 .quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px, 3vw, 34px); font-weight: 400; max-width: 700px; margin: 0 auto 2rem; line-height: 1.6; color: #ddd; }
 .quote-author { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 .quote-role { font-size: 10px; letter-spacing: 2px; color: #555; margin-top: 4px; }
 
+/* TIMELINE */
+.timeline-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
+.timeline { position: relative; max-width: 700px; margin: 3rem auto 0; }
+.timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--gold), var(--burgundy), var(--emerald)); }
+.timeline-item { position: relative; padding-left: 60px; margin-bottom: 2.5rem; }
+.timeline-dot { position: absolute; left: 14px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--black); border: 2px solid var(--dot-color); }
+.timeline-item:nth-child(1) { --dot-color: var(--gold); }
+.timeline-item:nth-child(2) { --dot-color: var(--burgundy); }
+.timeline-item:nth-child(3) { --dot-color: var(--emerald); }
+.timeline-item:nth-child(4) { --dot-color: var(--gold); }
+.timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--dot-color); }
+.timeline-text { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.7; font-weight: 300; }
+
 /* PRESS / TRUSTED */
-.trusted-bar { padding: 2.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; background: rgba(8,8,8,0.6); }
+.trusted-bar { padding: 2.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .trusted-label { font-size: 9px; letter-spacing: 4px; color: #555; text-transform: uppercase; margin-bottom: 1.5rem; }
 .trusted-logos { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
 .trusted-item { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: #444; letter-spacing: 2px; transition: color 0.3s; }
-.trusted-item:hover { color: var(--gold); }
+.trusted-item:nth-child(1):hover { color: var(--gold); }
+.trusted-item:nth-child(2):hover { color: var(--burgundy); }
+.trusted-item:nth-child(3):hover { color: var(--emerald); }
+.trusted-item:nth-child(4):hover { color: var(--gold); }
+.trusted-item:nth-child(5):hover { color: var(--burgundy); }
 
 /* NEWSLETTER */
 .newsletter { padding: 4rem 3rem; background: var(--dark); border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; }
@@ -106,9 +140,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .page-label { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
 .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 7vw, 80px); font-weight: 900; line-height: 1; }
 .page-title .gold { color: var(--gold); font-weight: 300; }
+.page-title .red { color: var(--burgundy); font-weight: 300; }
+.page-title .green { color: var(--emerald); font-weight: 300; }
 
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.about-text { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.6); }
+.about-text { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .about-text p { font-size: 14px; color: #888; line-height: 2; font-weight: 300; margin-bottom: 1.5rem; }
 .about-visual { padding: 4rem 3rem; background: var(--dark); display: flex; flex-direction: column; justify-content: center; gap: 2rem; }
 .info-row { display: flex; flex-direction: column; gap: 4px; }
@@ -117,17 +153,23 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .info-divider { width: 40px; height: 1px; background: rgba(201,168,76,0.3); }
 
 .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.value-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.6); }
+.value-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); border-top: 2px solid var(--vcolor); }
+.value-item:nth-child(1) { --vcolor: var(--gold); }
+.value-item:nth-child(2) { --vcolor: var(--burgundy); }
+.value-item:nth-child(3) { --vcolor: var(--emerald); }
+.value-item:nth-child(4) { --vcolor: var(--gold); }
 .value-item:last-child { border-right: none; }
 .value-icon { font-size: 24px; margin-bottom: 1rem; }
-.value-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; margin-bottom: 0.5rem; color: var(--gold); }
+.value-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; margin-bottom: 0.5rem; color: var(--vcolor); }
 .value-text { font-size: 12px; color: #666; line-height: 1.8; }
 
 /* LEADERSHIP */
-.leadership { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.6); }
+.leadership { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .leader-card { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; max-width: 700px; margin: 0 auto; align-items: center; }
-.leader-avatar { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 4px; padding: 1.5rem; text-align: center; }
-.leader-avatar-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 900; color: var(--gold); line-height: 1.3; letter-spacing: 1px; }
+.leader-avatar { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(122,46,46,0.04)); }
+.leader-avatar-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 900; color: var(--white); letter-spacing: 2px; line-height: 1.3; text-align: center; }
+.leader-avatar-name span { color: var(--gold); display: block; font-weight: 300; }
+.leader-avatar-tag { font-size: 7px; letter-spacing: 3px; color: #555; margin-top: 4px; }
 .leader-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; margin-bottom: 0.5rem; }
 .leader-title { font-size: 10px; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem; }
 .leader-bio { font-size: 13px; color: #888; line-height: 1.9; font-weight: 300; }
@@ -136,21 +178,26 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 /* VENTURES / SERVICES */
 .ventures-hero { padding: 5rem 3rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
 .ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.venture-card { background: rgba(8,8,8,0.8); padding: 3rem 2.5rem; transition: background 0.3s; position: relative; overflow: hidden; }
-.venture-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s; }
+.venture-card { background: rgba(8,8,8,0.7); backdrop-filter: blur(2px); padding: 3rem 2.5rem; transition: background 0.3s; position: relative; overflow: hidden; }
+.venture-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--vc); transition: width 0.4s; }
+.venture-card:nth-child(1) { --vc: var(--gold); } .venture-card:nth-child(2) { --vc: var(--burgundy); }
+.venture-card:nth-child(3) { --vc: var(--emerald); } .venture-card:nth-child(4) { --vc: var(--gold); }
+.venture-card:nth-child(5) { --vc: var(--burgundy); } .venture-card:nth-child(6) { --vc: var(--emerald); }
 .venture-card:hover::after { width: 100%; }
 .venture-card:hover { background: var(--dark); }
-.venture-num { font-size: 10px; color: var(--gold); letter-spacing: 3px; margin-bottom: 1.5rem; }
+.venture-num { font-size: 10px; color: var(--vc); letter-spacing: 3px; margin-bottom: 1.5rem; }
 .venture-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 1rem; }
 .venture-desc { font-size: 12px; color: #666; line-height: 1.9; font-weight: 300; }
-.venture-tag { display: inline-block; margin-top: 1.5rem; font-size: 9px; color: var(--gold); letter-spacing: 3px; border: 1px solid rgba(201,168,76,0.3); padding: 4px 12px; }
+.venture-tag { display: inline-block; margin-top: 1.5rem; font-size: 9px; color: var(--vc); letter-spacing: 3px; border: 1px solid var(--vc); padding: 4px 12px; opacity: 0.8; }
 
 /* SERVICES TIERS */
-.tiers-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.6); }
+.tiers-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .tiers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.tier-card { border: 1px solid rgba(201,168,76,0.15); padding: 2.5rem 2rem; text-align: center; transition: all 0.3s; position: relative; background: rgba(8,8,8,0.5); }
+.tier-card { border: 1px solid rgba(201,168,76,0.15); padding: 2.5rem 2rem; text-align: center; transition: all 0.3s; position: relative; background: rgba(8,8,8,0.4); }
 .tier-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(201,168,76,0.06), transparent); }
-.tier-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.tier-card:nth-child(1):hover { border-color: var(--burgundy); transform: translateY(-4px); }
+.tier-card:nth-child(2):hover { border-color: var(--gold); transform: translateY(-4px); }
+.tier-card:nth-child(3):hover { border-color: var(--emerald); transform: translateY(-4px); }
 .tier-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); font-size: 9px; letter-spacing: 2px; padding: 4px 14px; font-weight: 600; }
 .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; margin: 1rem 0 0.5rem; }
 .tier-desc { font-size: 11px; color: #666; margin-bottom: 1.5rem; min-height: 36px; }
@@ -159,7 +206,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .tier-features li::before { content: '— '; color: var(--gold); }
 
 /* FAQ */
-.faq-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.6); }
+.faq-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .faq-item { border-bottom: 1px solid rgba(201,168,76,0.1); padding: 1.5rem 0; cursor: pointer; }
 .faq-q { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
 .faq-icon { color: var(--gold); font-size: 18px; transition: transform 0.3s; }
@@ -170,11 +217,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 /* CONTACT */
 .contact-hero { padding: 5rem 3rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; position: relative; z-index: 1; }
-.contact-info { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.6); }
+.contact-info { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .contact-item { margin-bottom: 2.5rem; }
 .contact-label { font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 0.5rem; }
 .contact-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #ccc; }
-.contact-val a { color: #ccc; text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); transition: color 0.3s; }
+.contact-val a { color: #ccc; text-decoration: none; transition: color 0.3s; }
 .contact-val a:hover { color: var(--gold); }
 .contact-form { padding: 4rem 3rem; background: var(--dark); }
 .form-group { margin-bottom: 1.5rem; }
@@ -184,22 +231,33 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .form-group textarea { height: 100px; }
 .exclusive-tag { display: inline-block; font-size: 9px; letter-spacing: 3px; color: var(--gold); border: 1px solid var(--gold); padding: 6px 16px; margin-bottom: 2rem; }
 
+/* MAP / LOCATIONS */
+.locations-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
+.locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.location-card { border: 1px solid rgba(201,168,76,0.15); padding: 2rem; text-align: center; border-top: 3px solid var(--lc); }
+.location-card:nth-child(1) { --lc: var(--gold); }
+.location-card:nth-child(2) { --lc: var(--burgundy); }
+.location-flag { font-size: 36px; margin-bottom: 1rem; }
+.location-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; margin-bottom: 0.5rem; }
+.location-role { font-size: 9px; letter-spacing: 3px; color: var(--lc); text-transform: uppercase; }
+
 /* TESTIMONIALS */
-.testimonials { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.6); }
+.testimonials { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
 .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.testi-card { border: 1px solid rgba(201,168,76,0.1); padding: 2rem; background: rgba(8,8,8,0.5); }
+.testi-card { border: 1px solid rgba(201,168,76,0.1); padding: 2rem; background: rgba(8,8,8,0.4); border-left: 3px solid var(--tc); }
+.testi-card:nth-child(1) { --tc: var(--gold); }
+.testi-card:nth-child(2) { --tc: var(--burgundy); }
+.testi-card:nth-child(3) { --tc: var(--emerald); }
 .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 1rem; letter-spacing: 2px; }
 .testi-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #ccc; line-height: 1.8; margin-bottom: 1.5rem; }
-.testi-author { font-size: 11px; letter-spacing: 2px; color: var(--gold); }
+.testi-author { font-size: 11px; letter-spacing: 2px; color: var(--tc); }
 .testi-role { font-size: 10px; color: #555; margin-top: 2px; }
 
-footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; background: rgba(8,8,8,0.8); }
-.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--gold); }
+footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; background: rgba(8,8,8,0.6); backdrop-filter: blur(2px); }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; color: var(--gold); }
 .footer-tag { font-size: 9px; color: #444; letter-spacing: 3px; margin-top: 2px; }
+.footer-email { font-size: 10px; color: #666; margin-top: 6px; letter-spacing: 1px; }
 .footer-copy { font-size: 10px; color: #444; letter-spacing: 1px; }
-.footer-email { font-size: 10px; color: #666; letter-spacing: 1px; margin-top: 4px; }
-.footer-email a { color: #666; text-decoration: none; }
-.footer-email a:hover { color: var(--gold); }
 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -215,7 +273,6 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
   .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
   .newsletter-form { flex-direction: column; }
   .newsletter-form input { border-right: 1px solid rgba(201,168,76,0.2); border-bottom: none; }
-  .hero::after { font-size: 60px; }
 }
 </style>
 
@@ -242,6 +299,7 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
 <!-- HOME -->
 <div class="page active" id="page-home">
   <section class="hero">
+    <div class="hero-watermark">USMAN KHAN ENTERPRISES</div>
     <p class="hero-tag">Est. 2023 · Pakistan · Spain</p>
     <h1 class="hero-title">
       USMAN <span class="gold">KHAN</span>
@@ -280,6 +338,33 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div class="quote-role">Founder · CEO · Director</div>
   </div>
 
+  <div class="timeline-section">
+    <p class="page-label" style="text-align:center;">Our Journey</p>
+    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">The <span class="gold">Timeline</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2023</div>
+        <div class="timeline-text">Usman Khan Enterprises (Pvt.) Ltd. is officially incorporated, laying the foundation for a multi-sector legacy brand.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2024</div>
+        <div class="timeline-text">Expansion of international presence, establishing operations across Pakistan and Spain.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2025</div>
+        <div class="timeline-text">Growth across commerce, real estate, and consulting ventures — building a diversified portfolio.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2026</div>
+        <div class="timeline-text">Launch of our digital presence — bringing the Usman Khan Enterprises legacy online for the world to see.</div>
+      </div>
+    </div>
+  </div>
+
   <div class="trusted-bar">
     <div class="trusted-label">Operating With Partners Across</div>
     <div class="trusted-logos">
@@ -305,9 +390,9 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div>
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
-      <div class="footer-email"><a href="mailto:kh11n.enterprises@gmail.com">kh11n.enterprises@gmail.com</a></div>
+      <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2026 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
   </footer>
 </div>
 
@@ -320,7 +405,7 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
   <div class="about-grid">
     <div class="about-text">
       <p>Usman Khan Enterprises is not simply a business — it is a declaration. Founded in 2023 by Usman Khan Yousafzai, the company was built on a foundation of ambition, discipline, and an unrelenting drive to create something that lasts.</p>
-      <p>Operating across Pakistan and Spain, Usman Khan Enterprises brings an international perspective to everything it does — combining the rich entrepreneurial spirit of the East with the strategic precision of the West.</p>
+      <p>Operating across Pakistan and Spain, we bring an international perspective to everything we do — combining the rich entrepreneurial spirit of the East with the strategic precision of the West.</p>
       <p>Every venture, every decision, every partnership carries the full weight of a name that stands for excellence. This is not just business. This is legacy.</p>
     </div>
     <div class="about-visual">
@@ -340,7 +425,8 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <p class="page-label" style="text-align:center;">Leadership</p>
     <div class="leader-card">
       <div class="leader-avatar">
-        <div class="leader-avatar-text">USMAN KHAN<br>ENTERPRISES</div>
+        <div class="leader-avatar-name">USMAN<br><span>KHAN</span></div>
+        <div class="leader-avatar-tag">ENTERPRISES</div>
       </div>
       <div>
         <div class="leader-name">Usman Khan Yousafzai</div>
@@ -355,6 +441,23 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div class="value-item"><div class="value-icon">🏛</div><div class="value-title">Legacy</div><p class="value-text">Everything we build is meant to outlast us — institutions, not just businesses.</p></div>
     <div class="value-item"><div class="value-icon">🤝</div><div class="value-title">Integrity</div><p class="value-text">Our word is our bond. We do business with honesty, transparency and respect.</p></div>
     <div class="value-item"><div class="value-icon">🌍</div><div class="value-title">Global</div><p class="value-text">International availability with a local understanding of every market we enter.</p></div>
+  </div>
+
+  <div class="locations-section">
+    <p class="page-label" style="text-align:center;">Where We Operate</p>
+    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">Our <span class="gold">Presence</span></h2>
+    <div class="locations-grid">
+      <div class="location-card">
+        <div class="location-flag">🇵🇰</div>
+        <div class="location-name">Pakistan</div>
+        <div class="location-role">Headquarters</div>
+      </div>
+      <div class="location-card">
+        <div class="location-flag">🇪🇸</div>
+        <div class="location-name">Spain</div>
+        <div class="location-role">International Office</div>
+      </div>
+    </div>
   </div>
 
   <div class="faq-section">
@@ -382,9 +485,9 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div>
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
-      <div class="footer-email"><a href="mailto:kh11n.enterprises@gmail.com">kh11n.enterprises@gmail.com</a></div>
+      <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2026 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
   </footer>
 </div>
 
@@ -472,9 +575,9 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div>
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
-      <div class="footer-email"><a href="mailto:kh11n.enterprises@gmail.com">kh11n.enterprises@gmail.com</a></div>
+      <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2026 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
   </footer>
 </div>
 
@@ -512,9 +615,9 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div>
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
-      <div class="footer-email"><a href="mailto:kh11n.enterprises@gmail.com">kh11n.enterprises@gmail.com</a></div>
+      <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2026 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
   </footer>
 </div>
 
