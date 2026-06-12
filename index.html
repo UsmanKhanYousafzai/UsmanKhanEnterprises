@@ -1,13 +1,19 @@
 
 <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
   --gold: #c9a84c;
   --gold-light: #e2c97e;
-  --burgundy: #7a2e2e;
-  --emerald: #2e5e4e;
+  --burgundy: #b85c5c;
+  --emerald: #5cb89a;
+  --sapphire: #5c8ad4;
+  --violet: #9a6cd4;
   --black: #080808;
   --dark: #111111;
   --grey: #888;
@@ -15,15 +21,20 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 15% 20%, rgba(201,168,76,0.06) 0%, transparent 35%),
-    radial-gradient(circle at 85% 15%, rgba(122,46,46,0.08) 0%, transparent 40%),
-    radial-gradient(circle at 75% 75%, rgba(46,94,78,0.07) 0%, transparent 40%),
+    radial-gradient(circle at 15% 8%, rgba(201,168,76,0.12) 0%, transparent 35%),
+    radial-gradient(circle at 85% 12%, rgba(184,92,92,0.1) 0%, transparent 38%),
+    radial-gradient(circle at 50% 0%, rgba(154,108,212,0.08) 0%, transparent 45%),
+    radial-gradient(circle at 15% 45%, rgba(92,138,212,0.07) 0%, transparent 40%),
+    radial-gradient(circle at 85% 55%, rgba(92,184,154,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 25% 90%, rgba(184,92,92,0.07) 0%, transparent 40%),
+    radial-gradient(circle at 80% 95%, rgba(201,168,76,0.08) 0%, transparent 40%),
     linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-  background-size: auto, auto, auto, 48px 48px, 48px 48px;
+  background-size: auto, auto, auto, auto, auto, auto, auto, 48px 48px, 48px 48px;
   background-attachment: fixed;
 }
 
@@ -51,14 +62,15 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 
 /* HOME */
 .hero { min-height: calc(100vh - 70px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 4rem 2rem; }
-.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%); }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.09) 0%, transparent 70%); }
 .hero-watermark {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  font-family: 'Cormorant Garamond', serif; font-size: clamp(70px, 11vw, 150px);
-  font-weight: 900; color: rgba(201,168,76,0.035);
-  letter-spacing: 14px; white-space: nowrap; pointer-events: none; z-index: 0;
-  width: 100%; text-align: center;
+  font-family: 'Cormorant Garamond', serif; font-weight: 900; color: rgba(201,168,76,0.04);
+  letter-spacing: 10px; pointer-events: none; z-index: 0;
+  width: 100%; text-align: center; line-height: 1.1;
 }
+.hero-watermark .wm-line1 { font-size: clamp(60px, 13vw, 160px); display: block; }
+.hero-watermark .wm-line2 { font-size: clamp(40px, 9vw, 110px); display: block; letter-spacing: 20px; }
 .hero-tag { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; animation: fadeUp 1s ease both; position: relative; z-index: 1; }
 .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 10vw, 110px); font-weight: 900; line-height: 0.95; animation: fadeUp 1s ease 0.2s both; position: relative; z-index: 1; }
 .hero-title .gold { color: var(--gold); font-weight: 300; }
@@ -76,10 +88,12 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .btn-outline { padding: 14px 36px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: all 0.3s; }
 .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
 
-.stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); background: rgba(8,8,8,0.6); backdrop-filter: blur(2px); position: relative; z-index: 1; }
-.stat { padding: 2.5rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.15); }
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); background: rgba(8,8,8,0.6); backdrop-filter: blur(2px); position: relative; z-index: 1; }
+.stat { padding: 2.5rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.15); border-top: 2px solid var(--sc); }
+.stat:nth-child(1) { --sc: var(--gold); } .stat:nth-child(2) { --sc: var(--burgundy); }
+.stat:nth-child(3) { --sc: var(--emerald); } .stat:nth-child(4) { --sc: var(--sapphire); }
 .stat:last-child { border-right: none; }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 900; color: var(--gold); }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 900; color: var(--sc); }
 .stat-label { font-size: 9px; color: #666; letter-spacing: 3px; margin-top: 4px; }
 
 .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(201,168,76,0.1); position: relative; z-index: 1; }
@@ -89,9 +103,9 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .pillar:nth-child(1) { --accent: var(--gold); }
 .pillar:nth-child(2) { --accent: var(--burgundy); }
 .pillar:nth-child(3) { --accent: var(--emerald); }
-.pillar:nth-child(4) { --accent: var(--gold); }
+.pillar:nth-child(4) { --accent: var(--sapphire); }
 .pillar:hover { border-bottom-color: var(--accent); background: var(--dark); }
-.pillar-num { font-size: 10px; color: var(--gold); letter-spacing: 3px; margin-bottom: 1.5rem; }
+.pillar-num { font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 1.5rem; }
 .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin-bottom: 1rem; }
 .pillar-text { font-size: 12px; color: #666; line-height: 1.8; font-weight: 300; }
 
@@ -102,18 +116,42 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .quote-author { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 .quote-role { font-size: 10px; letter-spacing: 2px; color: #555; margin-top: 4px; }
 
+/* WHY CHOOSE US */
+.why-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.why-card { padding: 2rem; border: 1px solid var(--wc); border-radius: 4px; background: linear-gradient(135deg, color-mix(in srgb, var(--wc) 8%, transparent), transparent); }
+.why-card:nth-child(1) { --wc: var(--gold); }
+.why-card:nth-child(2) { --wc: var(--violet); }
+.why-card:nth-child(3) { --wc: var(--emerald); }
+.why-icon { font-size: 28px; margin-bottom: 1rem; }
+.why-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--wc); margin-bottom: 0.5rem; }
+.why-text { font-size: 12px; color: #999; line-height: 1.8; font-weight: 300; }
+
 /* TIMELINE */
 .timeline-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
 .timeline { position: relative; max-width: 700px; margin: 3rem auto 0; }
-.timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--gold), var(--burgundy), var(--emerald)); }
+.timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--gold), var(--burgundy), var(--emerald), var(--sapphire), var(--violet)); }
 .timeline-item { position: relative; padding-left: 60px; margin-bottom: 2.5rem; }
 .timeline-dot { position: absolute; left: 14px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--black); border: 2px solid var(--dot-color); }
 .timeline-item:nth-child(1) { --dot-color: var(--gold); }
 .timeline-item:nth-child(2) { --dot-color: var(--burgundy); }
 .timeline-item:nth-child(3) { --dot-color: var(--emerald); }
-.timeline-item:nth-child(4) { --dot-color: var(--gold); }
+.timeline-item:nth-child(4) { --dot-color: var(--sapphire); }
+.timeline-item:nth-child(5) { --dot-color: var(--violet); }
 .timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--dot-color); }
 .timeline-text { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.7; font-weight: 300; }
+
+/* GALLERY / HIGHLIGHTS */
+.highlights-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
+.highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.highlight-card { aspect-ratio: 1; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; border: 1px solid var(--hc); background: linear-gradient(135deg, color-mix(in srgb, var(--hc) 12%, transparent), color-mix(in srgb, var(--hc) 3%, transparent)); }
+.highlight-card:nth-child(1) { --hc: var(--gold); }
+.highlight-card:nth-child(2) { --hc: var(--burgundy); }
+.highlight-card:nth-child(3) { --hc: var(--sapphire); }
+.highlight-card:nth-child(4) { --hc: var(--emerald); }
+.highlight-icon { font-size: 36px; margin-bottom: 0.8rem; }
+.highlight-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--hc); margin-bottom: 0.3rem; }
+.highlight-text { font-size: 10px; color: #999; letter-spacing: 1px; }
 
 /* PRESS / TRUSTED */
 .trusted-bar { padding: 2.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
@@ -122,9 +160,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .trusted-item { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: #444; letter-spacing: 2px; transition: color 0.3s; }
 .trusted-item:nth-child(1):hover { color: var(--gold); }
 .trusted-item:nth-child(2):hover { color: var(--burgundy); }
-.trusted-item:nth-child(3):hover { color: var(--emerald); }
-.trusted-item:nth-child(4):hover { color: var(--gold); }
-.trusted-item:nth-child(5):hover { color: var(--burgundy); }
+.trusted-item:nth-child(3):hover { color: var(--violet); }
+.trusted-item:nth-child(4):hover { color: var(--sapphire); }
+.trusted-item:nth-child(5):hover { color: var(--emerald); }
+
+/* SOCIAL STRIP */
+.social-strip { padding: 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; text-align: center; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
+.social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.social-pill { padding: 10px 24px; border: 1px solid var(--socolor); color: var(--socolor); font-size: 10px; letter-spacing: 2px; text-decoration: none; transition: all 0.3s; }
+.social-pill:nth-child(1) { --socolor: var(--gold); }
+.social-pill:nth-child(2) { --socolor: var(--burgundy); }
+.social-pill:nth-child(3) { --socolor: var(--violet); }
+.social-pill:hover { background: var(--socolor); color: var(--black); }
 
 /* NEWSLETTER */
 .newsletter { padding: 4rem 3rem; background: var(--dark); border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; }
@@ -142,6 +189,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .page-title .gold { color: var(--gold); font-weight: 300; }
 .page-title .red { color: var(--burgundy); font-weight: 300; }
 .page-title .green { color: var(--emerald); font-weight: 300; }
+.page-title .blue { color: var(--sapphire); font-weight: 300; }
+.page-title .purple { color: var(--violet); font-weight: 300; }
 
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
 .about-text { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
@@ -157,7 +206,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .value-item:nth-child(1) { --vcolor: var(--gold); }
 .value-item:nth-child(2) { --vcolor: var(--burgundy); }
 .value-item:nth-child(3) { --vcolor: var(--emerald); }
-.value-item:nth-child(4) { --vcolor: var(--gold); }
+.value-item:nth-child(4) { --vcolor: var(--sapphire); }
 .value-item:last-child { border-right: none; }
 .value-icon { font-size: 24px; margin-bottom: 1rem; }
 .value-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; margin-bottom: 0.5rem; color: var(--vcolor); }
@@ -166,14 +215,20 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 /* LEADERSHIP */
 .leadership { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
 .leader-card { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; max-width: 700px; margin: 0 auto; align-items: center; }
-.leader-avatar { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(122,46,46,0.04)); }
+.leader-avatar { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(184,92,92,0.06), rgba(154,108,212,0.06)); }
 .leader-avatar-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 900; color: var(--white); letter-spacing: 2px; line-height: 1.3; text-align: center; }
 .leader-avatar-name span { color: var(--gold); display: block; font-weight: 300; }
 .leader-avatar-tag { font-size: 7px; letter-spacing: 3px; color: #555; margin-top: 4px; }
 .leader-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; margin-bottom: 0.5rem; }
 .leader-title { font-size: 10px; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem; }
 .leader-bio { font-size: 13px; color: #888; line-height: 1.9; font-weight: 300; }
-@media (max-width: 600px) { .leader-card { grid-template-columns: 1fr; text-align: center; } .leader-avatar { margin: 0 auto; } }
+.leader-skills { display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.skill-tag { font-size: 9px; letter-spacing: 2px; padding: 5px 12px; border: 1px solid var(--tagcolor); color: var(--tagcolor); }
+.skill-tag:nth-child(1) { --tagcolor: var(--gold); }
+.skill-tag:nth-child(2) { --tagcolor: var(--burgundy); }
+.skill-tag:nth-child(3) { --tagcolor: var(--emerald); }
+.skill-tag:nth-child(4) { --tagcolor: var(--sapphire); }
+@media (max-width: 600px) { .leader-card { grid-template-columns: 1fr; text-align: center; } .leader-avatar { margin: 0 auto; } .leader-skills { justify-content: center; } }
 
 /* VENTURES / SERVICES */
 .ventures-hero { padding: 5rem 3rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
@@ -181,14 +236,27 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .venture-card { background: rgba(8,8,8,0.7); backdrop-filter: blur(2px); padding: 3rem 2.5rem; transition: background 0.3s; position: relative; overflow: hidden; }
 .venture-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--vc); transition: width 0.4s; }
 .venture-card:nth-child(1) { --vc: var(--gold); } .venture-card:nth-child(2) { --vc: var(--burgundy); }
-.venture-card:nth-child(3) { --vc: var(--emerald); } .venture-card:nth-child(4) { --vc: var(--gold); }
-.venture-card:nth-child(5) { --vc: var(--burgundy); } .venture-card:nth-child(6) { --vc: var(--emerald); }
+.venture-card:nth-child(3) { --vc: var(--emerald); } .venture-card:nth-child(4) { --vc: var(--sapphire); }
+.venture-card:nth-child(5) { --vc: var(--violet); } .venture-card:nth-child(6) { --vc: var(--gold); }
+.venture-card:nth-child(7) { --vc: var(--burgundy); } .venture-card:nth-child(8) { --vc: var(--emerald); }
 .venture-card:hover::after { width: 100%; }
 .venture-card:hover { background: var(--dark); }
 .venture-num { font-size: 10px; color: var(--vc); letter-spacing: 3px; margin-bottom: 1.5rem; }
 .venture-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 1rem; }
 .venture-desc { font-size: 12px; color: #666; line-height: 1.9; font-weight: 300; }
 .venture-tag { display: inline-block; margin-top: 1.5rem; font-size: 9px; color: var(--vc); letter-spacing: 3px; border: 1px solid var(--vc); padding: 4px 12px; opacity: 0.8; }
+
+/* PROCESS */
+.process-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
+.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.process-step { text-align: center; padding: 1.5rem; }
+.process-num { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--pc); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--pc); margin: 0 auto 1rem; }
+.process-step:nth-child(1) { --pc: var(--gold); }
+.process-step:nth-child(2) { --pc: var(--burgundy); }
+.process-step:nth-child(3) { --pc: var(--emerald); }
+.process-step:nth-child(4) { --pc: var(--sapphire); }
+.process-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; margin-bottom: 0.5rem; }
+.process-text { font-size: 11px; color: #666; line-height: 1.7; }
 
 /* SERVICES TIERS */
 .tiers-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
@@ -197,7 +265,7 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; j
 .tier-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(201,168,76,0.06), transparent); }
 .tier-card:nth-child(1):hover { border-color: var(--burgundy); transform: translateY(-4px); }
 .tier-card:nth-child(2):hover { border-color: var(--gold); transform: translateY(-4px); }
-.tier-card:nth-child(3):hover { border-color: var(--emerald); transform: translateY(-4px); }
+.tier-card:nth-child(3):hover { border-color: var(--sapphire); transform: translateY(-4px); }
 .tier-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); font-size: 9px; letter-spacing: 2px; padding: 4px 14px; font-weight: 600; }
 .tier-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; margin: 1rem 0 0.5rem; }
 .tier-desc { font-size: 11px; color: #666; margin-bottom: 1.5rem; min-height: 36px; }
@@ -269,10 +337,12 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
   .about-text { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
   .contact-info { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
-  .stats-bar { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
   .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
   .newsletter-form { flex-direction: column; }
   .newsletter-form input { border-right: 1px solid rgba(201,168,76,0.2); border-bottom: none; }
+  .hero { padding: 6rem 1.5rem 3rem; }
+  .hero-title { font-size: clamp(40px, 13vw, 70px); }
 }
 </style>
 
@@ -299,7 +369,10 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
 <!-- HOME -->
 <div class="page active" id="page-home">
   <section class="hero">
-    <div class="hero-watermark">USMAN KHAN ENTERPRISES</div>
+    <div class="hero-watermark">
+      <span class="wm-line1">USMAN KHAN</span>
+      <span class="wm-line2">ENTERPRISES</span>
+    </div>
     <p class="hero-tag">Est. 2023 · Pakistan · Spain</p>
     <h1 class="hero-title">
       USMAN <span class="gold">KHAN</span>
@@ -321,6 +394,7 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
   <div class="stats-bar">
     <div class="stat"><div class="stat-num">2023</div><div class="stat-label">Year Founded</div></div>
     <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Countries</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Active Ventures</div></div>
     <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Ambition</div></div>
   </div>
 
@@ -336,6 +410,39 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <p class="quote-text">Success isn't an accident — it's a decision you make every single day, then back it up with relentless work. Usman Khan Enterprises was built on that belief, and always will be.</p>
     <div class="quote-author">Usman Khan Yousafzai</div>
     <div class="quote-role">Founder · CEO · Director</div>
+  </div>
+
+  <div class="why-section">
+    <p class="page-label" style="text-align:center;">Why Choose Us</p>
+    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">What Sets Us <span class="gold">Apart</span></h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">Strategic Focus</div>
+        <p class="why-text">Every move is calculated. We don't chase trends — we build with purpose and precision.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌐</div>
+        <div class="why-title">Cross-Border Reach</div>
+        <p class="why-text">Operating across Pakistan and Spain gives us a unique vantage point most businesses lack.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💎</div>
+        <div class="why-title">Premium Standards</div>
+        <p class="why-text">From communication to execution — everything is held to an elevated standard.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlights-section">
+    <p class="page-label" style="text-align:center;">By The Numbers</p>
+    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">Highlights</h2>
+    <div class="highlights-grid">
+      <div class="highlight-card"><div class="highlight-icon">🏆</div><div class="highlight-title">2023</div><div class="highlight-text">FOUNDED & INCORPORATED</div></div>
+      <div class="highlight-card"><div class="highlight-icon">🌍</div><div class="highlight-title">2</div><div class="highlight-text">COUNTRIES OF OPERATION</div></div>
+      <div class="highlight-card"><div class="highlight-icon">📈</div><div class="highlight-title">8</div><div class="highlight-text">ACTIVE VENTURES</div></div>
+      <div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-title">100%</div><div class="highlight-text">COMMITMENT TO PARTNERS</div></div>
+    </div>
   </div>
 
   <div class="timeline-section">
@@ -362,6 +469,11 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
         <div class="timeline-year">2026</div>
         <div class="timeline-text">Launch of our digital presence — bringing the Usman Khan Enterprises legacy online for the world to see.</div>
       </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Next</div>
+        <div class="timeline-text">Continued expansion into hospitality, logistics, and new strategic markets — the journey is just beginning.</div>
+      </div>
     </div>
   </div>
 
@@ -373,6 +485,16 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
       <div class="trusted-item">Middle East</div>
       <div class="trusted-item">Europe</div>
       <div class="trusted-item">Global Markets</div>
+    </div>
+  </div>
+
+  <div class="social-strip">
+    <p class="page-label" style="text-align:center;">Stay Connected</p>
+    <h2 class="page-title" style="font-size: clamp(24px,4vw,36px); text-align:center;">Follow The <span class="gold">Journey</span></h2>
+    <div class="social-icons">
+      <a class="social-pill" href="https://instagram.com/kh1n.enterprises" target="_blank">Instagram</a>
+      <a class="social-pill" href="mailto:kh11n.enterprises@gmail.com">Email</a>
+      <a class="social-pill" href="#" onclick="showPage('contact'); return false;">Contact</a>
     </div>
   </div>
 
@@ -432,6 +554,12 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
         <div class="leader-name">Usman Khan Yousafzai</div>
         <div class="leader-title">FOUNDER · CEO · DIRECTOR</div>
         <p class="leader-bio">The driving force behind Usman Khan Enterprises. With a vision for building lasting institutions across Pakistan and Spain, Usman leads every venture with discipline, ambition, and an unwavering commitment to integrity.</p>
+        <div class="leader-skills">
+          <span class="skill-tag">Strategy</span>
+          <span class="skill-tag">Leadership</span>
+          <span class="skill-tag">Global Trade</span>
+          <span class="skill-tag">Investment</span>
+        </div>
       </div>
     </div>
   </div>
@@ -504,6 +632,19 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     <div class="venture-card"><div class="venture-num">04</div><div class="venture-name">Consulting</div><p class="venture-desc">Expert strategic guidance for businesses ready to scale, pivot, or dominate their market.</p><div class="venture-tag">AVAILABLE</div></div>
     <div class="venture-card"><div class="venture-num">05</div><div class="venture-name">International Trade</div><p class="venture-desc">Cross-border business operations leveraging our dual presence in Pakistan and Spain.</p><div class="venture-tag">ACTIVE</div></div>
     <div class="venture-card"><div class="venture-num">06</div><div class="venture-name">Investments</div><p class="venture-desc">Calculated, strategic investments in high-potential ventures across multiple sectors.</p><div class="venture-tag">SELECTIVE</div></div>
+    <div class="venture-card"><div class="venture-num">07</div><div class="venture-name">Hospitality</div><p class="venture-desc">Curated hospitality ventures bringing premium experiences to growing markets.</p><div class="venture-tag">UPCOMING</div></div>
+    <div class="venture-card"><div class="venture-num">08</div><div class="venture-name">Logistics</div><p class="venture-desc">Reliable supply chain and logistics solutions connecting Pakistan and Spain seamlessly.</p><div class="venture-tag">GROWING</div></div>
+  </div>
+
+  <div class="process-section">
+    <p class="page-label">How We Work</p>
+    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px);">Our <span class="gold">Process</span></h2>
+    <div class="process-grid">
+      <div class="process-step"><div class="process-num">01</div><div class="process-title">Discover</div><p class="process-text">Understanding your goals, challenges and vision through deep consultation.</p></div>
+      <div class="process-step"><div class="process-num">02</div><div class="process-title">Strategize</div><p class="process-text">Crafting a tailored roadmap aligned with market realities and ambitions.</p></div>
+      <div class="process-step"><div class="process-num">03</div><div class="process-title">Execute</div><p class="process-text">Implementing with precision, discipline, and relentless attention to detail.</p></div>
+      <div class="process-step"><div class="process-num">04</div><div class="process-title">Scale</div><p class="process-text">Growing sustainably — building institutions that stand the test of time.</p></div>
+    </div>
   </div>
 
   <div class="tiers-section">
