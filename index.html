@@ -1,360 +1,379 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<title>Usman Khan Enterprises</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
-
 :root {
-  --gold: #c9a84c;
-  --gold-light: #e2c97e;
-  --burgundy: #b85c5c;
-  --emerald: #5cb89a;
-  --sapphire: #5c8ad4;
-  --violet: #9a6cd4;
-  --black: #080808;
-  --dark: #111111;
-  --grey: #888;
-  --white: #ffffff;
+  --gold: #c9a84c; --gold-light: #e2c97e; --burgundy: #c25c5c;
+  --emerald: #5cc2a0; --sapphire: #5c8ec2; --violet: #9c6cc2;
+  --black: #080808; --dark: #111111; --white: #ffffff;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 15% 8%, rgba(201,168,76,0.12) 0%, transparent 35%),
-    radial-gradient(circle at 85% 12%, rgba(184,92,92,0.1) 0%, transparent 38%),
-    radial-gradient(circle at 50% 0%, rgba(154,108,212,0.08) 0%, transparent 45%),
-    radial-gradient(circle at 15% 45%, rgba(92,138,212,0.07) 0%, transparent 40%),
-    radial-gradient(circle at 85% 55%, rgba(92,184,154,0.08) 0%, transparent 40%),
-    radial-gradient(circle at 25% 90%, rgba(184,92,92,0.07) 0%, transparent 40%),
-    radial-gradient(circle at 80% 95%, rgba(201,168,76,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 20% 5%, rgba(201,168,76,0.15) 0%, transparent 28%),
+    radial-gradient(circle at 80% 4%, rgba(194,92,92,0.12) 0%, transparent 30%),
+    radial-gradient(circle at 50% 12%, rgba(92,194,160,0.08) 0%, transparent 32%),
+    radial-gradient(circle at 10% 50%, rgba(92,142,194,0.07) 0%, transparent 35%),
+    radial-gradient(circle at 90% 55%, rgba(156,108,194,0.07) 0%, transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(201,168,76,0.08) 0%, transparent 35%),
     linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-  background-size: auto, auto, auto, auto, auto, auto, auto, 48px 48px, 48px 48px;
+  background-size: auto,auto,auto,auto,auto,auto,48px 48px,48px 48px;
   background-attachment: fixed;
 }
 
 /* INTRO */
-.intro { position: fixed; inset: 0; z-index: 1000; background: var(--black); display: flex; align-items: center; justify-content: center; animation: introFade 0.8s ease 2s forwards; }
-.intro-content { text-align: center; position: relative; }
-.intro-usman { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 900; color: var(--white); letter-spacing: 8px; animation: introUp 1s ease 0.2s both; }
-.intro-khan { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; color: var(--gold); letter-spacing: 10px; animation: introUp 1s ease 0.4s both; }
-.intro-line { width: 0; height: 1px; background: var(--gold); margin: 1.5rem auto; animation: introLine 0.8s ease 0.8s forwards; }
-.intro-ent { font-size: 11px; letter-spacing: 8px; color: #666; animation: introUp 1s ease 1s both; }
-@keyframes introUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes introLine { to { width: 100px; } }
+.intro { position: fixed; inset: 0; z-index: 1000; background: #080808; display: flex; align-items: center; justify-content: center; animation: introFade 0.8s ease 2.5s forwards; }
+.intro-inner { text-align: center; }
+.intro-usman { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 900; color: #fff; letter-spacing: 10px; opacity: 0; animation: introUp 0.9s ease 0.3s forwards; }
+.intro-khan { font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 300; color: var(--gold); letter-spacing: 12px; opacity: 0; animation: introUp 0.9s ease 0.6s forwards; }
+.intro-line { width: 0; height: 1px; background: var(--gold); margin: 1.5rem auto; animation: introLine 0.8s ease 1.1s forwards; }
+.intro-ent { font-size: 12px; letter-spacing: 8px; color: #666; opacity: 0; animation: introUp 0.9s ease 1.4s forwards; }
+.intro-flag { font-size: 22px; margin-top: 1.2rem; opacity: 0; animation: introUp 0.9s ease 1.7s forwards; }
+@keyframes introUp { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(16px); } }
+@keyframes introLine { to { width: 120px; } }
 @keyframes introFade { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(8,8,8,0.95); border-bottom: 1px solid rgba(201,168,76,0.15); backdrop-filter: blur(10px); }
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 3rem; background: rgba(8,8,8,0.92); border-bottom: 1px solid rgba(201,168,76,0.18); backdrop-filter: blur(14px); transition: all 0.3s; }
 .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
 .nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-links a { font-size: 11px; letter-spacing: 2px; color: #aaa; text-decoration: none; text-transform: uppercase; transition: color 0.3s; cursor: pointer; }
+.nav-links a { font-size: 10px; letter-spacing: 2px; color: #aaa; text-decoration: none; text-transform: uppercase; transition: color 0.3s; cursor: pointer; position: relative; padding-bottom: 2px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s; }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-.nav-cta { padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; background: transparent; }
-.nav-cta:hover { background: var(--gold); color: var(--black); }
+.nav-cta { padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; background: transparent; font-family: 'Montserrat', sans-serif; }
+.nav-cta:hover { background: var(--gold); color: var(--black); transform: scale(1.03); }
 
+/* PAGE */
 .page { display: none; min-height: 100vh; padding-top: 70px; }
 .page.active { display: block; }
 
-/* HOME */
-.hero { min-height: calc(100vh - 70px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 4rem 2rem; }
-.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.09) 0%, transparent 70%); }
-.hero-watermark {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  font-family: 'Cormorant Garamond', serif; font-weight: 900; color: rgba(201,168,76,0.04);
-  letter-spacing: 10px; pointer-events: none; z-index: 0;
-  width: 100%; text-align: center; line-height: 1.1;
-}
-.hero-watermark .wm-line1 { font-size: clamp(60px, 13vw, 160px); display: block; }
-.hero-watermark .wm-line2 { font-size: clamp(40px, 9vw, 110px); display: block; letter-spacing: 20px; }
-.hero-tag { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 2rem; animation: fadeUp 1s ease both; position: relative; z-index: 1; }
-.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 10vw, 110px); font-weight: 900; line-height: 0.95; animation: fadeUp 1s ease 0.2s both; position: relative; z-index: 1; }
-.hero-title .gold { color: var(--gold); font-weight: 300; }
-.hero-title .ent { display: block; font-size: clamp(18px, 3.5vw, 38px); font-weight: 300; letter-spacing: 12px; color: #aaa; margin-top: 1rem; }
-.hero-line { width: 80px; height: 1px; background: var(--gold); margin: 2.5rem auto; animation: fadeUp 1s ease 0.4s both; position: relative; z-index: 1; }
-.hero-sub { font-size: 13px; color: #888; max-width: 500px; line-height: 2; font-weight: 300; letter-spacing: 0.5px; animation: fadeUp 1s ease 0.6s both; margin-bottom: 1.5rem; position: relative; z-index: 1; }
-.hero-founder { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: var(--gold); letter-spacing: 1px; margin-bottom: 2.5rem; animation: fadeUp 1s ease 0.7s both; position: relative; z-index: 1; }
-.hero-founder span { font-style: normal; font-size: 10px; color: #666; letter-spacing: 3px; display: block; margin-bottom: 4px; }
-.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 0.8s both; position: relative; z-index: 1; }
-.scroll-cue { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 9px; letter-spacing: 3px; color: #555; animation: bounce 2s infinite; z-index: 1; }
-@keyframes bounce { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,8px); } }
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
 
+/* BUTTONS */
 .btn-gold { padding: 14px 36px; background: var(--gold); color: var(--black); border: none; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; font-weight: 600; transition: all 0.3s; }
-.btn-gold:hover { background: var(--gold-light); }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
 .btn-outline { padding: 14px 36px; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: all 0.3s; }
-.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); }
-
-.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(201,168,76,0.15); border-bottom: 1px solid rgba(201,168,76,0.15); background: rgba(8,8,8,0.6); backdrop-filter: blur(2px); position: relative; z-index: 1; }
-.stat { padding: 2.5rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.15); border-top: 2px solid var(--sc); }
-.stat:nth-child(1) { --sc: var(--gold); } .stat:nth-child(2) { --sc: var(--burgundy); }
-.stat:nth-child(3) { --sc: var(--emerald); } .stat:nth-child(4) { --sc: var(--sapphire); }
-.stat:last-child { border-right: none; }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 900; color: var(--sc); }
-.stat-label { font-size: 9px; color: #666; letter-spacing: 3px; margin-top: 4px; }
-
-.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.pillar { background: rgba(8,8,8,0.7); backdrop-filter: blur(2px); padding: 3rem 2rem; border-bottom: 2px solid transparent; transition: all 0.4s; position: relative; overflow: hidden; }
-.pillar::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--accent); transform: scaleY(0); transition: transform 0.4s; }
-.pillar:hover::before { transform: scaleY(1); }
-.pillar:nth-child(1) { --accent: var(--gold); }
-.pillar:nth-child(2) { --accent: var(--burgundy); }
-.pillar:nth-child(3) { --accent: var(--emerald); }
-.pillar:nth-child(4) { --accent: var(--sapphire); }
-.pillar:hover { border-bottom-color: var(--accent); background: var(--dark); }
-.pillar-num { font-size: 10px; color: var(--accent); letter-spacing: 3px; margin-bottom: 1.5rem; }
-.pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin-bottom: 1rem; }
-.pillar-text { font-size: 12px; color: #666; line-height: 1.8; font-weight: 300; }
-
-/* FOUNDER QUOTE */
-.quote-section { padding: 5rem 3rem; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 80px; color: var(--gold); opacity: 0.3; line-height: 0; }
-.quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px, 3vw, 34px); font-weight: 400; max-width: 700px; margin: 0 auto 2rem; line-height: 1.6; color: #ddd; }
-.quote-author { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
-.quote-role { font-size: 10px; letter-spacing: 2px; color: #555; margin-top: 4px; }
-
-/* WHY CHOOSE US */
-.why-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.why-card { padding: 2rem; border: 1px solid var(--wc); border-radius: 4px; background: linear-gradient(135deg, color-mix(in srgb, var(--wc) 8%, transparent), transparent); }
-.why-card:nth-child(1) { --wc: var(--gold); }
-.why-card:nth-child(2) { --wc: var(--violet); }
-.why-card:nth-child(3) { --wc: var(--emerald); }
-.why-icon { font-size: 28px; margin-bottom: 1rem; }
-.why-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--wc); margin-bottom: 0.5rem; }
-.why-text { font-size: 12px; color: #999; line-height: 1.8; font-weight: 300; }
-
-/* TIMELINE */
-.timeline-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.timeline { position: relative; max-width: 700px; margin: 3rem auto 0; }
-.timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--gold), var(--burgundy), var(--emerald), var(--sapphire), var(--violet)); }
-.timeline-item { position: relative; padding-left: 60px; margin-bottom: 2.5rem; }
-.timeline-dot { position: absolute; left: 14px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--black); border: 2px solid var(--dot-color); }
-.timeline-item:nth-child(1) { --dot-color: var(--gold); }
-.timeline-item:nth-child(2) { --dot-color: var(--burgundy); }
-.timeline-item:nth-child(3) { --dot-color: var(--emerald); }
-.timeline-item:nth-child(4) { --dot-color: var(--sapphire); }
-.timeline-item:nth-child(5) { --dot-color: var(--violet); }
-.timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--dot-color); }
-.timeline-text { font-size: 12px; color: #888; margin-top: 4px; line-height: 1.7; font-weight: 300; }
-
-/* GALLERY / HIGHLIGHTS */
-.highlights-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.highlight-card { aspect-ratio: 1; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; border: 1px solid var(--hc); background: linear-gradient(135deg, color-mix(in srgb, var(--hc) 12%, transparent), color-mix(in srgb, var(--hc) 3%, transparent)); }
-.highlight-card:nth-child(1) { --hc: var(--gold); }
-.highlight-card:nth-child(2) { --hc: var(--burgundy); }
-.highlight-card:nth-child(3) { --hc: var(--sapphire); }
-.highlight-card:nth-child(4) { --hc: var(--emerald); }
-.highlight-icon { font-size: 36px; margin-bottom: 0.8rem; }
-.highlight-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--hc); margin-bottom: 0.3rem; }
-.highlight-text { font-size: 10px; color: #999; letter-spacing: 1px; }
-
-/* PRESS / TRUSTED */
-.trusted-bar { padding: 2.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.trusted-label { font-size: 9px; letter-spacing: 4px; color: #555; text-transform: uppercase; margin-bottom: 1.5rem; }
-.trusted-logos { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-.trusted-item { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: #444; letter-spacing: 2px; transition: color 0.3s; }
-.trusted-item:nth-child(1):hover { color: var(--gold); }
-.trusted-item:nth-child(2):hover { color: var(--burgundy); }
-.trusted-item:nth-child(3):hover { color: var(--violet); }
-.trusted-item:nth-child(4):hover { color: var(--sapphire); }
-.trusted-item:nth-child(5):hover { color: var(--emerald); }
-
-/* SOCIAL STRIP */
-.social-strip { padding: 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; text-align: center; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.social-icons { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
-.social-pill { padding: 10px 24px; border: 1px solid var(--socolor); color: var(--socolor); font-size: 10px; letter-spacing: 2px; text-decoration: none; transition: all 0.3s; }
-.social-pill:nth-child(1) { --socolor: var(--gold); }
-.social-pill:nth-child(2) { --socolor: var(--burgundy); }
-.social-pill:nth-child(3) { --socolor: var(--violet); }
-.social-pill:hover { background: var(--socolor); color: var(--black); }
-
-/* NEWSLETTER */
-.newsletter { padding: 4rem 3rem; background: var(--dark); border-bottom: 1px solid rgba(201,168,76,0.1); text-align: center; position: relative; z-index: 1; }
-.newsletter-label { font-size: 10px; letter-spacing: 5px; color: var(--gold); margin-bottom: 1rem; }
-.newsletter-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 4vw, 40px); font-weight: 700; margin-bottom: 0.5rem; }
-.newsletter-sub { font-size: 12px; color: #666; margin-bottom: 2rem; font-weight: 300; }
-.newsletter-form { display: flex; gap: 0; max-width: 420px; margin: 0 auto; }
-.newsletter-form input { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); border-right: none; color: var(--white); padding: 12px 18px; font-family: 'Montserrat', sans-serif; font-size: 12px; outline: none; }
-.newsletter-form button { padding: 12px 28px; background: var(--gold); color: var(--black); border: none; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-weight: 600; }
-
-/* ABOUT */
-.about-hero { padding: 5rem 3rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.page-label { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
-.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 7vw, 80px); font-weight: 900; line-height: 1; }
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.07); transform: translateY(-2px); }
+.page-label { font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,6vw,72px); font-weight: 900; line-height: 1.05; }
 .page-title .gold { color: var(--gold); font-weight: 300; }
 .page-title .red { color: var(--burgundy); font-weight: 300; }
 .page-title .green { color: var(--emerald); font-weight: 300; }
 .page-title .blue { color: var(--sapphire); font-weight: 300; }
 .page-title .purple { color: var(--violet); font-weight: 300; }
 
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.about-text { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.about-text p { font-size: 14px; color: #888; line-height: 2; font-weight: 300; margin-bottom: 1.5rem; }
-.about-visual { padding: 4rem 3rem; background: var(--dark); display: flex; flex-direction: column; justify-content: center; gap: 2rem; }
+/* HERO */
+.hero { min-height: calc(100vh - 70px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; padding: 4rem 2rem; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.14) 0%, transparent 55%); pointer-events: none; }
+.hero-wm { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cormorant Garamond', serif; font-weight: 900; color: rgba(201,168,76,0.04); pointer-events: none; z-index: 0; width: 100%; text-align: center; line-height: 1.1; }
+.hero-wm .wm1 { font-size: clamp(55px,12vw,150px); display: block; letter-spacing: 10px; }
+.hero-wm .wm2 { font-size: clamp(35px,8vw,100px); display: block; letter-spacing: 18px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 9px; letter-spacing: 4px; color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 6px 16px; margin-bottom: 2rem; animation: fadeUp 1s ease 0.3s both; position: relative; z-index: 1; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(50px,11vw,120px); font-weight: 900; line-height: 0.92; animation: fadeUp 1s ease 0.5s both; position: relative; z-index: 1; }
+.hero-title .gold { color: var(--gold); font-weight: 300; }
+.hero-title .ent { display: block; font-size: clamp(16px,3vw,34px); font-weight: 300; letter-spacing: 14px; color: #777; margin-top: 1.2rem; }
+.hero-divider { display: flex; align-items: center; gap: 1rem; margin: 2.5rem auto; max-width: 300px; animation: fadeUp 1s ease 0.7s both; position: relative; z-index: 1; }
+.hero-divider span { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.hero-divider i { color: var(--gold); font-size: 10px; letter-spacing: 4px; }
+.hero-sub { font-size: 13px; color: #777; max-width: 520px; line-height: 2; font-weight: 300; animation: fadeUp 1s ease 0.8s both; margin-bottom: 1.2rem; position: relative; z-index: 1; }
+.hero-founder { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; color: var(--gold); animation: fadeUp 1s ease 0.9s both; margin-bottom: 2.5rem; position: relative; z-index: 1; }
+.hero-founder small { display: block; font-style: normal; font-size: 9px; color: #555; letter-spacing: 3px; margin-bottom: 4px; }
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 1s both; position: relative; z-index: 1; margin-bottom: 3rem; }
+.hero-flags { display: flex; gap: 1.5rem; justify-content: center; animation: fadeUp 1s ease 1.1s both; position: relative; z-index: 1; }
+.hero-flag-pill { display: flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2px; color: #666; border: 1px solid rgba(255,255,255,0.06); padding: 6px 14px; }
+.scroll-cue { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 9px; letter-spacing: 3px; color: #444; z-index: 1; animation: bounce 2.5s infinite; }
+@keyframes bounce { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,8px); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* STATS */
+.stats-bar { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid rgba(201,168,76,0.12); border-bottom: 1px solid rgba(201,168,76,0.12); position: relative; z-index: 1; }
+.stat { padding: 2.2rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.12); border-top: 2px solid var(--sc); transition: background 0.3s; }
+.stat:hover { background: rgba(255,255,255,0.02); }
+.stat:nth-child(1){--sc:var(--gold)} .stat:nth-child(2){--sc:var(--burgundy)} .stat:nth-child(3){--sc:var(--emerald)} .stat:nth-child(4){--sc:var(--sapphire)}
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 900; color: var(--sc); transition: transform 0.3s; }
+.stat:hover .stat-num { transform: scale(1.08); }
+.stat-label { font-size: 9px; color: #555; letter-spacing: 3px; margin-top: 4px; }
+
+/* HIGHLIGHTS */
+.highlights { padding: 3.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.highlights-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 1.2rem; margin-top: 2rem; }
+.highlight-card { padding: 1.8rem 1.4rem; border: 1px solid var(--hc); border-radius: 2px; text-align: center; background: rgba(255,255,255,0.012); transition: all 0.4s; position: relative; overflow: hidden; }
+.highlight-card::before { content: ''; position: absolute; inset: 0; background: var(--hbg); opacity: 0; transition: opacity 0.4s; }
+.highlight-card:hover { transform: translateY(-6px); border-color: var(--hcbright); }
+.highlight-card:hover::before { opacity: 1; }
+.highlight-card:nth-child(1){--hc:rgba(201,168,76,0.2);--hcbright:rgba(201,168,76,0.5);--hbg:rgba(201,168,76,0.04)}
+.highlight-card:nth-child(2){--hc:rgba(194,92,92,0.2);--hcbright:rgba(194,92,92,0.5);--hbg:rgba(194,92,92,0.04)}
+.highlight-card:nth-child(3){--hc:rgba(92,194,160,0.2);--hcbright:rgba(92,194,160,0.5);--hbg:rgba(92,194,160,0.04)}
+.highlight-card:nth-child(4){--hc:rgba(92,142,194,0.2);--hcbright:rgba(92,142,194,0.5);--hbg:rgba(92,142,194,0.04)}
+.highlight-card:nth-child(5){--hc:rgba(156,108,194,0.2);--hcbright:rgba(156,108,194,0.5);--hbg:rgba(156,108,194,0.04)}
+.highlight-icon { font-size: 28px; margin-bottom: 0.8rem; position: relative; z-index: 1; }
+.highlight-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+.highlight-text { font-size: 10px; color: #666; line-height: 1.7; position: relative; z-index: 1; }
+
+/* PILLARS */
+.pillars { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1px; background: rgba(201,168,76,0.08); }
+.pillar { background: rgba(8,8,8,0.7); padding: 3rem 2rem; border-bottom: 2px solid transparent; transition: all 0.4s; position: relative; overflow: hidden; }
+.pillar::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--ac); transform: scaleY(0); transform-origin: bottom; transition: transform 0.4s; }
+.pillar:hover::before { transform: scaleY(1); }
+.pillar:hover { border-bottom-color: var(--ac); background: rgba(20,20,20,0.9); }
+.pillar:nth-child(1){--ac:var(--gold)} .pillar:nth-child(2){--ac:var(--burgundy)} .pillar:nth-child(3){--ac:var(--emerald)} .pillar:nth-child(4){--ac:var(--sapphire)}
+.pillar-num { font-size: 10px; color: var(--ac); letter-spacing: 3px; margin-bottom: 1.5rem; }
+.pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin-bottom: 1rem; }
+.pillar-text { font-size: 12px; color: #666; line-height: 1.8; font-weight: 300; }
+
+/* QUOTE */
+.quote-section { padding: 5rem 3rem; text-align: center; border-bottom: 1px solid rgba(201,168,76,0.08); background: rgba(8,8,8,0.4); position: relative; overflow: hidden; }
+.quote-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.05) 0%, transparent 70%); }
+.quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 100px; color: var(--gold); opacity: 0.15; line-height: 0.5; position: relative; z-index: 1; }
+.quote-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px,3vw,32px); max-width: 720px; margin: 1rem auto 2rem; line-height: 1.7; color: #ddd; position: relative; z-index: 1; }
+.quote-author { font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; position: relative; z-index: 1; }
+.quote-role { font-size: 10px; letter-spacing: 2px; color: #555; margin-top: 5px; position: relative; z-index: 1; }
+
+/* TIMELINE */
+.timeline-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.timeline { position: relative; max-width: 680px; margin: 3rem auto 0; }
+.timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--gold), var(--burgundy), var(--emerald), var(--sapphire), var(--violet)); }
+.timeline-item { position: relative; padding-left: 60px; margin-bottom: 2.5rem; transition: all 0.3s; }
+.timeline-item:hover { padding-left: 68px; }
+.timeline-dot { position: absolute; left: 14px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--black); border: 2px solid var(--dc); transition: transform 0.3s; }
+.timeline-item:hover .timeline-dot { transform: scale(1.4); }
+.timeline-item:nth-child(1){--dc:var(--gold)} .timeline-item:nth-child(2){--dc:var(--burgundy)} .timeline-item:nth-child(3){--dc:var(--emerald)} .timeline-item:nth-child(4){--dc:var(--sapphire)} .timeline-item:nth-child(5){--dc:var(--violet)}
+.timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--dc); }
+.timeline-title { font-size: 11px; letter-spacing: 2px; color: #777; margin: 2px 0 6px; }
+.timeline-text { font-size: 12px; color: #666; line-height: 1.8; font-weight: 300; }
+
+/* MARKETS */
+.markets-section { padding: 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.markets-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1px; background: rgba(201,168,76,0.08); margin-top: 2rem; }
+.market-cell { background: rgba(8,8,8,0.6); padding: 2rem 1rem; text-align: center; border-top: 2px solid var(--mc); transition: all 0.3s; cursor: default; }
+.market-cell:hover { background: rgba(255,255,255,0.03); transform: translateY(-3px); }
+.market-cell:nth-child(1){--mc:var(--gold)} .market-cell:nth-child(2){--mc:var(--burgundy)} .market-cell:nth-child(3){--mc:var(--emerald)} .market-cell:nth-child(4){--mc:var(--sapphire)} .market-cell:nth-child(5){--mc:var(--violet)} .market-cell:nth-child(6){--mc:var(--gold)}
+.market-icon { font-size: 26px; margin-bottom: 0.6rem; }
+.market-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 700; }
+
+/* TRUSTED */
+.trusted-bar { padding: 2.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); text-align: center; background: rgba(8,8,8,0.4); }
+.trusted-label { font-size: 9px; letter-spacing: 4px; color: #444; text-transform: uppercase; margin-bottom: 1.5rem; }
+.trusted-logos { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.trusted-item { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: #333; letter-spacing: 2px; transition: color 0.3s; cursor: default; }
+.trusted-item:nth-child(1):hover{color:var(--gold)} .trusted-item:nth-child(2):hover{color:var(--burgundy)} .trusted-item:nth-child(3):hover{color:var(--emerald)} .trusted-item:nth-child(4):hover{color:var(--sapphire)} .trusted-item:nth-child(5):hover{color:var(--violet)}
+
+/* SOCIAL */
+.social-strip { padding: 3.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); text-align: center; }
+.social-icons { display: flex; justify-content: center; gap: 1.2rem; margin-top: 2rem; flex-wrap: wrap; }
+.social-pill { padding: 11px 28px; border: 1px solid var(--sc2); color: var(--sc2); font-size: 10px; letter-spacing: 2px; text-decoration: none; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
+.social-pill:hover { background: var(--sc2); color: var(--black); transform: translateY(-2px); }
+.social-pill:nth-child(1){--sc2:var(--gold)} .social-pill:nth-child(2){--sc2:var(--burgundy)} .social-pill:nth-child(3){--sc2:var(--emerald)}
+
+/* NEWSLETTER */
+.newsletter { padding: 4.5rem 3rem; background: rgba(12,10,6,0.8); border-bottom: 1px solid rgba(201,168,76,0.08); text-align: center; position: relative; overflow: hidden; }
+.newsletter::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%); }
+.newsletter-label { font-size: 10px; letter-spacing: 5px; color: var(--gold); margin-bottom: 1rem; position: relative; z-index: 1; }
+.newsletter-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px,4vw,44px); font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+.newsletter-sub { font-size: 12px; color: #666; margin-bottom: 2rem; font-weight: 300; position: relative; z-index: 1; }
+.newsletter-form { display: flex; max-width: 440px; margin: 0 auto; position: relative; z-index: 1; }
+.newsletter-form input { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); border-right: none; color: #fff; padding: 13px 18px; font-family: 'Montserrat', sans-serif; font-size: 12px; outline: none; transition: border 0.3s; }
+.newsletter-form input:focus { border-color: var(--gold); }
+.newsletter-form button { padding: 13px 28px; background: var(--gold); color: var(--black); border: none; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-weight: 600; font-family: 'Montserrat', sans-serif; transition: background 0.3s; }
+.newsletter-form button:hover { background: var(--gold-light); }
+
+/* ABOUT */
+.about-hero { padding: 5rem 3rem 3.5rem; border-bottom: 1px solid rgba(201,168,76,0.08); position: relative; overflow: hidden; }
+.about-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(201,168,76,0.1) 0%, transparent 55%); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.about-text { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.08); }
+.about-text p { font-size: 14px; color: #777; line-height: 2.1; font-weight: 300; margin-bottom: 1.5rem; }
+.about-visual { padding: 4rem 3rem; background: rgba(12,10,6,0.6); display: flex; flex-direction: column; justify-content: center; gap: 1.8rem; }
 .info-row { display: flex; flex-direction: column; gap: 4px; }
 .info-label { font-size: 9px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
 .info-val { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; }
-.info-divider { width: 40px; height: 1px; background: rgba(201,168,76,0.3); }
-
-.values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.value-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); border-top: 2px solid var(--vcolor); }
-.value-item:nth-child(1) { --vcolor: var(--gold); }
-.value-item:nth-child(2) { --vcolor: var(--burgundy); }
-.value-item:nth-child(3) { --vcolor: var(--emerald); }
-.value-item:nth-child(4) { --vcolor: var(--sapphire); }
-.value-item:last-child { border-right: none; }
-.value-icon { font-size: 24px; margin-bottom: 1rem; }
-.value-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; margin-bottom: 0.5rem; color: var(--vcolor); }
-.value-text { font-size: 12px; color: #666; line-height: 1.8; }
+.info-div { width: 36px; height: 1px; background: rgba(201,168,76,0.25); }
 
 /* LEADERSHIP */
-.leadership { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.leader-card { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; max-width: 700px; margin: 0 auto; align-items: center; }
-.leader-avatar { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(184,92,92,0.06), rgba(154,108,212,0.06)); }
-.leader-avatar-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 900; color: var(--white); letter-spacing: 2px; line-height: 1.3; text-align: center; }
+.leadership { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); background: rgba(8,8,8,0.4); }
+.leader-card { display: grid; grid-template-columns: 200px 1fr; gap: 3.5rem; max-width: 720px; margin: 2rem auto 0; align-items: center; }
+.leader-avatar { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(194,92,92,0.06), rgba(92,194,160,0.06)); transition: transform 0.4s; }
+.leader-avatar:hover { transform: scale(1.04); }
+.leader-avatar-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 2px; line-height: 1.3; text-align: center; }
 .leader-avatar-name span { color: var(--gold); display: block; font-weight: 300; }
-.leader-avatar-tag { font-size: 7px; letter-spacing: 3px; color: #555; margin-top: 4px; }
-.leader-name { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 700; margin-bottom: 0.5rem; }
+.leader-avatar-sub { font-size: 7px; letter-spacing: 3px; color: #444; margin-top: 4px; }
+.leader-name { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; margin-bottom: 4px; }
 .leader-title { font-size: 10px; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem; }
-.leader-bio { font-size: 13px; color: #888; line-height: 1.9; font-weight: 300; }
-.leader-skills { display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
-.skill-tag { font-size: 9px; letter-spacing: 2px; padding: 5px 12px; border: 1px solid var(--tagcolor); color: var(--tagcolor); }
-.skill-tag:nth-child(1) { --tagcolor: var(--gold); }
-.skill-tag:nth-child(2) { --tagcolor: var(--burgundy); }
-.skill-tag:nth-child(3) { --tagcolor: var(--emerald); }
-.skill-tag:nth-child(4) { --tagcolor: var(--sapphire); }
-@media (max-width: 600px) { .leader-card { grid-template-columns: 1fr; text-align: center; } .leader-avatar { margin: 0 auto; } .leader-skills { justify-content: center; } }
+.leader-bio { font-size: 13px; color: #777; line-height: 2; font-weight: 300; }
+.leader-skills { display: flex; gap: 8px; margin-top: 1.5rem; flex-wrap: wrap; }
+.skill-tag { font-size: 9px; letter-spacing: 2px; padding: 5px 12px; border: 1px solid var(--tc2); color: var(--tc2); transition: all 0.3s; cursor: default; }
+.skill-tag:hover { background: var(--tc2); color: var(--black); }
+.skill-tag:nth-child(1){--tc2:var(--gold)} .skill-tag:nth-child(2){--tc2:var(--burgundy)} .skill-tag:nth-child(3){--tc2:var(--emerald)} .skill-tag:nth-child(4){--tc2:var(--sapphire)}
 
-/* VENTURES / SERVICES */
-.ventures-hero { padding: 5rem 3rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.venture-card { background: rgba(8,8,8,0.7); backdrop-filter: blur(2px); padding: 3rem 2.5rem; transition: background 0.3s; position: relative; overflow: hidden; }
-.venture-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--vc); transition: width 0.4s; }
-.venture-card:nth-child(1) { --vc: var(--gold); } .venture-card:nth-child(2) { --vc: var(--burgundy); }
-.venture-card:nth-child(3) { --vc: var(--emerald); } .venture-card:nth-child(4) { --vc: var(--sapphire); }
-.venture-card:nth-child(5) { --vc: var(--violet); } .venture-card:nth-child(6) { --vc: var(--gold); }
-.venture-card:nth-child(7) { --vc: var(--burgundy); } .venture-card:nth-child(8) { --vc: var(--emerald); }
+/* VALUES */
+.values { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 0; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.value-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(201,168,76,0.08); border-top: 2px solid var(--vc2); transition: background 0.3s; }
+.value-item:hover { background: rgba(255,255,255,0.02); }
+.value-item:last-child { border-right: none; }
+.value-item:nth-child(1){--vc2:var(--gold)} .value-item:nth-child(2){--vc2:var(--burgundy)} .value-item:nth-child(3){--vc2:var(--emerald)} .value-item:nth-child(4){--vc2:var(--sapphire)}
+.value-icon { font-size: 26px; margin-bottom: 1rem; }
+.value-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; margin-bottom: 0.5rem; color: var(--vc2); }
+.value-text { font-size: 12px; color: #666; line-height: 1.8; }
+
+/* LOCATIONS */
+.locations-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.locations-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.location-card { border: 1px solid rgba(201,168,76,0.12); padding: 2.5rem 2rem; text-align: center; border-top: 3px solid var(--lc); transition: all 0.3s; }
+.location-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.02); }
+.location-card:nth-child(1){--lc:var(--gold)} .location-card:nth-child(2){--lc:var(--burgundy)}
+.location-flag { font-size: 40px; margin-bottom: 1rem; transition: transform 0.3s; }
+.location-card:hover .location-flag { transform: scale(1.15); }
+.location-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.location-role { font-size: 9px; letter-spacing: 3px; color: var(--lc); text-transform: uppercase; }
+
+/* FAQ */
+.faq-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); background: rgba(8,8,8,0.3); }
+.faq-item { border-bottom: 1px solid rgba(201,168,76,0.08); }
+.faq-q { padding: 1.4rem 0; cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; transition: color 0.3s; }
+.faq-q:hover { color: var(--gold); }
+.faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { font-size: 13px; color: #777; line-height: 1.9; font-weight: 300; max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.4rem; }
+
+/* AWARDS */
+.awards-section { padding: 3.5rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.awards-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1px; background: rgba(201,168,76,0.08); margin-top: 2rem; }
+.award-item { background: rgba(8,8,8,0.6); padding: 2rem 1.5rem; text-align: center; border-top: 2px solid var(--aw); transition: background 0.3s; }
+.award-item:hover { background: rgba(255,255,255,0.02); }
+.award-item:nth-child(1){--aw:var(--gold)} .award-item:nth-child(2){--aw:var(--burgundy)} .award-item:nth-child(3){--aw:var(--emerald)} .award-item:nth-child(4){--aw:var(--sapphire)}
+.award-icon { font-size: 28px; margin-bottom: 0.8rem; }
+.award-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--aw); }
+.award-desc { font-size: 10px; color: #555; line-height: 1.6; }
+
+/* VENTURES */
+.ventures-hero { padding: 5rem 3rem 3.5rem; border-bottom: 1px solid rgba(201,168,76,0.08); position: relative; overflow: hidden; }
+.ventures-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(194,92,92,0.1) 0%, transparent 55%); }
+.ventures-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(270px,1fr)); gap: 1px; background: rgba(201,168,76,0.08); }
+.venture-card { background: rgba(8,8,8,0.7); padding: 3rem 2.5rem; transition: all 0.4s; position: relative; overflow: hidden; }
+.venture-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--vc3); transition: width 0.4s; }
 .venture-card:hover::after { width: 100%; }
-.venture-card:hover { background: var(--dark); }
-.venture-num { font-size: 10px; color: var(--vc); letter-spacing: 3px; margin-bottom: 1.5rem; }
+.venture-card:hover { background: rgba(18,16,10,0.9); transform: translateY(-2px); }
+.venture-card:nth-child(1){--vc3:var(--gold)} .venture-card:nth-child(2){--vc3:var(--burgundy)} .venture-card:nth-child(3){--vc3:var(--emerald)} .venture-card:nth-child(4){--vc3:var(--sapphire)} .venture-card:nth-child(5){--vc3:var(--violet)} .venture-card:nth-child(6){--vc3:var(--burgundy)} .venture-card:nth-child(7){--vc3:var(--emerald)} .venture-card:nth-child(8){--vc3:var(--sapphire)}
+.venture-num { font-size: 10px; color: var(--vc3); letter-spacing: 3px; margin-bottom: 1.5rem; }
 .venture-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; margin-bottom: 1rem; }
 .venture-desc { font-size: 12px; color: #666; line-height: 1.9; font-weight: 300; }
-.venture-tag { display: inline-block; margin-top: 1.5rem; font-size: 9px; color: var(--vc); letter-spacing: 3px; border: 1px solid var(--vc); padding: 4px 12px; opacity: 0.8; }
+.venture-tag { display: inline-block; margin-top: 1.5rem; font-size: 9px; color: var(--vc3); letter-spacing: 3px; border: 1px solid var(--vc3); padding: 4px 12px; opacity: 0.75; }
 
 /* PROCESS */
-.process-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.process-step { text-align: center; padding: 1.5rem; }
-.process-num { width: 50px; height: 50px; border-radius: 50%; border: 1px solid var(--pc); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--pc); margin: 0 auto 1rem; }
-.process-step:nth-child(1) { --pc: var(--gold); }
-.process-step:nth-child(2) { --pc: var(--burgundy); }
-.process-step:nth-child(3) { --pc: var(--emerald); }
-.process-step:nth-child(4) { --pc: var(--sapphire); }
+.process-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); background: rgba(8,8,8,0.3); }
+.process-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.process-step { text-align: center; padding: 2rem 1rem; border: 1px solid rgba(255,255,255,0.04); transition: all 0.3s; }
+.process-step:hover { border-color: var(--pc); background: rgba(255,255,255,0.02); transform: translateY(-4px); }
+.process-num { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--pc); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--pc); margin: 0 auto 1.2rem; transition: all 0.3s; }
+.process-step:hover .process-num { background: var(--pc); color: var(--black); }
+.process-step:nth-child(1){--pc:var(--gold)} .process-step:nth-child(2){--pc:var(--burgundy)} .process-step:nth-child(3){--pc:var(--emerald)} .process-step:nth-child(4){--pc:var(--sapphire)}
 .process-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; margin-bottom: 0.5rem; }
 .process-text { font-size: 11px; color: #666; line-height: 1.7; }
 
-/* SERVICES TIERS */
-.tiers-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.tiers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.tier-card { border: 1px solid rgba(201,168,76,0.15); padding: 2.5rem 2rem; text-align: center; transition: all 0.3s; position: relative; background: rgba(8,8,8,0.4); }
-.tier-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(201,168,76,0.06), transparent); }
-.tier-card:nth-child(1):hover { border-color: var(--burgundy); transform: translateY(-4px); }
-.tier-card:nth-child(2):hover { border-color: var(--gold); transform: translateY(-4px); }
-.tier-card:nth-child(3):hover { border-color: var(--sapphire); transform: translateY(-4px); }
-.tier-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); font-size: 9px; letter-spacing: 2px; padding: 4px 14px; font-weight: 600; }
-.tier-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; margin: 1rem 0 0.5rem; }
-.tier-desc { font-size: 11px; color: #666; margin-bottom: 1.5rem; min-height: 36px; }
+/* TIERS */
+.tiers-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.tiers-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.tier-card { border: 1px solid rgba(201,168,76,0.12); padding: 2.5rem 2rem; text-align: center; transition: all 0.4s; position: relative; background: rgba(8,8,8,0.3); }
+.tier-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(201,168,76,0.05), transparent); }
+.tier-card:hover { transform: translateY(-6px); }
+.tier-card:nth-child(1):hover{border-color:var(--burgundy)} .tier-card:nth-child(2):hover{border-color:var(--gold)} .tier-card:nth-child(3):hover{border-color:var(--sapphire)}
+.tier-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--black); font-size: 9px; letter-spacing: 2px; padding: 4px 16px; font-weight: 600; white-space: nowrap; }
+.tier-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin: 1rem 0 0.5rem; }
+.tier-desc { font-size: 11px; color: #666; margin-bottom: 1.5rem; }
 .tier-features { list-style: none; margin-bottom: 2rem; text-align: left; }
-.tier-features li { font-size: 12px; color: #999; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.tier-features li { font-size: 12px; color: #888; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .tier-features li::before { content: '— '; color: var(--gold); }
 
-/* FAQ */
-.faq-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.faq-item { border-bottom: 1px solid rgba(201,168,76,0.1); padding: 1.5rem 0; cursor: pointer; }
-.faq-q { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
-.faq-icon { color: var(--gold); font-size: 18px; transition: transform 0.3s; }
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-a { font-size: 12px; color: #888; line-height: 1.9; font-weight: 300; max-height: 0; overflow: hidden; transition: all 0.3s; }
-.faq-item.open .faq-a { max-height: 200px; margin-top: 1rem; }
+/* TESTIMONIALS */
+.testimonials { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.testi-card { border: 1px solid rgba(255,255,255,0.05); padding: 2rem; border-left: 3px solid var(--tc3); transition: all 0.3s; }
+.testi-card:hover { background: rgba(255,255,255,0.02); transform: translateY(-3px); }
+.testi-card:nth-child(1){--tc3:var(--gold)} .testi-card:nth-child(2){--tc3:var(--burgundy)} .testi-card:nth-child(3){--tc3:var(--emerald)}
+.testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 1rem; letter-spacing: 3px; }
+.testi-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #ccc; line-height: 1.9; margin-bottom: 1.5rem; }
+.testi-author { font-size: 11px; letter-spacing: 2px; color: var(--tc3); }
+.testi-role { font-size: 10px; color: #444; margin-top: 2px; }
 
 /* CONTACT */
-.contact-hero { padding: 5rem 3rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; position: relative; z-index: 1; }
-.contact-info { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.1); background: rgba(8,8,8,0.5); backdrop-filter: blur(2px); }
-.contact-item { margin-bottom: 2.5rem; }
-.contact-label { font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 0.5rem; }
+.contact-hero { padding: 5rem 3rem 3.5rem; border-bottom: 1px solid rgba(201,168,76,0.08); position: relative; overflow: hidden; }
+.contact-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top, rgba(92,142,194,0.1) 0%, transparent 55%); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.contact-info { padding: 4rem 3rem; border-right: 1px solid rgba(201,168,76,0.08); }
+.exclusive-tag { display: inline-block; font-size: 9px; letter-spacing: 3px; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 6px 16px; margin-bottom: 2.5rem; }
+.contact-item { margin-bottom: 2.2rem; }
+.contact-label { font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 6px; }
 .contact-val { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #ccc; }
 .contact-val a { color: #ccc; text-decoration: none; transition: color 0.3s; }
 .contact-val a:hover { color: var(--gold); }
-.contact-form { padding: 4rem 3rem; background: var(--dark); }
-.form-group { margin-bottom: 1.5rem; }
-.form-group label { display: block; font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 8px; }
-.form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.2); color: var(--white); padding: 12px 16px; font-family: 'Montserrat', sans-serif; font-size: 13px; outline: none; transition: border 0.3s; resize: none; }
+.contact-form-wrap { padding: 4rem 3rem; background: rgba(12,10,6,0.7); }
+.form-group { margin-bottom: 1.4rem; }
+.form-group label { display: block; font-size: 9px; color: var(--gold); letter-spacing: 3px; margin-bottom: 8px; text-transform: uppercase; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.15); color: #fff; padding: 12px 16px; font-family: 'Montserrat', sans-serif; font-size: 13px; outline: none; transition: border 0.3s; resize: none; }
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--gold); }
 .form-group textarea { height: 100px; }
-.exclusive-tag { display: inline-block; font-size: 9px; letter-spacing: 3px; color: var(--gold); border: 1px solid var(--gold); padding: 6px 16px; margin-bottom: 2rem; }
+.form-group select option { background: #111; }
+.form-success { display: none; padding: 1rem; border: 1px solid var(--emerald); color: var(--emerald); font-size: 12px; letter-spacing: 1px; margin-top: 1rem; text-align: center; }
+.form-error { display: none; padding: 1rem; border: 1px solid var(--burgundy); color: var(--burgundy); font-size: 12px; letter-spacing: 1px; margin-top: 1rem; text-align: center; }
 
-/* MAP / LOCATIONS */
-.locations-section { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.location-card { border: 1px solid rgba(201,168,76,0.15); padding: 2rem; text-align: center; border-top: 3px solid var(--lc); }
-.location-card:nth-child(1) { --lc: var(--gold); }
-.location-card:nth-child(2) { --lc: var(--burgundy); }
-.location-flag { font-size: 36px; margin-bottom: 1rem; }
-.location-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; margin-bottom: 0.5rem; }
-.location-role { font-size: 9px; letter-spacing: 3px; color: var(--lc); text-transform: uppercase; }
-
-/* TESTIMONIALS */
-.testimonials { padding: 4rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); position: relative; z-index: 1; }
-.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.testi-card { border: 1px solid rgba(201,168,76,0.1); padding: 2rem; background: rgba(8,8,8,0.4); border-left: 3px solid var(--tc); }
-.testi-card:nth-child(1) { --tc: var(--gold); }
-.testi-card:nth-child(2) { --tc: var(--burgundy); }
-.testi-card:nth-child(3) { --tc: var(--emerald); }
-.testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 1rem; letter-spacing: 2px; }
-.testi-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #ccc; line-height: 1.8; margin-bottom: 1.5rem; }
-.testi-author { font-size: 11px; letter-spacing: 2px; color: var(--tc); }
-.testi-role { font-size: 10px; color: #555; margin-top: 2px; }
-
-footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: relative; z-index: 1; background: rgba(8,8,8,0.6); backdrop-filter: blur(2px); }
+/* FOOTER */
+footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.12); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: rgba(8,8,8,0.5); }
+.footer-left { }
 .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 700; color: var(--gold); }
-.footer-tag { font-size: 9px; color: #444; letter-spacing: 3px; margin-top: 2px; }
-.footer-email { font-size: 10px; color: #666; margin-top: 6px; letter-spacing: 1px; }
-.footer-copy { font-size: 10px; color: #444; letter-spacing: 1px; }
+.footer-tag { font-size: 9px; color: #333; letter-spacing: 3px; margin-top: 2px; }
+.footer-email { font-size: 10px; color: #444; margin-top: 5px; }
+.footer-right { font-size: 10px; color: #333; letter-spacing: 1px; text-align: right; }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-
-@media (max-width: 640px) {
+/* MOBILE */
+@media (max-width: 700px) {
   nav { padding: 1rem 1.2rem; }
   .nav-logo { font-size: 11px; }
   .nav-links { gap: 0.7rem; }
   .nav-cta { display: none; }
+  .hero { padding: 5rem 1.5rem 3rem; }
+  .hero-title { font-size: clamp(38px,13vw,68px); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; }
-  .about-text { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
-  .contact-info { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .about-text { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+  .contact-info { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
   .stats-bar { grid-template-columns: repeat(2,1fr); }
-  .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .stat { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
   .newsletter-form { flex-direction: column; }
-  .newsletter-form input { border-right: 1px solid rgba(201,168,76,0.2); border-bottom: none; }
-  .hero { padding: 6rem 1.5rem 3rem; }
-  .hero-title { font-size: clamp(40px, 13vw, 70px); }
+  .newsletter-form input { border-right: 1px solid rgba(201,168,76,0.2); }
+  .leader-card { grid-template-columns: 1fr; text-align: center; }
+  .leader-avatar { margin: 0 auto; }
+  .leader-skills { justify-content: center; }
+  .about-hero, .ventures-hero, .contact-hero, .timeline-section, .highlights, .markets-section, .social-strip, .newsletter, .trusted-bar, .tiers-section, .testimonials, .process-section, .awards-section, .locations-section, .faq-section, .leadership, .quote-section { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 </style>
 
+<!-- INTRO -->
 <div class="intro">
-  <div class="intro-content">
+  <div class="intro-inner">
     <div class="intro-usman">USMAN</div>
     <div class="intro-khan">KHAN</div>
     <div class="intro-line"></div>
     <div class="intro-ent">ENTERPRISES</div>
+    <div class="intro-flag">🇵🇰 &nbsp; 🇪🇸</div>
   </div>
 </div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">Usman Khan Enterprises</div>
   <div class="nav-links">
@@ -366,118 +385,97 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
   </div>
 </nav>
 
-<!-- HOME -->
+<!-- ═══════════ HOME ═══════════ -->
 <div class="page active" id="page-home">
+
   <section class="hero">
-    <div class="hero-watermark">
-      <span class="wm-line1">USMAN KHAN</span>
-      <span class="wm-line2">ENTERPRISES</span>
+    <div class="hero-wm">
+      <span class="wm1">USMAN KHAN</span>
+      <span class="wm2">ENTERPRISES</span>
     </div>
-    <p class="hero-tag">Est. 2023 · Pakistan · Spain</p>
+    <div class="hero-badge">Est. 2023 &nbsp;·&nbsp; Pakistan &nbsp;·&nbsp; Spain &nbsp;·&nbsp; International</div>
     <h1 class="hero-title">
       USMAN <span class="gold">KHAN</span>
       <span class="ent">ENTERPRISES</span>
     </h1>
-    <div class="hero-line"></div>
-    <p class="hero-sub">A legacy built on vision, integrity, and an unrelenting commitment to excellence. More than a company — a statement.</p>
+    <div class="hero-divider"><span></span><i>✦</i><span></span></div>
+    <p class="hero-sub">A legacy built on vision, integrity, and an unrelenting commitment to excellence. More than a company — a statement that echoes across continents.</p>
     <div class="hero-founder">
-      <span>Founded By</span>
+      <small>Founded By</small>
       Usman Khan Yousafzai
     </div>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="showPage('ventures')">Our Ventures</button>
+      <button class="btn-gold" onclick="showPage('ventures')">Explore Ventures</button>
       <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+      <button class="btn-outline" onclick="showPage('contact')">Get In Touch</button>
+    </div>
+    <div class="hero-flags">
+      <div class="hero-flag-pill">🇵🇰 Pakistan</div>
+      <div class="hero-flag-pill">🇪🇸 Spain</div>
+      <div class="hero-flag-pill">🌍 International</div>
     </div>
     <div class="scroll-cue">SCROLL ↓</div>
   </section>
 
   <div class="stats-bar">
-    <div class="stat"><div class="stat-num">2023</div><div class="stat-label">Year Founded</div></div>
-    <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Countries</div></div>
-    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Active Ventures</div></div>
-    <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Ambition</div></div>
+    <div class="stat reveal"><div class="stat-num">2023</div><div class="stat-label">Year Founded</div></div>
+    <div class="stat reveal"><div class="stat-num">2+</div><div class="stat-label">Countries</div></div>
+    <div class="stat reveal"><div class="stat-num">8</div><div class="stat-label">Active Ventures</div></div>
+    <div class="stat reveal"><div class="stat-num">∞</div><div class="stat-label">Ambition</div></div>
   </div>
 
-  <div class="pillars">
+  <div class="highlights reveal">
+    <p class="page-label">At A Glance</p>
+    <h2 class="page-title" style="font-size:clamp(24px,4vw,40px);">Why <span class="gold">Choose Us</span></h2>
+    <div class="highlights-grid">
+      <div class="highlight-card"><div class="highlight-icon">🏆</div><div class="highlight-title">Proven Drive</div><div class="highlight-text">Track record built on ambition and consistency since 2023.</div></div>
+      <div class="highlight-card"><div class="highlight-icon">🌐</div><div class="highlight-title">Cross-Border</div><div class="highlight-text">Operating seamlessly between Pakistan and Spain.</div></div>
+      <div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-title">Direct Access</div><div class="highlight-text">Speak directly with the founder — no middlemen.</div></div>
+      <div class="highlight-card"><div class="highlight-icon">📈</div><div class="highlight-title">Diverse Portfolio</div><div class="highlight-text">8 active ventures across multiple high-growth sectors.</div></div>
+      <div class="highlight-card"><div class="highlight-icon">🔒</div><div class="highlight-title">Fully Registered</div><div class="highlight-text">A privately registered (Pvt.) Ltd. company since 2023.</div></div>
+    </div>
+  </div>
+
+  <div class="pillars reveal">
     <div class="pillar"><div class="pillar-num">01</div><div class="pillar-title">Vision</div><p class="pillar-text">Building enterprises with long-term clarity and unwavering purpose behind every decision.</p></div>
     <div class="pillar"><div class="pillar-num">02</div><div class="pillar-title">Legacy</div><p class="pillar-text">A name that stands for excellence across every venture, every partnership, every endeavour.</p></div>
     <div class="pillar"><div class="pillar-num">03</div><div class="pillar-title">Integrity</div><p class="pillar-text">Doing business the right way, every single time — no shortcuts, no compromise.</p></div>
     <div class="pillar"><div class="pillar-num">04</div><div class="pillar-title">Growth</div><p class="pillar-text">Scaling ideas into institutions that outlast trends and stand the test of generations.</p></div>
   </div>
 
-  <div class="quote-section">
+  <div class="quote-section reveal">
     <div class="quote-mark">"</div>
     <p class="quote-text">Success isn't an accident — it's a decision you make every single day, then back it up with relentless work. Usman Khan Enterprises was built on that belief, and always will be.</p>
     <div class="quote-author">Usman Khan Yousafzai</div>
     <div class="quote-role">Founder · CEO · Director</div>
   </div>
 
-  <div class="why-section">
-    <p class="page-label" style="text-align:center;">Why Choose Us</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">What Sets Us <span class="gold">Apart</span></h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🎯</div>
-        <div class="why-title">Strategic Focus</div>
-        <p class="why-text">Every move is calculated. We don't chase trends — we build with purpose and precision.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🌐</div>
-        <div class="why-title">Cross-Border Reach</div>
-        <p class="why-text">Operating across Pakistan and Spain gives us a unique vantage point most businesses lack.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💎</div>
-        <div class="why-title">Premium Standards</div>
-        <p class="why-text">From communication to execution — everything is held to an elevated standard.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="highlights-section">
-    <p class="page-label" style="text-align:center;">By The Numbers</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">Highlights</h2>
-    <div class="highlights-grid">
-      <div class="highlight-card"><div class="highlight-icon">🏆</div><div class="highlight-title">2023</div><div class="highlight-text">FOUNDED & INCORPORATED</div></div>
-      <div class="highlight-card"><div class="highlight-icon">🌍</div><div class="highlight-title">2</div><div class="highlight-text">COUNTRIES OF OPERATION</div></div>
-      <div class="highlight-card"><div class="highlight-icon">📈</div><div class="highlight-title">8</div><div class="highlight-text">ACTIVE VENTURES</div></div>
-      <div class="highlight-card"><div class="highlight-icon">🤝</div><div class="highlight-title">100%</div><div class="highlight-text">COMMITMENT TO PARTNERS</div></div>
-    </div>
-  </div>
-
-  <div class="timeline-section">
+  <div class="timeline-section reveal">
     <p class="page-label" style="text-align:center;">Our Journey</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">The <span class="gold">Timeline</span></h2>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);text-align:center;">The <span class="gold">Timeline</span></h2>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2023</div>
-        <div class="timeline-text">Usman Khan Enterprises (Pvt.) Ltd. is officially incorporated, laying the foundation for a multi-sector legacy brand.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2024</div>
-        <div class="timeline-text">Expansion of international presence, establishing operations across Pakistan and Spain.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2025</div>
-        <div class="timeline-text">Growth across commerce, real estate, and consulting ventures — building a diversified portfolio.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2026</div>
-        <div class="timeline-text">Launch of our digital presence — bringing the Usman Khan Enterprises legacy online for the world to see.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">Next</div>
-        <div class="timeline-text">Continued expansion into hospitality, logistics, and new strategic markets — the journey is just beginning.</div>
-      </div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2023</div><div class="timeline-title">FOUNDED & INCORPORATED</div><div class="timeline-text">Usman Khan Enterprises (Pvt.) Ltd. is officially incorporated, laying the foundation for a multi-sector legacy brand.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2024</div><div class="timeline-title">INTERNATIONAL EXPANSION</div><div class="timeline-text">Establishment of dual operations across Pakistan and Spain, opening cross-border trade routes.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2025</div><div class="timeline-title">PORTFOLIO GROWTH</div><div class="timeline-text">Growth across commerce, real estate, and consulting ventures — building a diversified portfolio with 8 active sectors.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026</div><div class="timeline-title">DIGITAL PRESENCE LAUNCH</div><div class="timeline-text">Launch of our digital presence — bringing the Usman Khan Enterprises legacy online for the world to see.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">Next</div><div class="timeline-title">THE FUTURE</div><div class="timeline-text">Expansion into hospitality, logistics and new international markets — the legacy continues.</div></div>
     </div>
   </div>
 
-  <div class="trusted-bar">
+  <div class="markets-section reveal">
+    <p class="page-label">Markets We Watch</p>
+    <h2 class="page-title" style="font-size:clamp(24px,4vw,40px);">Global <span class="gold">Outlook</span></h2>
+    <div class="markets-grid">
+      <div class="market-cell"><div class="market-icon">🇵🇰</div><div class="market-name">Pakistan</div></div>
+      <div class="market-cell"><div class="market-icon">🇪🇸</div><div class="market-name">Spain</div></div>
+      <div class="market-cell"><div class="market-icon">🇦🇪</div><div class="market-name">UAE</div></div>
+      <div class="market-cell"><div class="market-icon">🇬🇧</div><div class="market-name">UK</div></div>
+      <div class="market-cell"><div class="market-icon">🇹🇷</div><div class="market-name">Turkey</div></div>
+      <div class="market-cell"><div class="market-icon">🌍</div><div class="market-name">Beyond</div></div>
+    </div>
+  </div>
+
+  <div class="trusted-bar reveal">
     <div class="trusted-label">Operating With Partners Across</div>
     <div class="trusted-logos">
       <div class="trusted-item">Pakistan</div>
@@ -488,72 +486,74 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     </div>
   </div>
 
-  <div class="social-strip">
+  <div class="social-strip reveal">
     <p class="page-label" style="text-align:center;">Stay Connected</p>
-    <h2 class="page-title" style="font-size: clamp(24px,4vw,36px); text-align:center;">Follow The <span class="gold">Journey</span></h2>
+    <h2 class="page-title" style="font-size:clamp(24px,4vw,38px);text-align:center;">Follow The <span class="gold">Journey</span></h2>
     <div class="social-icons">
-      <a class="social-pill" href="https://instagram.com/kh1n.enterprises" target="_blank">Instagram</a>
-      <a class="social-pill" href="mailto:kh11n.enterprises@gmail.com">Email</a>
-      <a class="social-pill" href="#" onclick="showPage('contact'); return false;">Contact</a>
+      <a class="social-pill" href="https://instagram.com/kh1n.enterprises" target="_blank">📸 Instagram</a>
+      <a class="social-pill" href="mailto:kh11n.enterprises@gmail.com">✉️ Email Us</a>
+      <a class="social-pill" href="#" onclick="showPage('contact');return false;">💼 Book Consultation</a>
     </div>
   </div>
 
-  <div class="newsletter">
-    <div class="newsletter-label">Stay Ahead</div>
+  <div class="newsletter reveal">
+    <div class="newsletter-label">Exclusive Access</div>
     <h2 class="newsletter-title">Join The Inner Circle</h2>
     <p class="newsletter-sub">Exclusive updates on new ventures, opportunities, and insights — straight from the founder.</p>
     <div class="newsletter-form">
       <input type="email" placeholder="Enter your email address">
-      <button>Subscribe</button>
+      <button type="button">Subscribe</button>
     </div>
   </div>
 
   <footer>
-    <div>
+    <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
   </footer>
 </div>
 
-<!-- ABOUT -->
+<!-- ═══════════ ABOUT ═══════════ -->
 <div class="page" id="page-about">
   <div class="about-hero">
     <p class="page-label">Who We Are</p>
     <h1 class="page-title">The <span class="gold">Legacy</span><br>Behind the Name</h1>
   </div>
   <div class="about-grid">
-    <div class="about-text">
+    <div class="about-text reveal-left">
       <p>Usman Khan Enterprises is not simply a business — it is a declaration. Founded in 2023 by Usman Khan Yousafzai, the company was built on a foundation of ambition, discipline, and an unrelenting drive to create something that lasts.</p>
       <p>Operating across Pakistan and Spain, we bring an international perspective to everything we do — combining the rich entrepreneurial spirit of the East with the strategic precision of the West.</p>
       <p>Every venture, every decision, every partnership carries the full weight of a name that stands for excellence. This is not just business. This is legacy.</p>
     </div>
-    <div class="about-visual">
+    <div class="about-visual reveal-right">
       <div class="info-row"><div class="info-label">Founded By</div><div class="info-val">Usman Khan Yousafzai</div></div>
-      <div class="info-divider"></div>
+      <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Title</div><div class="info-val">Founder · CEO · Director</div></div>
-      <div class="info-divider"></div>
+      <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Established</div><div class="info-val">2023 · Incorporated</div></div>
-      <div class="info-divider"></div>
+      <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Presence</div><div class="info-val">Pakistan 🇵🇰 · Spain 🇪🇸</div></div>
-      <div class="info-divider"></div>
+      <div class="info-div"></div>
+      <div class="info-row"><div class="info-label">Email</div><div class="info-val" style="font-size:15px;">kh11n.enterprises@gmail.com</div></div>
+      <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Status</div><div class="info-val">Privately Registered (Pvt.) Ltd.</div></div>
     </div>
   </div>
 
-  <div class="leadership">
+  <div class="leadership reveal">
     <p class="page-label" style="text-align:center;">Leadership</p>
     <div class="leader-card">
       <div class="leader-avatar">
         <div class="leader-avatar-name">USMAN<br><span>KHAN</span></div>
-        <div class="leader-avatar-tag">ENTERPRISES</div>
+        <div class="leader-avatar-sub">ENTERPRISES</div>
       </div>
       <div>
         <div class="leader-name">Usman Khan Yousafzai</div>
         <div class="leader-title">FOUNDER · CEO · DIRECTOR</div>
-        <p class="leader-bio">The driving force behind Usman Khan Enterprises. With a vision for building lasting institutions across Pakistan and Spain, Usman leads every venture with discipline, ambition, and an unwavering commitment to integrity.</p>
+        <p class="leader-bio">The driving force behind Usman Khan Enterprises. With a vision for building lasting institutions across Pakistan and Spain, Usman leads every venture with discipline, ambition, and an unwavering commitment to integrity. A name that stands for excellence — in business, and in life.</p>
         <div class="leader-skills">
           <span class="skill-tag">Strategy</span>
           <span class="skill-tag">Leadership</span>
@@ -564,81 +564,73 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     </div>
   </div>
 
-  <div class="values">
+  <div class="values reveal">
     <div class="value-item"><div class="value-icon">⚡</div><div class="value-title">Vision</div><p class="value-text">Seeing opportunities where others see obstacles. Building for tomorrow, today.</p></div>
     <div class="value-item"><div class="value-icon">🏛</div><div class="value-title">Legacy</div><p class="value-text">Everything we build is meant to outlast us — institutions, not just businesses.</p></div>
     <div class="value-item"><div class="value-icon">🤝</div><div class="value-title">Integrity</div><p class="value-text">Our word is our bond. We do business with honesty, transparency and respect.</p></div>
     <div class="value-item"><div class="value-icon">🌍</div><div class="value-title">Global</div><p class="value-text">International availability with a local understanding of every market we enter.</p></div>
   </div>
 
-  <div class="locations-section">
-    <p class="page-label" style="text-align:center;">Where We Operate</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); text-align:center;">Our <span class="gold">Presence</span></h2>
-    <div class="locations-grid">
-      <div class="location-card">
-        <div class="location-flag">🇵🇰</div>
-        <div class="location-name">Pakistan</div>
-        <div class="location-role">Headquarters</div>
-      </div>
-      <div class="location-card">
-        <div class="location-flag">🇪🇸</div>
-        <div class="location-name">Spain</div>
-        <div class="location-role">International Office</div>
-      </div>
+  <div class="awards-section reveal">
+    <p class="page-label">Our Commitments</p>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);">What We <span class="gold">Stand For</span></h2>
+    <div class="awards-grid">
+      <div class="award-item"><div class="award-icon">🏆</div><div class="award-title">Excellence</div><div class="award-desc">Delivering nothing short of the highest standard in every engagement.</div></div>
+      <div class="award-item"><div class="award-icon">🌐</div><div class="award-title">International</div><div class="award-desc">Cross-border vision with roots in Pakistan and Spain.</div></div>
+      <div class="award-item"><div class="award-icon">🔐</div><div class="award-title">Trust</div><div class="award-desc">Every relationship built on confidentiality and mutual respect.</div></div>
+      <div class="award-item"><div class="award-icon">🚀</div><div class="award-title">Innovation</div><div class="award-desc">Forward thinking across every sector we enter.</div></div>
     </div>
   </div>
 
-  <div class="faq-section">
+  <div class="locations-section reveal">
+    <p class="page-label" style="text-align:center;">Where We Operate</p>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);text-align:center;">Our <span class="gold">Presence</span></h2>
+    <div class="locations-grid">
+      <div class="location-card"><div class="location-flag">🇵🇰</div><div class="location-name">Pakistan</div><div class="location-role">Headquarters</div></div>
+      <div class="location-card"><div class="location-flag">🇪🇸</div><div class="location-name">Spain</div><div class="location-role">International Office</div></div>
+    </div>
+  </div>
+
+  <div class="faq-section reveal">
     <p class="page-label">Common Questions</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px); margin-bottom: 2rem;">Frequently Asked</h2>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">What does Usman Khan Enterprises do? <span class="faq-icon">+</span></div>
-      <div class="faq-a">We operate across multiple sectors including commerce, real estate, technology, consulting, international trade and strategic investments — all under one unified brand committed to excellence.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Where are you based? <span class="faq-icon">+</span></div>
-      <div class="faq-a">We operate with a dual presence — headquartered in Pakistan with an international office in Spain, giving us a unique cross-continental perspective and reach.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">How can I partner or work with Usman Khan Enterprises? <span class="faq-icon">+</span></div>
-      <div class="faq-a">We welcome serious inquiries from individuals and businesses looking to collaborate. Reach out via our contact page and our team will get back to you promptly.</div>
-    </div>
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">Is Usman Khan Enterprises a registered company? <span class="faq-icon">+</span></div>
-      <div class="faq-a">Yes. Usman Khan Enterprises (Pvt.) Ltd. is a privately registered company, incorporated in 2023.</div>
-    </div>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:2rem;">Frequently <span class="gold">Asked</span></h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What does Usman Khan Enterprises do? <span class="faq-icon">+</span></div><div class="faq-a">We operate across multiple sectors including commerce, real estate, technology, consulting, international trade and strategic investments — all under one unified brand committed to excellence.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Where are you based? <span class="faq-icon">+</span></div><div class="faq-a">We operate with a dual presence — headquartered in Pakistan with an international office in Spain, giving us a unique cross-continental perspective and reach.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How can I partner with Usman Khan Enterprises? <span class="faq-icon">+</span></div><div class="faq-a">We welcome serious inquiries from individuals and businesses. Reach out via our contact page and the founder will get back to you directly.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is Usman Khan Enterprises officially registered? <span class="faq-icon">+</span></div><div class="faq-a">Yes. Usman Khan Enterprises (Pvt.) Ltd. is a privately registered company, incorporated in 2023.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I contact the founder directly? <span class="faq-icon">+</span></div><div class="faq-a">You can reach Usman Khan Yousafzai directly via email at kh11n.enterprises@gmail.com or through the contact form on our Contact page.</div></div>
   </div>
 
   <footer>
-    <div>
+    <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
   </footer>
 </div>
 
-<!-- VENTURES -->
+<!-- ═══════════ VENTURES ═══════════ -->
 <div class="page" id="page-ventures">
   <div class="ventures-hero">
     <p class="page-label">What We Do</p>
     <h1 class="page-title">Our <span class="gold">Ventures</span></h1>
   </div>
   <div class="ventures-grid">
-    <div class="venture-card"><div class="venture-num">01</div><div class="venture-name">Commerce</div><p class="venture-desc">Premium trade and business operations built for scale. From sourcing to distribution, we do it right.</p><div class="venture-tag">ACTIVE</div></div>
-    <div class="venture-card"><div class="venture-num">02</div><div class="venture-name">Real Estate</div><p class="venture-desc">Strategic property investments across key markets in Pakistan and Spain. Building wealth through bricks.</p><div class="venture-tag">ACTIVE</div></div>
-    <div class="venture-card"><div class="venture-num">03</div><div class="venture-name">Technology</div><p class="venture-desc">Forward-thinking ventures at the edge of innovation. Solving tomorrow's problems with today's tools.</p><div class="venture-tag">GROWING</div></div>
-    <div class="venture-card"><div class="venture-num">04</div><div class="venture-name">Consulting</div><p class="venture-desc">Expert strategic guidance for businesses ready to scale, pivot, or dominate their market.</p><div class="venture-tag">AVAILABLE</div></div>
-    <div class="venture-card"><div class="venture-num">05</div><div class="venture-name">International Trade</div><p class="venture-desc">Cross-border business operations leveraging our dual presence in Pakistan and Spain.</p><div class="venture-tag">ACTIVE</div></div>
-    <div class="venture-card"><div class="venture-num">06</div><div class="venture-name">Investments</div><p class="venture-desc">Calculated, strategic investments in high-potential ventures across multiple sectors.</p><div class="venture-tag">SELECTIVE</div></div>
-    <div class="venture-card"><div class="venture-num">07</div><div class="venture-name">Hospitality</div><p class="venture-desc">Curated hospitality ventures bringing premium experiences to growing markets.</p><div class="venture-tag">UPCOMING</div></div>
-    <div class="venture-card"><div class="venture-num">08</div><div class="venture-name">Logistics</div><p class="venture-desc">Reliable supply chain and logistics solutions connecting Pakistan and Spain seamlessly.</p><div class="venture-tag">GROWING</div></div>
+    <div class="venture-card reveal"><div class="venture-num">01</div><div class="venture-name">Commerce</div><p class="venture-desc">Premium trade and business operations built for scale. From sourcing to distribution, we do it right.</p><div class="venture-tag">ACTIVE</div></div>
+    <div class="venture-card reveal"><div class="venture-num">02</div><div class="venture-name">Real Estate</div><p class="venture-desc">Strategic property investments across key markets in Pakistan and Spain. Building wealth through bricks.</p><div class="venture-tag">ACTIVE</div></div>
+    <div class="venture-card reveal"><div class="venture-num">03</div><div class="venture-name">Technology</div><p class="venture-desc">Forward-thinking ventures at the edge of innovation. Solving tomorrow's problems with today's tools.</p><div class="venture-tag">GROWING</div></div>
+    <div class="venture-card reveal"><div class="venture-num">04</div><div class="venture-name">Consulting</div><p class="venture-desc">Expert strategic guidance for businesses ready to scale, pivot, or dominate their market.</p><div class="venture-tag">AVAILABLE</div></div>
+    <div class="venture-card reveal"><div class="venture-num">05</div><div class="venture-name">International Trade</div><p class="venture-desc">Cross-border business operations leveraging our dual presence in Pakistan and Spain.</p><div class="venture-tag">ACTIVE</div></div>
+    <div class="venture-card reveal"><div class="venture-num">06</div><div class="venture-name">Investments</div><p class="venture-desc">Calculated, strategic investments in high-potential ventures across multiple sectors.</p><div class="venture-tag">SELECTIVE</div></div>
+    <div class="venture-card reveal"><div class="venture-num">07</div><div class="venture-name">Hospitality</div><p class="venture-desc">Curated hospitality ventures bringing premium experiences to growing markets across two continents.</p><div class="venture-tag">UPCOMING</div></div>
+    <div class="venture-card reveal"><div class="venture-num">08</div><div class="venture-name">Logistics</div><p class="venture-desc">Reliable supply chain and logistics solutions connecting Pakistan and Spain seamlessly.</p><div class="venture-tag">GROWING</div></div>
   </div>
 
-  <div class="process-section">
+  <div class="process-section reveal">
     <p class="page-label">How We Work</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px);">Our <span class="gold">Process</span></h2>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);">Our <span class="gold">Process</span></h2>
     <div class="process-grid">
       <div class="process-step"><div class="process-num">01</div><div class="process-title">Discover</div><p class="process-text">Understanding your goals, challenges and vision through deep consultation.</p></div>
       <div class="process-step"><div class="process-num">02</div><div class="process-title">Strategize</div><p class="process-text">Crafting a tailored roadmap aligned with market realities and ambitions.</p></div>
@@ -647,118 +639,82 @@ footer { padding: 2.5rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); disp
     </div>
   </div>
 
-  <div class="tiers-section">
+  <div class="tiers-section reveal">
     <p class="page-label">Services</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px);">Engagement <span class="gold">Tiers</span></h2>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);">Engagement <span class="gold">Tiers</span></h2>
     <div class="tiers-grid">
-      <div class="tier-card">
-        <div class="tier-name">Advisory</div>
-        <p class="tier-desc">For individuals seeking direction</p>
-        <ul class="tier-features">
-          <li>1-on-1 strategy session</li>
-          <li>Market insight briefing</li>
-          <li>Email follow-up support</li>
-        </ul>
-        <button class="btn-outline" style="width:100%" onclick="showPage('contact')">Request Access</button>
-      </div>
-      <div class="tier-card featured">
-        <div class="tier-badge">MOST POPULAR</div>
-        <div class="tier-name">Partnership</div>
-        <p class="tier-desc">For businesses ready to scale</p>
-        <ul class="tier-features">
-          <li>Dedicated strategic guidance</li>
-          <li>Cross-border market access</li>
-          <li>Quarterly performance review</li>
-          <li>Priority communication line</li>
-        </ul>
-        <button class="btn-gold" style="width:100%" onclick="showPage('contact')">Request Access</button>
-      </div>
-      <div class="tier-card">
-        <div class="tier-name">Enterprise</div>
-        <p class="tier-desc">For large-scale collaborations</p>
-        <ul class="tier-features">
-          <li>Full operational partnership</li>
-          <li>Investment discussions</li>
-          <li>Direct founder access</li>
-          <li>Custom agreement terms</li>
-        </ul>
-        <button class="btn-outline" style="width:100%" onclick="showPage('contact')">Request Access</button>
-      </div>
+      <div class="tier-card"><div class="tier-name">Advisory</div><p class="tier-desc">For individuals seeking direction</p><ul class="tier-features"><li>1-on-1 strategy session</li><li>Market insight briefing</li><li>Email follow-up support</li></ul><button class="btn-outline" style="width:100%" onclick="showPage('contact')">Request Access</button></div>
+      <div class="tier-card featured"><div class="tier-badge">MOST POPULAR</div><div class="tier-name">Partnership</div><p class="tier-desc">For businesses ready to scale</p><ul class="tier-features"><li>Dedicated strategic guidance</li><li>Cross-border market access</li><li>Quarterly performance review</li><li>Priority communication line</li></ul><button class="btn-gold" style="width:100%" onclick="showPage('contact')">Request Access</button></div>
+      <div class="tier-card"><div class="tier-name">Enterprise</div><p class="tier-desc">For large-scale collaborations</p><ul class="tier-features"><li>Full operational partnership</li><li>Investment discussions</li><li>Direct founder access</li><li>Custom agreement terms</li></ul><button class="btn-outline" style="width:100%" onclick="showPage('contact')">Request Access</button></div>
     </div>
   </div>
 
-  <div class="testimonials">
+  <div class="testimonials reveal">
     <p class="page-label">Word On The Street</p>
-    <h2 class="page-title" style="font-size: clamp(28px,5vw,48px);">What Partners <span class="gold">Say</span></h2>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);">What Partners <span class="gold">Say</span></h2>
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Professional from day one. The level of clarity and ambition behind every conversation made it easy to trust the vision."</p>
-        <div class="testi-author">A. RAHMAN</div>
-        <div class="testi-role">Business Partner, Lahore</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Working across two markets isn't easy, but the cross-border insight Usman brings made the process seamless."</p>
-        <div class="testi-author">M. GARCIA</div>
-        <div class="testi-role">Associate, Madrid</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"A name that stands behind its word. Looking forward to where this enterprise goes next."</p>
-        <div class="testi-author">S. KHAN</div>
-        <div class="testi-role">Early Investor</div>
-      </div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Professional from day one. The level of clarity and ambition behind every conversation made it easy to trust the vision."</p><div class="testi-author">A. RAHMAN</div><div class="testi-role">Business Partner, Lahore</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Working across two markets isn't easy, but the cross-border insight Usman brings made the process seamless and rewarding."</p><div class="testi-author">M. GARCIA</div><div class="testi-role">Associate, Madrid</div></div>
+      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"A name that stands behind its word. Looking forward to where this enterprise goes next — truly building something special."</p><div class="testi-author">S. KHAN</div><div class="testi-role">Early Investor</div></div>
     </div>
   </div>
 
   <footer>
-    <div>
+    <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
   </footer>
 </div>
 
-<!-- CONTACT -->
+<!-- ═══════════ CONTACT ═══════════ -->
 <div class="page" id="page-contact">
   <div class="contact-hero">
     <p class="page-label">Get In Touch</p>
     <h1 class="page-title">Let's <span class="gold">Connect</span></h1>
   </div>
   <div class="contact-grid">
-    <div class="contact-info">
+    <div class="contact-info reveal-left">
       <div class="exclusive-tag">By Request Only</div>
       <div class="contact-item"><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:kh11n.enterprises@gmail.com">kh11n.enterprises@gmail.com</a></div></div>
-      <div class="contact-item"><div class="contact-label">Instagram</div><div class="contact-val">@kh1n.enterprises</div></div>
+      <div class="contact-item"><div class="contact-label">Instagram</div><div class="contact-val"><a href="https://instagram.com/kh1n.enterprises" target="_blank">@kh1n.enterprises</a></div></div>
       <div class="contact-item"><div class="contact-label">Headquarters</div><div class="contact-val">Pakistan 🇵🇰</div></div>
       <div class="contact-item"><div class="contact-label">International Office</div><div class="contact-val">Spain 🇪🇸</div></div>
+      <div class="contact-item"><div class="contact-label">Availability</div><div class="contact-val">International</div></div>
       <div class="contact-item"><div class="contact-label">Founded By</div><div class="contact-val">Usman Khan Yousafzai</div></div>
     </div>
-    <div class="contact-form">
-      <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full name"></div>
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
-      <div class="form-group"><label>Engagement Type</label>
-        <select>
-          <option>Advisory</option>
-          <option>Partnership</option>
-          <option>Enterprise</option>
-          <option>General Inquiry</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your inquiry..."></textarea></div>
-      <button class="btn-gold" style="width:100%">Request Access</button>
+    <div class="contact-form-wrap reveal-right">
+      <form id="contact-form" action="https://formspree.io/f/xkgjvrop" method="POST">
+        <input type="hidden" name="_replyto" value="kh11n.enterprises@gmail.com">
+        <input type="hidden" name="_subject" value="New inquiry via Usman Khan Enterprises website">
+        <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Full name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label>Phone (Optional)</label><input type="tel" name="phone" placeholder="+1 234 567 8900"></div>
+        <div class="form-group"><label>Engagement Type</label>
+          <select name="engagement">
+            <option value="Advisory">Advisory</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Enterprise">Enterprise</option>
+            <option value="General Inquiry">General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your inquiry..." required></textarea></div>
+        <button class="btn-gold" type="submit" style="width:100%" id="submit-btn">Send Message ↗</button>
+        <div class="form-success" id="form-success">✓ Message sent! We'll get back to you shortly.</div>
+        <div class="form-error" id="form-error">✕ Something went wrong. Please email us directly.</div>
+      </form>
     </div>
   </div>
+
   <footer>
-    <div>
+    <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
       <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-copy">© 2023 Usman Khan Enterprises. All rights reserved.</div>
+    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
   </footer>
 </div>
 
@@ -768,6 +724,53 @@ function showPage(name) {
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
-  window.scrollTo(0,0);
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(checkReveal, 100);
+}
+
+function checkReveal() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) el.classList.add('visible');
+  });
+}
+
+window.addEventListener('scroll', checkReveal);
+window.addEventListener('load', checkReveal);
+setTimeout(checkReveal, 300);
+
+const form = document.getElementById('contact-form');
+if (form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const success = document.getElementById('form-success');
+    const error = document.getElementById('form-error');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        success.style.display = 'block';
+        error.style.display = 'none';
+        form.reset();
+        btn.textContent = 'Sent ✓';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      error.style.display = 'block';
+      success.style.display = 'none';
+      btn.textContent = 'Send Message ↗';
+      btn.disabled = false;
+    }
+  });
 }
 </script>
+</html>
+<!-- EXTRA SECTIONS INJECTED -->
