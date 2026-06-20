@@ -623,11 +623,12 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 .media-sub{font-size:13px;color:#777;max-width:580px;margin:1.2rem auto 0;line-height:1.9;font-weight:300;position:relative;z-index:1}
 
 .media-quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08)}
-.mq-card{background:rgba(8,8,8,.6);padding:2rem 1.5rem;text-align:center;transition:background .3s}
 .mq-card:hover{background:rgba(255,255,255,.02)}
 .mq-icon{font-size:24px;margin-bottom:.6rem}
 .mq-title{font-size:9px;letter-spacing:2px;color:#666;text-transform:uppercase;margin-bottom:.4rem}
-.mq-val{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700}
+.mq-val{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;word-break:break-word;overflow-wrap:anywhere;line-height:1.3}
+.mq-val.email-val{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1px;color:#ccc;word-break:break-all;overflow-wrap:anywhere}
+.mq-card{background:rgba(8,8,8,.6);padding:2rem 1.2rem;text-align:center;transition:background .3s;min-width:0}
 
 .bio-section{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08)}
 .bio-grid{display:grid;grid-template-columns:260px 1fr;gap:3rem;margin-top:2.5rem;align-items:start}
@@ -847,7 +848,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="market-cell"><div class="market-icon">🇵🇰</div><div class="market-name">Pakistan</div></div>
       <div class="market-cell"><div class="market-icon">🇪🇸</div><div class="market-name">Spain</div></div>
       <div class="market-cell"><div class="market-icon">🇦🇪</div><div class="market-name">UAE</div></div>
-      <div class="market-cell"><div class="market-icon">🇬🇧</div><div class="market-name">UK</div></div>
+      <div class="market-cell"><div class="market-icon">🇬🇧</div><div class="market-name">Britain</div></div>
       <div class="market-cell"><div class="market-icon">🇹🇷</div><div class="market-name">Turkey</div></div>
       <div class="market-cell"><div class="market-icon">🌍</div><div class="market-name">Beyond</div></div>
     </div>
@@ -1267,7 +1268,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="mq-card"><div class="mq-icon">📅</div><div class="mq-title">Founded</div><div class="mq-val">2023, Incorporated</div></div>
     <div class="mq-card"><div class="mq-icon">🌍</div><div class="mq-title">Presence</div><div class="mq-val">Pakistan &amp; Spain</div></div>
     <div class="mq-card"><div class="mq-icon">📊</div><div class="mq-title">Sectors</div><div class="mq-val">8 Active Ventures</div></div>
-    <div class="mq-card"><div class="mq-icon">📧</div><div class="mq-title">Press Contact</div><div class="mq-val">kh11n.enterprises@gmail.com</div></div>
+    <div class="mq-card"><div class="mq-icon">📧</div><div class="mq-title">Press Contact</div><div class="mq-val email-val">kh11n.enterprises@gmail.com</div></div>
   </div>
 
   <div class="bio-section reveal">
@@ -1276,7 +1277,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="bio-grid">
       <div class="bio-avatar">
         <div class="bio-circle">
-          <div class="bio-initials">UK</div>
+          <div class="bio-initials" style="font-size:18px;letter-spacing:2px;line-height:1.4">USMAN<br>KHAN</div>
           <div class="bio-role">FOUNDER · CEO · DIRECTOR</div>
         </div>
         <div class="bio-tags">
@@ -1322,15 +1323,15 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   <div class="media-faq reveal">
     <p class="page-label">Press Enquiries</p>
     <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:2rem">Common <span class="blue">Questions</span></h2>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I request an interview with Usman Khan Yousafzai? <span class="faq-icon">+</span></div><div class="faq-a">Send a detailed request to kh11n.enterprises@gmail.com including the outlet, format, intended audience and proposed topics. We review all media requests personally.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I use the Usman Khan Enterprises name or logo in my publication? <span class="faq-icon">+</span></div><div class="faq-a">Media mentions are welcome with correct attribution. For logo or branding usage in any publication, written approval is required. Contact us via email before publishing.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is Usman Khan Yousafzai available for speaking engagements? <span class="faq-icon">+</span></div><div class="faq-a">Selected speaking engagements are considered. Submit a request outlining the event, audience size, topic and date to our email. We typically respond within one week.</div></div>
-    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What is the correct company name for press use? <span class="faq-icon">+</span></div><div class="faq-a">The correct full name is "Usman Khan Enterprises (Pvt.) Ltd." — shortened to "Usman Khan Enterprises" is acceptable in editorial contexts.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I request an interview? <span class="faq-icon">+</span></div><div class="faq-a">Send a message to kh11n.enterprises@gmail.com with the outlet, format, and topic you have in mind, and we'll get back to you as soon as we can.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I mention Usman Khan Enterprises in my article? <span class="faq-icon">+</span></div><div class="faq-a">Yes, factual mentions with correct attribution are welcome. If you'd like to use the logo, please email first so we can confirm the details.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do you take speaking or event invites? <span class="faq-icon">+</span></div><div class="faq-a">It depends on the event and timing — send over the date, audience, and topic and we'll see if it lines up.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What's the correct way to write the company name? <span class="faq-icon">+</span></div><div class="faq-a">"Usman Khan Enterprises (Pvt.) Ltd." is the full legal name. "Usman Khan Enterprises" is fine for general or editorial use.</div></div>
   </div>
 
   <div class="media-cta reveal">
-    <h2 class="cta-title">Covering a story that <span class="gold">involves us?</span></h2>
-    <p class="cta-sub">Reach out directly — we prefer honest conversations over press releases.</p>
+    <h2 class="cta-title">Working on a story? <span class="gold">Let's talk.</span></h2>
+    <p class="cta-sub">Happy to help with quotes, background, or context for your piece.</p>
     <button class="btn-gold" onclick="showPage('contact')">Contact The Founder</button>
   </div>
 
@@ -1445,7 +1446,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
-const isMobile = /Android|iPhone|iPad|iPod|Touch/i.test(navigator.userAgent) || window.innerWidth < 768;
+const isMobile = /Android|iPhone|iPad|iPod|Touch/i.test(navigator.userAgent) || ('ontouchstart' in window) || window.innerWidth < 768;
 
 if(!isMobile){
   document.addEventListener('mousemove',e=>{
@@ -1453,54 +1454,31 @@ if(!isMobile){
     cursor.style.left=mx-6+'px'; cursor.style.top=my-6+'px';
   });
 } else {
-  /* On mobile — use a touch follower dot instead of cursor */
-  if(cursor) cursor.style.display='none';
-  if(ring) ring.style.display='none';
-  document.addEventListener('touchmove',e=>{
-    const t=e.touches[0];
-    mx=t.clientX; my=t.clientY;
-    if(glow){
-      glow.style.left=mx+'px';
-      glow.style.top=my+'px';
-      glow.style.opacity='.15';
-    }
-    /* ripple on touch drag */
-    const r=document.createElement('div');
-    r.className='ripple';
-    const cols=['rgba(212,168,67,.4)','rgba(212,92,92,.4)','rgba(77,203,168,.4)','rgba(92,150,212,.4)','rgba(168,108,212,.4)'];
-    r.style.cssText=`left:${mx}px;top:${my}px;border:2px solid ${cols[Math.floor(Math.random()*cols.length)]}`;
-    document.body.appendChild(r);
-    setTimeout(()=>r.remove(),600);
-  },{passive:true});
-  document.addEventListener('touchend',()=>{
-    if(glow) glow.style.opacity='0';
-  });
+  /* Mobile: no custom cursor, no touch effects — native scrolling only, for max performance */
+  if(cursor) cursor.remove();
+  if(document.getElementById('cursor-ring')) document.getElementById('cursor-ring').remove();
 }
 
-/* ── CUSTOM CURSOR + GLOW ── */
+/* ── CUSTOM CURSOR + GLOW (desktop only) ── */
 const glow=document.getElementById('glow-follow');
 const glowColors=['rgba(212,168,67,1)','rgba(212,92,92,1)','rgba(77,203,168,1)','rgba(92,150,212,1)','rgba(168,108,212,1)','rgba(212,122,60,1)'];
 let glowIdx=0;
-function animRing(){
-  if(!isMobile){
+if(!isMobile){
+  function animRing(){
     rx+=(mx-rx-18)*.12; ry+=(my-ry-18)*.12;
     if(ring){ ring.style.left=rx+'px'; ring.style.top=ry+'px'; }
     if(glow){ glow.style.left=mx+'px'; glow.style.top=my+'px'; }
+    requestAnimationFrame(animRing);
   }
-  requestAnimationFrame(animRing);
-}
-animRing();
-setInterval(()=>{ glowIdx=(glowIdx+1)%glowColors.length; if(glow) glow.style.background=glowColors[glowIdx]; },2200);
+  animRing();
+  setInterval(()=>{ glowIdx=(glowIdx+1)%glowColors.length; if(glow) glow.style.background=glowColors[glowIdx]; },2200);
 
-if(!isMobile){
   document.querySelectorAll('a,button,.highlight-card,.venture-card,.testi-card,.pillar,.process-step,.stat,.market-cell,.location-card,.faq-q,.tier-card,.skill-tag,.social-pill,.philo-item,.award-item,.number-card,.v-stat,.contact-card').forEach(el=>{
     el.addEventListener('mouseenter',()=>{if(cursor){cursor.style.transform='scale(2.2)'} if(ring){ring.style.transform='scale(1.6)';ring.style.borderColor='rgba(212,168,67,.8)'}});
     el.addEventListener('mouseleave',()=>{if(cursor){cursor.style.transform='scale(1)'} if(ring){ring.style.transform='scale(1)';ring.style.borderColor='rgba(212,168,67,.5)'}});
   });
-}
 
-/* ── RIPPLE ON CLICK (desktop) ── */
-if(!isMobile){
+  /* ── RIPPLE ON CLICK (desktop only) ── */
   document.addEventListener('click',e=>{
     const r=document.createElement('div');
     r.className='ripple';
@@ -1518,7 +1496,7 @@ if(introCanvas){
   introCanvas.width=window.innerWidth; introCanvas.height=window.innerHeight;
   const ip=[];
   const ipc=['rgba(212,168,67,','rgba(212,92,92,','rgba(77,203,168,','rgba(92,150,212,','rgba(168,108,212,','rgba(212,122,60,'];
-  for(let i=0;i<80;i++) ip.push({x:Math.random()*introCanvas.width,y:Math.random()*introCanvas.height,r:Math.random()*2+.4,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,c:ipc[Math.floor(Math.random()*ipc.length)],o:Math.random()*.5+.15});
+  for(let i=0;i<(isMobile?30:80);i++) ip.push({x:Math.random()*introCanvas.width,y:Math.random()*introCanvas.height,r:Math.random()*2+.4,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,c:ipc[Math.floor(Math.random()*ipc.length)],o:Math.random()*.5+.15});
   function drawIntro(){
     ictx.clearRect(0,0,introCanvas.width,introCanvas.height);
     ip.forEach(p=>{
@@ -1533,20 +1511,25 @@ if(introCanvas){
   drawIntro();
 }
 
-/* ── SITE-WIDE PARTICLES ── */
+/* ── SITE-WIDE PARTICLES (adaptive for performance) ── */
 const heroCanvas=document.getElementById('hero-canvas');
 if(heroCanvas){
   const ctx=heroCanvas.getContext('2d');
   const particles=[];
   const pColors=['rgba(212,168,67,','rgba(212,92,92,','rgba(77,203,168,','rgba(92,150,212,','rgba(168,108,212,','rgba(212,122,60,','rgba(60,184,212,','rgba(240,201,106,'];
+  const particleCount = isMobile ? 35 : 160;
+  const connectDistance = isMobile ? 0 : 90; /* 0 disables connecting lines on mobile */
   function resizeCanvas(){heroCanvas.width=window.innerWidth;heroCanvas.height=window.innerHeight}
   resizeCanvas();
   window.addEventListener('resize',resizeCanvas);
-  for(let i=0;i<160;i++){
+  for(let i=0;i<particleCount;i++){
     particles.push({x:Math.random()*heroCanvas.width,y:Math.random()*heroCanvas.height,r:Math.random()*2.6+.4,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,c:pColors[Math.floor(Math.random()*pColors.length)],o:Math.random()*.45+.1,pulse:Math.random()*Math.PI*2});
   }
-  /* connecting lines for a subtle constellation feel */
-  function drawParticles(){
+  let lastFrame=0;
+  const frameInterval = isMobile ? 1000/30 : 1000/60; /* cap mobile to 30fps */
+  function drawParticles(ts){
+    if(ts-lastFrame < frameInterval){ requestAnimationFrame(drawParticles); return; }
+    lastFrame=ts;
     ctx.clearRect(0,0,heroCanvas.width,heroCanvas.height);
     particles.forEach((p,i)=>{
       p.pulse+=0.02;
@@ -1556,22 +1539,24 @@ if(heroCanvas){
       p.x+=p.vx; p.y+=p.vy;
       if(p.x<0||p.x>heroCanvas.width)p.vx*=-1;
       if(p.y<0||p.y>heroCanvas.height)p.vy*=-1;
-      for(let j=i+1;j<particles.length;j++){
-        const q=particles[j];
-        const dx=p.x-q.x, dy=p.y-q.y;
-        const dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<90){
-          ctx.beginPath();
-          ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
-          ctx.strokeStyle=p.c+(0.05*(1-dist/90))+')';
-          ctx.lineWidth=.5;
-          ctx.stroke();
+      if(connectDistance>0){
+        for(let j=i+1;j<particles.length;j++){
+          const q=particles[j];
+          const dx=p.x-q.x, dy=p.y-q.y;
+          const dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<connectDistance){
+            ctx.beginPath();
+            ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+            ctx.strokeStyle=p.c+(0.05*(1-dist/connectDistance))+')';
+            ctx.lineWidth=.5;
+            ctx.stroke();
+          }
         }
       }
     });
     requestAnimationFrame(drawParticles);
   }
-  drawParticles();
+  requestAnimationFrame(drawParticles);
 }
 
 /* ── TAGLINE ROTATOR ── */
