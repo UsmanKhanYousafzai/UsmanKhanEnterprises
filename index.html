@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>Usman Khan Enterprises</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--gold:#d4a843;--gold-light:#f0c96a;--burgundy:#d45c5c;--emerald:#4dcba8;--sapphire:#5c96d4;--violet:#a86cd4;--orange:#d47a3c;--teal:#3cb8d4;--black:#080808;--dark:#111111;--white:#ffffff}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
 body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;background-image:radial-gradient(circle at 20% 3%,rgba(212,168,67,.22) 0%,transparent 28%),radial-gradient(circle at 80% 4%,rgba(212,92,92,.18) 0%,transparent 30%),radial-gradient(circle at 50% 10%,rgba(77,203,168,.14) 0%,transparent 32%),radial-gradient(circle at 5% 35%,rgba(92,150,212,.14) 0%,transparent 30%),radial-gradient(circle at 95% 40%,rgba(168,108,212,.14) 0%,transparent 30%),radial-gradient(circle at 30% 70%,rgba(212,122,60,.1) 0%,transparent 32%),radial-gradient(circle at 70% 75%,rgba(60,184,212,.1) 0%,transparent 32%),radial-gradient(circle at 50% 95%,rgba(212,168,67,.1) 0%,transparent 30%),linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:auto,auto,auto,auto,auto,auto,auto,auto,48px 48px,48px 48px;background-attachment:fixed}
 
 /* CURSOR */
@@ -16,18 +16,23 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--whi
 .cursor-ring{width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,168,76,.5);position:fixed;pointer-events:none;z-index:9998;transition:all .12s ease}
 
 /* INTRO */
-.intro{position:fixed;inset:0;z-index:1000;background:#080808;display:flex;align-items:center;justify-content:center;animation:introFade .8s ease 2.8s forwards}
-.intro-inner{text-align:center}
-.intro-bar{width:0;height:2px;background:linear-gradient(90deg,var(--burgundy),var(--gold),var(--emerald));margin:0 auto 2rem;animation:introBar .8s ease .2s forwards}
-.intro-usman{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,70px);font-weight:900;color:#fff;letter-spacing:10px;opacity:0;animation:introUp .9s ease .5s forwards}
-.intro-khan{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,70px);font-weight:300;color:var(--gold);letter-spacing:12px;opacity:0;animation:introUp .9s ease .8s forwards}
-.intro-line{width:0;height:1px;background:var(--gold);margin:1.5rem auto;animation:introLine .8s ease 1.2s forwards}
-.intro-ent{font-size:12px;letter-spacing:8px;color:#666;opacity:0;animation:introUp .9s ease 1.5s forwards}
-.intro-flag{font-size:22px;margin-top:1.2rem;opacity:0;animation:introUp .9s ease 1.8s forwards}
-.intro-bar2{width:0;height:2px;background:linear-gradient(90deg,var(--emerald),var(--sapphire),var(--violet));margin:1.5rem auto 0;animation:introBar .8s ease 2.1s forwards}
-@keyframes introBar{to{width:200px}}
+.intro{position:fixed;inset:0;z-index:1000;background:#050505;display:flex;align-items:center;justify-content:center;animation:introFade .8s ease 3.4s forwards;overflow:hidden}
+#intro-canvas{position:absolute;inset:0;pointer-events:none;opacity:.7}
+.intro-inner{text-align:center;position:relative;z-index:2;padding:1rem}
+.intro-bar{width:0;height:3px;background:linear-gradient(90deg,var(--violet),var(--burgundy),var(--gold),var(--teal),var(--sapphire));margin:0 auto 1.5rem;animation:introBar .9s ease .1s forwards;border-radius:2px}
+.intro-usman{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,9vw,80px);font-weight:900;color:#fff;letter-spacing:10px;opacity:0;animation:introUp .9s ease .5s forwards;text-shadow:0 0 60px rgba(212,168,67,.3)}
+.intro-khan{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,9vw,80px);font-weight:300;color:var(--gold);letter-spacing:12px;opacity:0;animation:introUp .9s ease .75s forwards;text-shadow:0 0 80px rgba(212,168,67,.4)}
+.intro-tag-row{display:flex;gap:.8rem;justify-content:center;font-size:11px;letter-spacing:3px;opacity:0;animation:introUp .8s ease 1s forwards;margin-top:.5rem;flex-wrap:wrap}
+.intro-line{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.2rem auto;animation:introLine .8s ease 1.3s forwards}
+.intro-ent{font-size:clamp(10px,2vw,14px);letter-spacing:10px;color:#aaa;opacity:0;animation:introUp .9s ease 1.5s forwards;text-transform:uppercase}
+.intro-pvt{font-size:9px;letter-spacing:4px;color:#555;opacity:0;animation:introUp .8s ease 1.75s forwards;margin-top:.5rem}
+.intro-flag{font-size:clamp(16px,4vw,24px);margin-top:1rem;opacity:0;animation:introUp .8s ease 2s forwards}
+.intro-sectors{display:flex;gap:1rem;justify-content:center;font-size:clamp(7px,1.5vw,9px);letter-spacing:2px;opacity:0;animation:introUp .8s ease 2.3s forwards;margin-top:.8rem;flex-wrap:wrap}
+.intro-sectors span{padding:3px 10px;border:1px solid currentColor;opacity:.7}
+.intro-bar2{width:0;height:3px;background:linear-gradient(90deg,var(--sapphire),var(--teal),var(--emerald),var(--violet),var(--burgundy));margin:1.2rem auto 0;animation:introBar .9s ease 2.7s forwards;border-radius:2px}
+@keyframes introBar{to{width:min(220px,70vw)}}
 @keyframes introUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes introLine{to{width:120px}}
+@keyframes introLine{to{width:min(140px,50vw)}}
 @keyframes introFade{to{opacity:0;visibility:hidden;pointer-events:none}}
 
 /* NAV */
@@ -377,25 +382,60 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 .footer-right{font-size:10px;color:#333;letter-spacing:1px;text-align:right}
 
 @media(max-width:700px){
-  nav{padding:1rem 1.2rem}
-  .nav-logo{font-size:11px}
-  .nav-links{gap:.7rem}
+  nav{padding:.8rem 1rem;flex-wrap:wrap;gap:.5rem}
+  .nav-logo{font-size:12px;flex:1}
+  .nav-links{gap:.6rem;font-size:9px;flex-wrap:wrap;justify-content:flex-end}
+  .nav-links a{font-size:9px;letter-spacing:1px}
   .nav-cta{display:none}
-  .hero{padding:5rem 1.5rem 3rem}
-  .hero-title{font-size:clamp(38px,13vw,68px)}
+  .page{padding-top:65px}
+  .hero{padding:4rem 1.2rem 2.5rem;min-height:auto}
+  .hero-title{font-size:clamp(34px,12vw,60px)}
+  .hero-flags{gap:.6rem;flex-wrap:wrap}
+  .hero-flag-pill{font-size:9px;padding:4px 10px}
+  .hero-btns{flex-direction:column;align-items:center}
+  .hero-btns .btn-gold,.hero-btns .btn-outline{width:100%;max-width:280px;text-align:center}
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .about-text{border-right:none;border-bottom:1px solid rgba(201,168,76,.08)}
-  .contact-info{border-right:none;border-bottom:1px solid rgba(201,168,76,.08)}
+  .contact-info{border-right:none;border-bottom:1px solid rgba(201,168,76,.08);padding:2.5rem 1.5rem}
+  .contact-form-wrap{padding:2.5rem 1.5rem}
+  .contact-grid{display:block}
   .stats-bar{grid-template-columns:repeat(2,1fr)}
-  .stat{border-right:none;border-bottom:1px solid rgba(201,168,76,.08)}
+  .stat{border-right:none;border-bottom:1px solid rgba(201,168,76,.08);padding:1.5rem .5rem}
+  .stat-num{font-size:32px}
   .newsletter-form{flex-direction:column}
-  .newsletter-form input{border-right:1px solid rgba(201,168,76,.2)}
+  .newsletter-form input{border-right:1px solid rgba(201,168,76,.2);border-bottom:none}
   .leader-card{grid-template-columns:1fr;text-align:center}
   .leader-avatar{margin:0 auto}
   .leader-skills{justify-content:center}
   .philosophy-grid{grid-template-columns:1fr}
-  section,div[class$="-section"],div[class$="-strip"],.newsletter,.highlights,.markets-section,.social-strip,.trusted-bar,.tiers-section,.testimonials,.process-section,.awards-section,.locations-section,.faq-section,.leadership,.quote-section,.about-hero,.ventures-hero,.contact-hero,.contact-cards{padding-left:1.5rem;padding-right:1.5rem}
+  .compare-grid{grid-template-columns:1fr}
+  .tiers-grid{grid-template-columns:1fr}
+  .ventures-grid{grid-template-columns:1fr}
+  .alloc-row{grid-template-columns:90px 1fr 36px}
+  .alloc-label{font-size:9px}
+  .insights-grid{padding:0 1.2rem 2rem}
+  .insights-featured{margin:1.5rem}
+  .page-top-banner{height:3px}
+  .intro-usman,.intro-khan{font-size:clamp(30px,10vw,52px)}
+  .intro-inner{padding:0 1rem}
+  section[class],div[class*="-section"],div[class*="-hero"],div[class*="-strip"],div[class*="-banner"],.newsletter,.highlights,.markets-section,.social-strip,.trusted-bar,.tiers-section,.testimonials,.process-section,.awards-section,.locations-section,.faq-section,.leadership,.quote-section,.culture-section,.next-steps,.prep-tips,.building-section,.allocation-section,.compare-section,.cta-banner,.contact-cards,.insights-categories,.insights-stats,.insights-cta{padding-left:1.2rem;padding-right:1.2rem}
+  .avail-strip{padding:1rem 1.2rem;flex-wrap:wrap;text-align:center;justify-content:center}
+  .avail-text{font-size:9px;letter-spacing:1.5px}
+  .back-top{bottom:1rem;right:1rem;width:36px;height:36px;font-size:14px}
+  .cursor,.cursor-ring{display:none}
+  .featured-meta{flex-wrap:wrap;gap:.8rem}
+  footer{padding:2rem 1.2rem}
+  .footer-right{font-size:9px;text-align:left}
+  .v-stat{padding:1.2rem .5rem}
+  .v-stat-num{font-size:26px}
 }
+@media(max-width:420px){
+  .nav-links{gap:.4rem}
+  .nav-links a{font-size:8.5px}
+  .hero-title{font-size:clamp(28px,11vw,50px)}
+  .page-title{font-size:clamp(28px,9vw,48px)}
+}
+
 
 /* ── PARTICLE CANVAS ── */
 #hero-canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5}
@@ -576,6 +616,57 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 .alloc-bar{height:100%;border-radius:4px;width:0;transition:width 1.5s cubic-bezier(.22,1,.36,1)}
 .alloc-pct{font-size:11px;color:#777;text-align:right;font-weight:600}
 @media(max-width:560px){.alloc-row{grid-template-columns:100px 1fr 36px}.alloc-label{font-size:10px}}
+
+/* ── MEDIA PAGE ── */
+.media-hero{padding:5rem 3rem 3rem;border-bottom:1px solid rgba(201,168,76,.08);position:relative;overflow:hidden;text-align:center}
+.media-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(212,92,92,.15) 0%,transparent 50%),radial-gradient(ellipse at bottom,rgba(212,168,67,.08) 0%,transparent 50%)}
+.media-sub{font-size:13px;color:#777;max-width:580px;margin:1.2rem auto 0;line-height:1.9;font-weight:300;position:relative;z-index:1}
+
+.media-quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08)}
+.mq-card{background:rgba(8,8,8,.6);padding:2rem 1.5rem;text-align:center;transition:background .3s}
+.mq-card:hover{background:rgba(255,255,255,.02)}
+.mq-icon{font-size:24px;margin-bottom:.6rem}
+.mq-title{font-size:9px;letter-spacing:2px;color:#666;text-transform:uppercase;margin-bottom:.4rem}
+.mq-val{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700}
+
+.bio-section{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08)}
+.bio-grid{display:grid;grid-template-columns:260px 1fr;gap:3rem;margin-top:2.5rem;align-items:start}
+.bio-circle{width:220px;height:220px;border-radius:50%;border:1px solid var(--burgundy);background:linear-gradient(135deg,rgba(212,92,92,.1),rgba(212,168,67,.06));display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto}
+.bio-initials{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:900;color:#fff}
+.bio-role{font-size:7px;letter-spacing:2px;color:var(--burgundy);margin-top:.5rem;text-align:center;padding:0 1rem}
+.bio-tags{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.5rem}
+.bio-tags span{font-size:9px;letter-spacing:1px;border:1px solid currentColor;padding:4px 10px}
+.bio-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;margin-bottom:1rem}
+.bio-short{font-size:14px;color:#bbb;line-height:1.9;margin-bottom:1rem;font-weight:400}
+.bio-long{font-size:13px;color:#777;line-height:2;font-weight:300;margin-bottom:1.5rem}
+.bio-highlights{display:flex;gap:2rem;flex-wrap:wrap}
+.bio-hl{display:flex;flex-direction:column}
+.bhl-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:900}
+.bhl-label{font-size:9px;color:#555;letter-spacing:2px;margin-top:2px}
+@media(max-width:700px){.bio-grid{grid-template-columns:1fr;text-align:center}.bio-highlights{justify-content:center}}
+
+.brand-colors{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08)}
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem}
+.usage-card{padding:2rem;border:1px solid rgba(255,255,255,.08)}
+.usage-card.good{border-left:3px solid var(--emerald)}
+.usage-card.bad{border-left:3px solid var(--burgundy)}
+.usage-icon{font-size:22px;margin-bottom:.8rem;font-weight:900}
+.usage-card.good .usage-icon{color:var(--emerald)}
+.usage-card.bad .usage-icon{color:var(--burgundy)}
+.usage-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;margin-bottom:.6rem}
+.usage-text{font-size:12px;color:#888;line-height:1.8}
+
+.brand-values-media{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08)}
+.voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2.5rem}
+.voice-card{padding:2rem;border-top:2px solid var(--vc4);transition:all .3s}
+.voice-card:hover{background:rgba(255,255,255,.02);transform:translateY(-4px)}
+.vc1{--vc4:var(--gold)} .vc2{--vc4:var(--teal)} .vc3{--vc4:var(--sapphire)} .vc4{--vc4:var(--burgundy)}
+.vc-label{font-size:8px;letter-spacing:2px;color:#555}
+.vc-word{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--vc4);margin:.4rem 0 .8rem}
+.vc-text{font-size:12px;color:#777;line-height:1.8}
+
+.media-faq{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08);background:rgba(8,8,8,.3)}
+.media-cta{padding:4.5rem 3rem;text-align:center;background:linear-gradient(135deg,rgba(212,92,92,.06),rgba(212,168,67,.05));border-bottom:1px solid rgba(201,168,76,.08)}
 </style>
 
 <!-- CURSOR -->
@@ -587,14 +678,30 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- INTRO -->
-<div class="intro">
+<div class="intro" id="intro-screen">
+  <canvas id="intro-canvas"></canvas>
   <div class="intro-inner">
     <div class="intro-bar"></div>
     <div class="intro-usman">USMAN</div>
     <div class="intro-khan">KHAN</div>
+    <div class="intro-tag-row">
+      <span style="color:var(--gold)">Legacy</span>
+      <span style="color:var(--teal)">·</span>
+      <span style="color:var(--sapphire)">Vision</span>
+      <span style="color:var(--teal)">·</span>
+      <span style="color:var(--burgundy)">Purpose</span>
+    </div>
     <div class="intro-line"></div>
     <div class="intro-ent">ENTERPRISES</div>
-    <div class="intro-flag">🇵🇰 &nbsp; 🇪🇸</div>
+    <div class="intro-pvt">(PVT.) LTD. &nbsp;·&nbsp; EST. 2023</div>
+    <div class="intro-flag">🇵🇰 &nbsp;<span style="color:var(--gold)">·</span>&nbsp; 🇪🇸</div>
+    <div class="intro-sectors">
+      <span style="color:var(--gold)">Commerce</span>
+      <span style="color:var(--burgundy)">Real Estate</span>
+      <span style="color:var(--teal)">Technology</span>
+      <span style="color:var(--sapphire)">Consulting</span>
+      <span style="color:var(--violet)">Investments</span>
+    </div>
     <div class="intro-bar2"></div>
   </div>
 </div>
@@ -607,6 +714,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <a onclick="showPage('about')" id="nav-about">About</a>
     <a onclick="showPage('ventures')" id="nav-ventures">Ventures</a>
     <a onclick="showPage('insights')" id="nav-insights">Insights</a>
+    <a onclick="showPage('media')" id="nav-media">Media</a>
     <a onclick="showPage('contact')" id="nav-contact">Contact</a>
     <button class="nav-cta" onclick="showPage('contact')">Book Consultation</button>
   </div>
@@ -1143,6 +1251,99 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   </footer>
 </div>
 
+<!-- ═══ MEDIA ═══ -->
+<div class="page" id="page-media">
+<div class="page-top-banner"></div>
+
+  <div class="media-hero">
+    <p class="page-label">Press &amp; Brand</p>
+    <h1 class="page-title">Media <span class="gold">Kit</span></h1>
+    <p class="media-sub">Official brand assets, founder biography, and press information for Usman Khan Enterprises. All materials are approved for media use.</p>
+  </div>
+
+  <div class="media-quick reveal">
+    <div class="mq-card"><div class="mq-icon">🏢</div><div class="mq-title">Company</div><div class="mq-val">Usman Khan Enterprises (Pvt.) Ltd.</div></div>
+    <div class="mq-card"><div class="mq-icon">👤</div><div class="mq-title">Founder</div><div class="mq-val">Usman Khan Yousafzai</div></div>
+    <div class="mq-card"><div class="mq-icon">📅</div><div class="mq-title">Founded</div><div class="mq-val">2023, Incorporated</div></div>
+    <div class="mq-card"><div class="mq-icon">🌍</div><div class="mq-title">Presence</div><div class="mq-val">Pakistan &amp; Spain</div></div>
+    <div class="mq-card"><div class="mq-icon">📊</div><div class="mq-title">Sectors</div><div class="mq-val">8 Active Ventures</div></div>
+    <div class="mq-card"><div class="mq-icon">📧</div><div class="mq-title">Press Contact</div><div class="mq-val">kh11n.enterprises@gmail.com</div></div>
+  </div>
+
+  <div class="bio-section reveal">
+    <p class="page-label">Official Biography</p>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px)">Founder's <span class="red">Bio</span></h2>
+    <div class="bio-grid">
+      <div class="bio-avatar">
+        <div class="bio-circle">
+          <div class="bio-initials">UK</div>
+          <div class="bio-role">FOUNDER · CEO · DIRECTOR</div>
+        </div>
+        <div class="bio-tags">
+          <span style="color:var(--gold)">Entrepreneur</span>
+          <span style="color:var(--teal)">Founder</span>
+          <span style="color:var(--sapphire)">Strategist</span>
+          <span style="color:var(--violet)">Investor</span>
+        </div>
+      </div>
+      <div class="bio-text">
+        <h3 class="bio-name">Usman Khan Yousafzai</h3>
+        <p class="bio-short">Usman Khan Yousafzai is the Founder, CEO and Director of Usman Khan Enterprises (Pvt.) Ltd., a privately registered multi-sector enterprise operating across Pakistan and Spain.</p>
+        <p class="bio-long">Founded in 2023, the company has grown to encompass eight active ventures spanning commerce, real estate, technology, consulting, international trade, investments, hospitality and logistics. Operating with a dual presence between South Asia and Europe, Usman has built a company defined by founder-led decision-making, cross-border thinking, and a long-term approach to building institutions rather than chasing short-term gains.</p>
+        <div class="bio-highlights">
+          <div class="bio-hl"><span class="bhl-num" style="color:var(--gold)">2023</span><span class="bhl-label">Founded</span></div>
+          <div class="bio-hl"><span class="bhl-num" style="color:var(--teal)">8</span><span class="bhl-label">Ventures</span></div>
+          <div class="bio-hl"><span class="bhl-num" style="color:var(--sapphire)">2</span><span class="bhl-label">Countries</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-colors reveal">
+    <p class="page-label">Brand Identity</p>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px)">Logo &amp; <span class="purple">Usage</span></h2>
+    <div class="usage-grid">
+      <div class="usage-card good"><div class="usage-icon">✓</div><div class="usage-title">Correct Usage</div><p class="usage-text">Always use the full company name "Usman Khan Enterprises" or its legal form "Usman Khan Enterprises (Pvt.) Ltd." when referencing the company in print or online.</p></div>
+      <div class="usage-card bad"><div class="usage-icon">✕</div><div class="usage-title">Avoid</div><p class="usage-text">Do not abbreviate the company name, alter the wordmark, or imply endorsement without prior written approval from the founder.</p></div>
+    </div>
+  </div>
+
+  <div class="brand-values-media reveal">
+    <p class="page-label">Brand Voice</p>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px)">How We <span class="green">Sound</span></h2>
+    <div class="voice-grid">
+      <div class="voice-card vc1"><div class="vc-label">WE ARE</div><div class="vc-word">Grounded</div><p class="vc-text">Confident without being loud. We let the work speak, not the headlines.</p></div>
+      <div class="voice-card vc2"><div class="vc-label">WE ARE</div><div class="vc-word">Direct</div><p class="vc-text">Plain language, clear intentions. No jargon for the sake of sounding important.</p></div>
+      <div class="voice-card vc3"><div class="vc-label">WE ARE</div><div class="vc-word">Long-term</div><p class="vc-text">We talk in years, not quarters. Every statement reflects that horizon.</p></div>
+      <div class="voice-card vc4"><div class="vc-label">WE ARE NOT</div><div class="vc-word">Loud</div><p class="vc-text">We don't overpromise, overclaim or over-announce. The work is the message.</p></div>
+    </div>
+  </div>
+
+  <div class="media-faq reveal">
+    <p class="page-label">Press Enquiries</p>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:2rem">Common <span class="blue">Questions</span></h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I request an interview with Usman Khan Yousafzai? <span class="faq-icon">+</span></div><div class="faq-a">Send a detailed request to kh11n.enterprises@gmail.com including the outlet, format, intended audience and proposed topics. We review all media requests personally.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I use the Usman Khan Enterprises name or logo in my publication? <span class="faq-icon">+</span></div><div class="faq-a">Media mentions are welcome with correct attribution. For logo or branding usage in any publication, written approval is required. Contact us via email before publishing.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is Usman Khan Yousafzai available for speaking engagements? <span class="faq-icon">+</span></div><div class="faq-a">Selected speaking engagements are considered. Submit a request outlining the event, audience size, topic and date to our email. We typically respond within one week.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What is the correct company name for press use? <span class="faq-icon">+</span></div><div class="faq-a">The correct full name is "Usman Khan Enterprises (Pvt.) Ltd." — shortened to "Usman Khan Enterprises" is acceptable in editorial contexts.</div></div>
+  </div>
+
+  <div class="media-cta reveal">
+    <h2 class="cta-title">Covering a story that <span class="gold">involves us?</span></h2>
+    <p class="cta-sub">Reach out directly — we prefer honest conversations over press releases.</p>
+    <button class="btn-gold" onclick="showPage('contact')">Contact The Founder</button>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <div class="footer-logo">Usman Khan Enterprises</div>
+      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-email">kh11n.enterprises@gmail.com</div>
+    </div>
+    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+  </footer>
+</div>
+
 <!-- ═══ CONTACT ═══ -->
 <div class="page" id="page-contact">
 <div class="page-top-banner"></div>
@@ -1244,37 +1445,93 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX; my=e.clientY;
-  cursor.style.left=mx-6+'px'; cursor.style.top=my-6+'px';
-});
+const isMobile = /Android|iPhone|iPad|iPod|Touch/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+if(!isMobile){
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cursor.style.left=mx-6+'px'; cursor.style.top=my-6+'px';
+  });
+} else {
+  /* On mobile — use a touch follower dot instead of cursor */
+  if(cursor) cursor.style.display='none';
+  if(ring) ring.style.display='none';
+  document.addEventListener('touchmove',e=>{
+    const t=e.touches[0];
+    mx=t.clientX; my=t.clientY;
+    if(glow){
+      glow.style.left=mx+'px';
+      glow.style.top=my+'px';
+      glow.style.opacity='.15';
+    }
+    /* ripple on touch drag */
+    const r=document.createElement('div');
+    r.className='ripple';
+    const cols=['rgba(212,168,67,.4)','rgba(212,92,92,.4)','rgba(77,203,168,.4)','rgba(92,150,212,.4)','rgba(168,108,212,.4)'];
+    r.style.cssText=`left:${mx}px;top:${my}px;border:2px solid ${cols[Math.floor(Math.random()*cols.length)]}`;
+    document.body.appendChild(r);
+    setTimeout(()=>r.remove(),600);
+  },{passive:true});
+  document.addEventListener('touchend',()=>{
+    if(glow) glow.style.opacity='0';
+  });
+}
+
 /* ── CUSTOM CURSOR + GLOW ── */
 const glow=document.getElementById('glow-follow');
 const glowColors=['rgba(212,168,67,1)','rgba(212,92,92,1)','rgba(77,203,168,1)','rgba(92,150,212,1)','rgba(168,108,212,1)','rgba(212,122,60,1)'];
 let glowIdx=0;
 function animRing(){
-  rx+=(mx-rx-18)*.12; ry+=(my-ry-18)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  glow.style.left=mx+'px'; glow.style.top=my+'px';
+  if(!isMobile){
+    rx+=(mx-rx-18)*.12; ry+=(my-ry-18)*.12;
+    if(ring){ ring.style.left=rx+'px'; ring.style.top=ry+'px'; }
+    if(glow){ glow.style.left=mx+'px'; glow.style.top=my+'px'; }
+  }
   requestAnimationFrame(animRing);
 }
 animRing();
-setInterval(()=>{ glowIdx=(glowIdx+1)%glowColors.length; glow.style.background=glowColors[glowIdx]; },2200);
+setInterval(()=>{ glowIdx=(glowIdx+1)%glowColors.length; if(glow) glow.style.background=glowColors[glowIdx]; },2200);
 
-document.querySelectorAll('a,button,.highlight-card,.venture-card,.testi-card,.pillar,.process-step,.stat,.market-cell,.location-card,.faq-q,.tier-card,.skill-tag,.social-pill,.philo-item,.award-item,.number-card,.v-stat,.contact-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2.2)'; ring.style.transform='scale(1.6)'; ring.style.borderColor='rgba(212,168,67,.8)'});
-  el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)'; ring.style.transform='scale(1)'; ring.style.borderColor='rgba(212,168,67,.5)'});
-});
+if(!isMobile){
+  document.querySelectorAll('a,button,.highlight-card,.venture-card,.testi-card,.pillar,.process-step,.stat,.market-cell,.location-card,.faq-q,.tier-card,.skill-tag,.social-pill,.philo-item,.award-item,.number-card,.v-stat,.contact-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{if(cursor){cursor.style.transform='scale(2.2)'} if(ring){ring.style.transform='scale(1.6)';ring.style.borderColor='rgba(212,168,67,.8)'}});
+    el.addEventListener('mouseleave',()=>{if(cursor){cursor.style.transform='scale(1)'} if(ring){ring.style.transform='scale(1)';ring.style.borderColor='rgba(212,168,67,.5)'}});
+  });
+}
 
-/* ── RIPPLE ON CLICK ── */
-document.addEventListener('click',e=>{
-  const r=document.createElement('div');
-  r.className='ripple';
-  const cols=['rgba(212,168,67,.5)','rgba(212,92,92,.5)','rgba(77,203,168,.5)','rgba(92,150,212,.5)','rgba(168,108,212,.5)'];
-  r.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;border:2px solid ${cols[Math.floor(Math.random()*cols.length)]}`;
-  document.body.appendChild(r);
-  setTimeout(()=>r.remove(),700);
-});
+/* ── RIPPLE ON CLICK (desktop) ── */
+if(!isMobile){
+  document.addEventListener('click',e=>{
+    const r=document.createElement('div');
+    r.className='ripple';
+    const cols=['rgba(212,168,67,.5)','rgba(212,92,92,.5)','rgba(77,203,168,.5)','rgba(92,150,212,.5)','rgba(168,108,212,.5)'];
+    r.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;border:2px solid ${cols[Math.floor(Math.random()*cols.length)]}`;
+    document.body.appendChild(r);
+    setTimeout(()=>r.remove(),700);
+  });
+}
+
+/* ── INTRO CANVAS PARTICLES ── */
+const introCanvas=document.getElementById('intro-canvas');
+if(introCanvas){
+  const ictx=introCanvas.getContext('2d');
+  introCanvas.width=window.innerWidth; introCanvas.height=window.innerHeight;
+  const ip=[];
+  const ipc=['rgba(212,168,67,','rgba(212,92,92,','rgba(77,203,168,','rgba(92,150,212,','rgba(168,108,212,','rgba(212,122,60,'];
+  for(let i=0;i<80;i++) ip.push({x:Math.random()*introCanvas.width,y:Math.random()*introCanvas.height,r:Math.random()*2+.4,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,c:ipc[Math.floor(Math.random()*ipc.length)],o:Math.random()*.5+.15});
+  function drawIntro(){
+    ictx.clearRect(0,0,introCanvas.width,introCanvas.height);
+    ip.forEach(p=>{
+      ictx.beginPath(); ictx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ictx.fillStyle=p.c+p.o+')'; ictx.fill();
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>introCanvas.width)p.vx*=-1;
+      if(p.y<0||p.y>introCanvas.height)p.vy*=-1;
+    });
+    requestAnimationFrame(drawIntro);
+  }
+  drawIntro();
+}
 
 /* ── SITE-WIDE PARTICLES ── */
 const heroCanvas=document.getElementById('hero-canvas');
