@@ -10,6 +10,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
 body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;background-image:radial-gradient(circle at 20% 3%,rgba(212,168,67,.22) 0%,transparent 28%),radial-gradient(circle at 80% 4%,rgba(212,92,92,.18) 0%,transparent 30%),radial-gradient(circle at 50% 10%,rgba(77,203,168,.14) 0%,transparent 32%),radial-gradient(circle at 5% 35%,rgba(92,150,212,.14) 0%,transparent 30%),radial-gradient(circle at 95% 40%,rgba(168,108,212,.14) 0%,transparent 30%),radial-gradient(circle at 30% 70%,rgba(212,122,60,.1) 0%,transparent 32%),radial-gradient(circle at 70% 75%,rgba(60,184,212,.1) 0%,transparent 32%),radial-gradient(circle at 50% 95%,rgba(212,168,67,.1) 0%,transparent 30%),linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:auto,auto,auto,auto,auto,auto,auto,auto,48px 48px,48px 48px;background-attachment:fixed}
+.flag-emoji.is-badge{display:inline-block;width:1.7em;height:1.2em;vertical-align:middle;border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);overflow:hidden;cursor:default;background-size:cover;background-position:center;background-repeat:no-repeat}
 
 /* CURSOR */
 .cursor{width:12px;height:12px;border-radius:50%;background:var(--gold);position:fixed;pointer-events:none;z-index:9999;transition:transform .15s ease;mix-blend-mode:difference}
@@ -668,6 +669,15 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 
 .media-faq{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08);background:rgba(8,8,8,.3)}
 .media-cta{padding:4.5rem 3rem;text-align:center;background:linear-gradient(135deg,rgba(212,92,92,.06),rgba(212,168,67,.05));border-bottom:1px solid rgba(201,168,76,.08)}
+
+/* ── FLAG BADGES (text-based, renders consistently on all devices) ── */
+.flag-badge{display:inline-flex;align-items:center;justify-content:center;font-size:.62em;font-weight:800;letter-spacing:.5px;padding:2px 6px;border-radius:2px;vertical-align:middle;line-height:1.6;font-family:'Montserrat',sans-serif}
+.flag-pk{background:#0a5c36;color:#fff}
+.flag-es{background:#aa151b;color:#f1bf00}
+.flag-gb{background:#1a2c5b;color:#fff}
+.flag-ae{background:#00732f;color:#fff}
+.flag-tr{background:#e30a17;color:#fff}
+.flag-row{display:inline-flex;align-items:center;gap:6px;vertical-align:middle}
 </style>
 
 <!-- CURSOR -->
@@ -695,7 +705,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="intro-line"></div>
     <div class="intro-ent">ENTERPRISES</div>
     <div class="intro-pvt">(PVT.) LTD. &nbsp;·&nbsp; EST. 2023</div>
-    <div class="intro-flag">🇵🇰 &nbsp;<span style="color:var(--gold)">·</span>&nbsp; 🇪🇸</div>
+    <div class="intro-flag"><span class="flag-emoji" data-code="PK">🇵🇰</span> &nbsp;<span style="color:var(--gold)">·</span>&nbsp; <span class="flag-emoji" data-code="ES">🇪🇸</span></div>
     <div class="intro-sectors">
       <span style="color:var(--gold)">Commerce</span>
       <span style="color:var(--burgundy)">Real Estate</span>
@@ -745,8 +755,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <button class="btn-outline" onclick="showPage('contact')">Get In Touch</button>
     </div>
     <div class="hero-flags">
-      <div class="hero-flag-pill">🇵🇰 Pakistan</div>
-      <div class="hero-flag-pill">🇪🇸 Spain</div>
+      <div class="hero-flag-pill"><span class="flag-emoji" data-code="PK">🇵🇰</span> Pakistan</div>
+      <div class="hero-flag-pill"><span class="flag-emoji" data-code="ES">🇪🇸</span> Spain</div>
       <div class="hero-flag-pill">🌍 International</div>
     </div>
     <div class="hero-ticker">
@@ -845,11 +855,11 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <p class="page-label">Eyes On The World</p>
     <h2 class="page-title" style="font-size:clamp(24px,4vw,40px)">Global <span class="blue">Targets</span></h2>
     <div class="markets-grid">
-      <div class="market-cell"><div class="market-icon">🇵🇰</div><div class="market-name">Pakistan</div></div>
-      <div class="market-cell"><div class="market-icon">🇪🇸</div><div class="market-name">Spain</div></div>
-      <div class="market-cell"><div class="market-icon">🇦🇪</div><div class="market-name">UAE</div></div>
-      <div class="market-cell"><div class="market-icon">🇬🇧</div><div class="market-name">Britain</div></div>
-      <div class="market-cell"><div class="market-icon">🇹🇷</div><div class="market-name">Turkey</div></div>
+      <div class="market-cell"><div class="market-icon"><span class="flag-emoji" data-code="PK">🇵🇰</span></div><div class="market-name">Pakistan</div></div>
+      <div class="market-cell"><div class="market-icon"><span class="flag-emoji" data-code="ES">🇪🇸</span></div><div class="market-name">Spain</div></div>
+      <div class="market-cell"><div class="market-icon"><span class="flag-emoji" data-code="AE">🇦🇪</span></div><div class="market-name">UAE</div></div>
+      <div class="market-cell"><div class="market-icon"><span class="flag-emoji" data-code="GB">🇬🇧</span></div><div class="market-name">Britain</div></div>
+      <div class="market-cell"><div class="market-icon"><span class="flag-emoji" data-code="TR">🇹🇷</span></div><div class="market-name">Turkey</div></div>
       <div class="market-cell"><div class="market-icon">🌍</div><div class="market-name">Beyond</div></div>
     </div>
   </div>
@@ -948,7 +958,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Established</div><div class="info-val">2023 · Incorporated</div></div>
       <div class="info-div"></div>
-      <div class="info-row"><div class="info-label">Presence</div><div class="info-val">Pakistan 🇵🇰 · Spain 🇪🇸</div></div>
+      <div class="info-row"><div class="info-label">Presence</div><div class="info-val">Pakistan <span class="flag-emoji" data-code="PK">🇵🇰</span> · Spain <span class="flag-emoji" data-code="ES">🇪🇸</span></div></div>
       <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Email</div><div class="info-val" style="font-size:15px">kh11n.enterprises@gmail.com</div></div>
       <div class="info-div"></div>
@@ -1017,8 +1027,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <p class="page-label" style="text-align:center">Where We Operate</p>
     <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);text-align:center">Our <span class="gold">Presence</span></h2>
     <div class="locations-grid">
-      <div class="location-card"><div class="location-flag">🇵🇰</div><div class="location-name">Pakistan</div><div class="location-role">Headquarters</div><div class="location-desc">Home base of Usman Khan Enterprises — where the vision was born and continues to grow.</div><div class="location-clock">🕐 <span id="clock-pk">--:--</span> Local Time</div></div>
-      <div class="location-card"><div class="location-flag">🇪🇸</div><div class="location-name">Spain</div><div class="location-role">International Office</div><div class="location-desc">Our European gateway — connecting Eastern ambition with Western markets.</div><div class="location-clock">🕐 <span id="clock-es">--:--</span> Local Time</div></div>
+      <div class="location-card"><div class="location-flag"><span class="flag-emoji" data-code="PK">🇵🇰</span></div><div class="location-name">Pakistan</div><div class="location-role">Headquarters</div><div class="location-desc">Home base of Usman Khan Enterprises — where the vision was born and continues to grow.</div><div class="location-clock">🕐 <span id="clock-pk">--:--</span> Local Time</div></div>
+      <div class="location-card"><div class="location-flag"><span class="flag-emoji" data-code="ES">🇪🇸</span></div><div class="location-name">Spain</div><div class="location-role">International Office</div><div class="location-desc">Our European gateway — connecting Eastern ambition with Western markets.</div><div class="location-clock">🕐 <span id="clock-es">--:--</span> Local Time</div></div>
     </div>
   </div>
 
@@ -1362,8 +1372,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="contact-cards-grid">
       <div class="contact-card"><div class="cc-icon">✉️</div><div class="cc-title">Email</div><div class="cc-val">kh11n.enterprises@gmail.com</div></div>
       <div class="contact-card"><div class="cc-icon">📸</div><div class="cc-title">Instagram</div><div class="cc-val">@kh1n.enterprises</div></div>
-      <div class="contact-card"><div class="cc-icon">🇵🇰</div><div class="cc-title">Headquarters</div><div class="cc-val">Pakistan</div></div>
-      <div class="contact-card"><div class="cc-icon">🇪🇸</div><div class="cc-title">International</div><div class="cc-val">Spain</div></div>
+      <div class="contact-card"><div class="cc-icon"><span class="flag-emoji" data-code="PK">🇵🇰</span></div><div class="cc-title">Headquarters</div><div class="cc-val">Pakistan</div></div>
+      <div class="contact-card"><div class="cc-icon"><span class="flag-emoji" data-code="ES">🇪🇸</span></div><div class="cc-title">International</div><div class="cc-val">Spain</div></div>
     </div>
   </div>
 
@@ -1372,8 +1382,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="exclusive-tag">By Request Only</div>
       <div class="contact-item"><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:kh11n.enterprises@gmail.com">kh11n.enterprises@gmail.com</a></div></div>
       <div class="contact-item"><div class="contact-label">Instagram</div><div class="contact-val"><a href="https://instagram.com/kh1n.enterprises" target="_blank">@kh1n.enterprises</a></div></div>
-      <div class="contact-item"><div class="contact-label">Headquarters</div><div class="contact-val">Pakistan 🇵🇰</div></div>
-      <div class="contact-item"><div class="contact-label">International Office</div><div class="contact-val">Spain 🇪🇸</div></div>
+      <div class="contact-item"><div class="contact-label">Headquarters</div><div class="contact-val">Pakistan <span class="flag-emoji" data-code="PK">🇵🇰</span></div></div>
+      <div class="contact-item"><div class="contact-label">International Office</div><div class="contact-val">Spain <span class="flag-emoji" data-code="ES">🇪🇸</span></div></div>
       <div class="contact-item"><div class="contact-label">Availability</div><div class="contact-val">International</div></div>
       <div class="contact-item"><div class="contact-label">Founded By</div><div class="contact-val">Usman Khan Yousafzai</div></div>
       <div class="contact-item"><div class="contact-label">Response Time</div><div class="contact-val" style="font-size:15px;color:#888">Within 24–48 hours</div></div>
@@ -1447,6 +1457,30 @@ const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
 const isMobile = /Android|iPhone|iPad|iPod|Touch/i.test(navigator.userAgent) || ('ontouchstart' in window) || window.innerWidth < 768;
+
+/* ── FLAG BADGES (desktop only) ── */
+/* Mobile keeps the real emoji as-is. Desktop always shows accurate SVG flag graphics,
+   since emoji flag support is unreliable across browsers/OS (especially Windows). */
+(function(){
+  if(isMobile) return;
+  const names={PK:'Pakistan',ES:'Spain',GB:'United Kingdom',AE:'United Arab Emirates',TR:'Turkey'};
+  const flagSVGs={
+    PK:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="24" fill="#FFFFFF"/><rect x="9" width="27" height="24" fill="#01411C"/><g fill="#FFFFFF" transform="translate(24,12)"><circle r="6.4"/><circle r="6.4" fill="#01411C" cx="3.3"/><path d="M5.5,-3.2 L6.23,-1.01 L8.54,-0.99 L6.69,0.39 L7.38,2.59 L5.5,1.25 L3.62,2.59 L4.31,0.39 L2.46,-0.99 L4.77,-1.01 Z"/></g></svg>',
+    ES:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="24" fill="#AA151B"/><rect y="6" width="36" height="12" fill="#FFC400"/></svg>',
+    GB:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="24" fill="#012169"/><path d="M0,0 L36,24 M36,0 L0,24" stroke="#FFFFFF" stroke-width="4.8"/><path d="M0,0 L36,24 M36,0 L0,24" stroke="#C8102E" stroke-width="1.6"/><path d="M18,0 V24 M0,12 H36" stroke="#FFFFFF" stroke-width="8"/><path d="M18,0 V24 M0,12 H36" stroke="#C8102E" stroke-width="3"/></svg>',
+    AE:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="24" fill="#FFFFFF"/><rect y="0" width="36" height="8" fill="#00732F"/><rect y="16" width="36" height="8" fill="#000000"/><rect width="10" height="24" fill="#FF0000"/></svg>',
+    TR:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="14" cy="12" r="6" fill="#FFFFFF"/><circle cx="15.6" cy="12" r="4.8" fill="#E30A17"/><path d="M21,12 L26.5,10.2 L23.2,12 L26.5,13.8 Z" fill="#FFFFFF"/></svg>'
+  };
+  document.querySelectorAll('.flag-emoji').forEach(el=>{
+    const code = el.dataset.code || '';
+    if(!flagSVGs[code]) return;
+    el.classList.add('is-badge');
+    el.title = names[code] || code;
+    el.textContent = '';
+    const encoded = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(flagSVGs[code]);
+    el.style.backgroundImage = `url("${encoded}")`;
+  });
+})();
 
 if(!isMobile){
   document.addEventListener('mousemove',e=>{
