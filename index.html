@@ -4,8 +4,166 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>Usman Khan Enterprises</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+html[dir="rtl"] body{font-family:'Noto Nastaliq Urdu','Montserrat',sans-serif}
+html[dir="rtl"] .page-title,html[dir="rtl"] .hero-title,html[dir="rtl"] .pillar-title,html[dir="rtl"] .leader-name,html[dir="rtl"] .venture-name,html[dir="rtl"] .tier-name,html[dir="rtl"] .value-title,html[dir="rtl"] .insight-title,html[dir="rtl"] .featured-title,html[dir="rtl"] .newsletter-title,html[dir="rtl"] .cta-title,html[dir="rtl"] .quote-text,html[dir="rtl"] .timeline-year,html[dir="rtl"] .culture-title,html[dir="rtl"] .location-name,html[dir="rtl"] .award-title,html[dir="rtl"] .philosophy-text h3,html[dir="rtl"] .vc-word,html[dir="rtl"] .bio-name,html[dir="rtl"] .footer-logo{font-family:'Noto Nastaliq Urdu','Cormorant Garamond',serif;line-height:1.9}
+html[dir="rtl"] .nav-links,html[dir="rtl"] .highlights-grid,html[dir="rtl"] .hero-btns{direction:rtl}
+html[dir="rtl"] .timeline::before{left:auto;right:20px}
+html[dir="rtl"] .timeline-item{padding-left:0;padding-right:60px}
+html[dir="rtl"] .timeline-item:hover{padding-left:0;padding-right:68px}
+html[dir="rtl"] .timeline-dot{left:auto;right:14px}
+html[dir="rtl"] .pillar::before{left:auto;right:0}
+html[dir="rtl"] .about-text{border-right:none;border-left:1px solid rgba(201,168,76,.08)}
+html[dir="rtl"] .contact-info{border-right:none;border-left:1px solid rgba(201,168,76,.08)}
+html[dir="rtl"] .about-quote,html[dir="rtl"] .compare-row{border-left:none;border-right:3px solid var(--gold)}
+html[dir="rtl"] .tier-features li::before{content:'— '}
+html[dir="rtl"] .newsletter-form input{border-right:1px solid rgba(201,168,76,.2);border-left:none}
+.lang-switch{position:relative;display:inline-flex;align-items:center;gap:0;border:1px solid rgba(201,168,76,.3);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.02)}
+.lang-pill{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border:none;background:transparent;color:#888;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.5px;cursor:pointer;transition:all .3s;border-right:1px solid rgba(201,168,76,.15);white-space:nowrap}
+.lang-pill:last-child{border-right:none}
+.lang-pill:hover{color:var(--gold);background:rgba(201,168,76,.08)}
+.lang-pill.active{background:var(--gold);color:var(--black);font-weight:600}
+.lang-pill .flag-emoji{width:1.3em;height:.95em;font-size:11px}
+html[dir="rtl"] .lang-pill{border-right:none;border-left:1px solid rgba(201,168,76,.15)}
+html[dir="rtl"] .lang-pill:last-child{border-left:none}
+[data-i18n-placeholder]::placeholder{opacity:.7}
+
+/* ── TOAST NOTIFICATIONS ── */
+#toast-wrap{position:fixed;top:80px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+html[dir="rtl"] #toast-wrap{right:auto;left:20px}
+.toast{background:rgba(10,10,10,.95);border:1px solid rgba(201,168,76,.4);border-left:3px solid var(--emerald);padding:12px 20px;font-size:12px;color:#eee;min-width:220px;max-width:320px;box-shadow:0 8px 30px rgba(0,0,0,.5);opacity:0;transform:translateX(40px);transition:all .35s ease;backdrop-filter:blur(10px)}
+html[dir="rtl"] .toast{border-left:none;border-right:3px solid var(--emerald);transform:translateX(-40px)}
+.toast.show{opacity:1;transform:translateX(0)}
+
+/* ── FLOATING QUICK ACTIONS ── */
+.fab-wrap{position:fixed;bottom:2rem;left:2rem;z-index:200;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:10px}
+html[dir="rtl"] .fab-wrap{left:auto;right:2rem;align-items:flex-end}
+.fab-main{width:50px;height:50px;border-radius:50%;background:var(--gold);color:var(--black);border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(201,168,76,.4);transition:transform .3s}
+.fab-main:hover{transform:scale(1.08)}
+.fab-main.open{transform:rotate(45deg)}
+.fab-item{display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(10px) scale(.8);pointer-events:none;transition:all .25s ease}
+.fab-wrap.open .fab-item{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.fab-item a,.fab-item button{width:42px;height:42px;border-radius:50%;background:rgba(10,10,10,.9);border:1px solid rgba(201,168,76,.4);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;text-decoration:none;cursor:pointer;transition:all .3s}
+.fab-item a:hover,.fab-item button:hover{background:var(--gold);color:var(--black);transform:scale(1.1)}
+.fab-label{font-size:9px;letter-spacing:1px;color:#888;background:rgba(10,10,10,.85);padding:4px 10px;border-radius:10px;white-space:nowrap}
+
+/* ── CALM / MOTION TOGGLE ── */
+.calm-toggle{padding:7px 12px;border:1px solid rgba(201,168,76,.3);background:transparent;color:#888;font-size:9px;letter-spacing:1.5px;cursor:pointer;transition:all .3s;border-radius:20px}
+.calm-toggle:hover,.calm-toggle.on{color:var(--gold);border-color:var(--gold)}
+body.calm-mode .orb{animation-play-state:paused!important}
+body.calm-mode #hero-canvas,body.calm-mode #glow-follow{display:none}
+
+/* ── CURRENCY CONVERTER ── */
+.converter-section{padding:4rem 3rem;border-bottom:1px solid rgba(201,168,76,.08);background:linear-gradient(135deg,rgba(212,168,67,.04),rgba(92,150,212,.03))}
+.converter-box{max-width:520px;margin:2.5rem auto 0;border:1px solid rgba(201,168,76,.2);padding:2rem;background:rgba(255,255,255,.015)}
+.converter-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.converter-field{flex:1;min-width:140px}
+.converter-field label{display:block;font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;text-transform:uppercase}
+.converter-field input,.converter-field select{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);color:#fff;padding:10px 14px;font-family:'Montserrat',sans-serif;font-size:14px;outline:none}
+.converter-swap{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;margin-top:20px;transition:all .3s}
+.converter-swap:hover{background:var(--gold);color:var(--black);transform:rotate(180deg)}
+.converter-result{margin-top:1.5rem;padding:1.2rem;text-align:center;border:1px dashed rgba(201,168,76,.3);font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold)}
+.converter-note{font-size:10px;color:#555;margin-top:1rem;text-align:center;line-height:1.6}
+
+/* ── MINI SEARCH BOXES ── */
+.mini-search{position:relative;max-width:320px;margin:1.5rem 0 0}
+.mini-search input{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(201,168,76,.2);color:#fff;padding:10px 16px 10px 36px;font-family:'Montserrat',sans-serif;font-size:12px;outline:none;transition:border .3s}
+.mini-search input:focus{border-color:var(--gold)}
+.mini-search::before{content:'🔍';position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:11px;opacity:.5}
+html[dir="rtl"] .mini-search input{padding:10px 36px 10px 16px}
+html[dir="rtl"] .mini-search::before{left:auto;right:12px}
+.no-results{padding:2rem;text-align:center;color:#555;font-size:12px;display:none}
+
+/* ── FOUNDER TIP GENERATOR ── */
+.tip-box{max-width:600px;margin:2rem auto 0;border:1px solid rgba(201,168,76,.25);padding:2rem;text-align:center;background:rgba(201,168,76,.03);position:relative}
+.tip-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#ddd;line-height:1.8;min-height:60px}
+.tip-btn{margin-top:1.2rem}
+
+/* ── SHARE BUTTON ── */
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border:1px solid rgba(201,168,76,.35);color:var(--gold);background:transparent;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Montserrat',sans-serif}
+.share-btn:hover{background:var(--gold);color:var(--black)}
+
+/* ── LIVE VISITORS BADGE ── */
+.live-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:1.5px;color:var(--emerald);border:1px solid rgba(77,203,168,.3);padding:5px 12px;border-radius:20px}
+.live-badge .lb-dot{width:6px;height:6px;border-radius:50%;background:var(--emerald);animation:pulse 1.5s infinite}
+
+/* ── FAQ THUMBS ── */
+.insight-vote{display:flex;gap:.5rem;margin-top:1rem;align-items:center}
+.vote-btn{padding:5px 12px;border:1px solid rgba(255,255,255,.1);background:transparent;color:#666;font-size:10px;cursor:pointer;transition:all .2s;border-radius:14px}
+.vote-btn:hover{border-color:var(--gold);color:var(--gold)}
+.vote-btn.voted{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
+/* ── CONFETTI ── */
+.confetti-piece{position:fixed;top:-10px;z-index:9998;pointer-events:none;border-radius:2px}
+
+/* ── FONT SIZE CONTROLS ── */
+.fsize-controls{display:inline-flex;gap:2px;border:1px solid rgba(201,168,76,.3);border-radius:16px;overflow:hidden}
+.fsize-btn{width:26px;height:26px;background:transparent;border:none;color:#888;font-size:10px;cursor:pointer;transition:all .2s}
+.fsize-btn:hover{color:var(--gold);background:rgba(201,168,76,.08)}
+
+/* ── PRINT STYLES ── */
+@media print{
+  nav,.back-top,.fab-wrap,#toast-wrap,.nav-progress,#hero-canvas,#glow-follow,.cursor,.cursor-ring,.page-top-banner,.calm-toggle,.lang-switch,.hero-ticker,.orb{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  .page{display:block!important;padding-top:0}
+  * { animation:none!important; }
+}
+
+/* ── LANGUAGE SUGGEST BANNER ── */
+#lang-banner{position:fixed;top:0;left:0;right:0;z-index:1001;background:linear-gradient(90deg,var(--gold),var(--gold-light));color:var(--black);padding:10px 20px;display:none;align-items:center;justify-content:center;gap:1rem;font-size:12px;font-weight:600;flex-wrap:wrap;text-align:center}
+#lang-banner.show{display:flex}
+#lang-banner button{padding:5px 14px;border:1px solid var(--black);background:transparent;color:var(--black);font-size:10px;letter-spacing:1px;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:600;border-radius:14px}
+#lang-banner button:hover{background:var(--black);color:var(--gold)}
+#lang-banner .lb-close{border:none;font-size:16px;padding:0 6px;background:transparent}
+
+/* ── COMMAND PALETTE ── */
+.cmdk-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;display:none;align-items:flex-start;justify-content:center;padding-top:12vh;backdrop-filter:blur(4px)}
+.cmdk-overlay.open{display:flex}
+.cmdk-box{width:min(560px,92vw);background:rgba(14,12,8,.98);border:1px solid rgba(201,168,76,.35);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.cmdk-input-wrap{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid rgba(201,168,76,.15)}
+.cmdk-input-wrap span{opacity:.5}
+.cmdk-input-wrap input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:15px;font-family:'Montserrat',sans-serif}
+.cmdk-hint{font-size:9px;color:#555;border:1px solid #333;padding:2px 6px;border-radius:4px}
+.cmdk-list{max-height:320px;overflow-y:auto}
+.cmdk-item{padding:12px 20px;font-size:13px;color:#bbb;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.cmdk-item.active,.cmdk-item:hover{background:rgba(201,168,76,.12);color:var(--gold)}
+.cmdk-item .cmdk-tag{font-size:9px;color:#555;letter-spacing:1px;text-transform:uppercase}
+.cmdk-empty{padding:24px 20px;text-align:center;color:#555;font-size:12px}
+.cmdk-trigger{padding:7px 14px;border:1px solid rgba(201,168,76,.3);background:transparent;color:#888;font-size:9px;letter-spacing:1px;cursor:pointer;border-radius:20px;display:inline-flex;align-items:center;gap:6px;transition:all .3s}
+.cmdk-trigger:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ── VCARD / DOWNLOAD BUTTON ── */
+.vcard-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border:1px solid var(--emerald);color:var(--emerald);background:transparent;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Montserrat',sans-serif}
+.vcard-btn:hover{background:var(--emerald);color:var(--black)}
+
+/* ── LIVE COMPANY AGE COUNTER ── */
+.age-counter{max-width:640px;margin:2rem auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.15)}
+.age-cell{background:rgba(8,8,8,.6);padding:1.5rem 1rem;text-align:center}
+.age-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:900;color:var(--gold);line-height:1}
+.age-label{font-size:8px;color:#666;letter-spacing:2px;margin-top:4px;text-transform:uppercase}
+
+/* ── TESTIMONIAL CAROUSEL ── */
+.testi-carousel{max-width:680px;margin:2.5rem auto 0;position:relative;overflow:hidden}
+.testi-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.testi-slide{min-width:100%;padding:0 1rem;box-sizing:border-box}
+.testi-dots{display:flex;justify-content:center;gap:8px;margin-top:1.5rem}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;transition:all .3s}
+.testi-dot.active{background:var(--gold);width:22px;border-radius:4px}
+.testi-arrows{display:flex;justify-content:center;gap:1rem;margin-top:1rem}
+.testi-arrow{width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,168,76,.3);background:transparent;color:var(--gold);cursor:pointer;transition:all .3s}
+.testi-arrow:hover{background:var(--gold);color:var(--black)}
+
+/* ── COPY QUOTE BUTTON ── */
+.copy-quote-btn{display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:1.5px;color:#666;background:transparent;border:1px solid rgba(255,255,255,.1);padding:5px 14px;cursor:pointer;transition:all .3s;text-transform:uppercase;margin-top:1rem;font-family:'Montserrat',sans-serif}
+.copy-quote-btn:hover{color:var(--gold);border-color:var(--gold)}
+
+/* ── EASTER EGG MODAL ── */
+.egg-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;display:none;align-items:center;justify-content:center;padding:2rem}
+.egg-modal.show{display:flex}
+.egg-card{max-width:480px;text-align:center;border:1px solid var(--gold);padding:3rem 2rem;background:radial-gradient(ellipse at center,rgba(212,168,67,.1),transparent)}
+.egg-card h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);margin-bottom:1rem}
+.egg-card p{font-size:13px;color:#aaa;line-height:1.9;margin-bottom:1.5rem}
 :root{--gold:#d4a843;--gold-light:#f0c96a;--burgundy:#d45c5c;--emerald:#4dcba8;--sapphire:#5c96d4;--violet:#a86cd4;--orange:#d47a3c;--teal:#3cb8d4;--black:#080808;--dark:#111111;--white:#ffffff}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
@@ -123,6 +281,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .highlight-card:nth-child(3){--hc:rgba(77,203,168,.35);--hcbright:rgba(77,203,168,.8);--hbg:rgba(77,203,168,.07)}
 .highlight-card:nth-child(4){--hc:rgba(92,150,212,.35);--hcbright:rgba(92,150,212,.8);--hbg:rgba(92,150,212,.07)}
 .highlight-card:nth-child(5){--hc:rgba(168,108,212,.35);--hcbright:rgba(168,108,212,.8);--hbg:rgba(168,108,212,.07)}
+.highlight-card:nth-child(6){--hc:rgba(212,122,60,.35);--hcbright:rgba(212,122,60,.8);--hbg:rgba(212,122,60,.07)}
 .highlight-icon{font-size:28px;margin-bottom:.8rem;position:relative;z-index:1}
 .highlight-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;margin-bottom:.4rem;position:relative;z-index:1}
 .highlight-text{font-size:10px;color:#666;line-height:1.7;position:relative;z-index:1}
@@ -163,7 +322,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .timeline-item:hover{padding-left:68px}
 .timeline-dot{position:absolute;left:14px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--black);border:2px solid var(--dc);transition:transform .3s}
 .timeline-item:hover .timeline-dot{transform:scale(1.4)}
-.timeline-item:nth-child(1){--dc:var(--gold)}.timeline-item:nth-child(2){--dc:var(--burgundy)}.timeline-item:nth-child(3){--dc:var(--emerald)}.timeline-item:nth-child(4){--dc:var(--sapphire)}.timeline-item:nth-child(5){--dc:var(--violet)}
+.timeline-item:nth-child(1){--dc:var(--gold)}.timeline-item:nth-child(2){--dc:var(--burgundy)}.timeline-item:nth-child(3){--dc:var(--emerald)}.timeline-item:nth-child(4){--dc:var(--sapphire)}.timeline-item:nth-child(5){--dc:var(--violet)}.timeline-item:nth-child(6){--dc:var(--orange)}
 .timeline-year{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--dc)}
 .timeline-title{font-size:10px;letter-spacing:2px;color:#555;margin:2px 0 6px}
 .timeline-text{font-size:12px;color:#666;line-height:1.8;font-weight:300}
@@ -238,7 +397,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .value-item:last-child{border-right:none}
 .value-item:nth-child(1){--vc2:var(--gold)}.value-item:nth-child(2){--vc2:var(--burgundy)}.value-item:nth-child(3){--vc2:var(--emerald)}.value-item:nth-child(4){--vc2:var(--sapphire)}
 .value-icon{font-size:26px;margin-bottom:1rem}
-.value-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;margin-bottom:.5rem;color:var(--vc2)}
+.value-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;margin-bottom:.5rem}
 .value-text{font-size:12px;color:#666;line-height:1.8}
 
 /* PHILOSOPHY */
@@ -260,7 +419,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(201,168,76,.08);margin-top:2rem}
 .award-item{background:rgba(8,8,8,.6);padding:2rem 1.5rem;text-align:center;border-top:2px solid var(--aw);transition:background .3s}
 .award-item:hover{background:rgba(255,255,255,.02)}
-.award-item:nth-child(1){--aw:var(--gold)}.award-item:nth-child(2){--aw:var(--burgundy)}.award-item:nth-child(3){--aw:var(--emerald)}.award-item:nth-child(4){--aw:var(--sapphire)}
+.award-item:nth-child(1){--aw:var(--gold)}.award-item:nth-child(2){--aw:var(--burgundy)}.award-item:nth-child(3){--aw:var(--emerald)}.award-item:nth-child(4){--aw:var(--sapphire)}.award-item:nth-child(5){--aw:var(--violet)}
 .award-icon{font-size:28px;margin-bottom:.8rem}
 .award-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;margin-bottom:4px;color:var(--aw)}
 .award-desc{font-size:10px;color:#555;line-height:1.6}
@@ -295,7 +454,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .venture-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--vc3);transition:width .4s}
 .venture-card:hover::after{width:100%}
 .venture-card:hover{background:rgba(18,16,10,.9);transform:translateY(-2px)}
-.venture-card:nth-child(1){--vc3:var(--gold)}.venture-card:nth-child(2){--vc3:var(--burgundy)}.venture-card:nth-child(3){--vc3:var(--emerald)}.venture-card:nth-child(4){--vc3:var(--sapphire)}.venture-card:nth-child(5){--vc3:var(--violet)}.venture-card:nth-child(6){--vc3:var(--burgundy)}.venture-card:nth-child(7){--vc3:var(--emerald)}.venture-card:nth-child(8){--vc3:var(--sapphire)}
+.venture-card:nth-child(1){--vc3:var(--gold)}.venture-card:nth-child(2){--vc3:var(--burgundy)}.venture-card:nth-child(3){--vc3:var(--emerald)}.venture-card:nth-child(4){--vc3:var(--sapphire)}.venture-card:nth-child(5){--vc3:var(--violet)}.venture-card:nth-child(6){--vc3:var(--burgundy)}.venture-card:nth-child(7){--vc3:var(--emerald)}.venture-card:nth-child(8){--vc3:var(--sapphire)}.venture-card:nth-child(9){--vc3:var(--gold)}
 .venture-num{font-size:10px;color:var(--vc3);letter-spacing:3px;margin-bottom:1.5rem}
 .venture-name{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;margin-bottom:1rem}
 .venture-desc{font-size:12px;color:#666;line-height:1.9;font-weight:300}
@@ -337,7 +496,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:2.5rem}
 .testi-card{border:1px solid rgba(255,255,255,.05);padding:2rem;border-left:3px solid var(--tc3);transition:all .3s}
 .testi-card:hover{background:rgba(255,255,255,.02);transform:translateY(-3px)}
-.testi-card:nth-child(1){--tc3:var(--gold)}.testi-card:nth-child(2){--tc3:var(--burgundy)}.testi-card:nth-child(3){--tc3:var(--emerald)}
+.testi-card:nth-child(1){--tc3:var(--gold)}.testi-card:nth-child(2){--tc3:var(--burgundy)}.testi-card:nth-child(3){--tc3:var(--emerald)}.testi-card:nth-child(4){--tc3:var(--sapphire)}
 .testi-stars{color:var(--gold);font-size:13px;margin-bottom:1rem;letter-spacing:3px}
 .testi-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#ccc;line-height:1.9;margin-bottom:1.5rem}
 .testi-author{font-size:11px;letter-spacing:2px;color:var(--tc3)}
@@ -429,6 +588,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   .footer-right{font-size:9px;text-align:left}
   .v-stat{padding:1.2rem .5rem}
   .v-stat-num{font-size:26px}
+  .lang-switch{position:static;margin-top:.4rem}
 }
 @media(max-width:420px){
   .nav-links{gap:.4rem}
@@ -687,6 +847,40 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <div id="glow-follow"></div>
 <div class="nav-progress" id="nav-progress"></div>
 <button class="back-top" id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div id="toast-wrap"></div>
+
+<div id="lang-banner">
+  <span id="lang-banner-text">It looks like you might prefer Español — switch now?</span>
+  <button onclick="acceptLangSuggestion()" id="lang-banner-accept">Switch</button>
+  <button class="lb-close" onclick="dismissLangBanner()">✕</button>
+</div>
+
+<div class="cmdk-overlay" id="cmdk-overlay" onclick="if(event.target===this) closeCmdk()">
+  <div class="cmdk-box">
+    <div class="cmdk-input-wrap">
+      <span>⌘</span>
+      <input type="text" id="cmdk-input" placeholder="Jump to a page or action..." oninput="cmdkFilter()">
+      <span class="cmdk-hint">ESC</span>
+    </div>
+    <div class="cmdk-list" id="cmdk-list"></div>
+  </div>
+</div>
+
+<div class="egg-modal" id="egg-modal">
+  <div class="egg-card">
+    <h3>✦ You Found It ✦</h3>
+    <p id="egg-text">You've got the curiosity of a founder. That's rare — and it's exactly the kind of person we like to work with. Use code <strong style="color:var(--gold)">EXPLORER</strong> when you reach out, just so we know you found this.</p>
+    <button class="btn-gold" onclick="document.getElementById('egg-modal').classList.remove('show')">Close</button>
+  </div>
+</div>
+
+<div class="fab-wrap" id="fab-wrap">
+  <button class="fab-main" id="fab-main" onclick="toggleFab()">✦</button>
+  <div class="fab-item"><a href="mailto:kh11n.enterprises@gmail.com" title="Email" onclick="showToast(currentLang==='es'?'Abriendo tu app de correo…':currentLang==='ur'?'ای میل ایپ کھل رہی ہے...':'Opening your email app…')">✉️</a><span class="fab-label" id="fab-label-email">Email Us</span></div>
+  <div class="fab-item"><a href="https://instagram.com/kh1n.enterprises" target="_blank" title="Instagram">📸</a><span class="fab-label" id="fab-label-insta">Instagram</span></div>
+  <div class="fab-item"><button onclick="showPage('contact');closeFab();" title="Book Consultation">💼</button><span class="fab-label" id="fab-label-book">Book Now</span></div>
+  <div class="fab-item"><button onclick="shareSite()" title="Share">🔗</button><span class="fab-label" id="fab-label-share">Share Site</span></div>
+</div>
 
 <!-- INTRO -->
 <div class="intro" id="intro-screen">
@@ -721,13 +915,20 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <nav>
   <div class="nav-logo">Usman Khan Enterprises</div>
   <div class="nav-links">
-    <a onclick="showPage('home')" class="active" id="nav-home">Home</a>
-    <a onclick="showPage('about')" id="nav-about">About</a>
-    <a onclick="showPage('ventures')" id="nav-ventures">Ventures</a>
-    <a onclick="showPage('insights')" id="nav-insights">Insights</a>
-    <a onclick="showPage('media')" id="nav-media">Media</a>
-    <a onclick="showPage('contact')" id="nav-contact">Contact</a>
-    <button class="nav-cta" onclick="showPage('contact')">Book Consultation</button>
+    <a onclick="showPage('home')" class="active" id="nav-home" data-i18n="nav.home">Home</a>
+    <a onclick="showPage('about')" id="nav-about" data-i18n="nav.about">About</a>
+    <a onclick="showPage('ventures')" id="nav-ventures" data-i18n="nav.ventures">Ventures</a>
+    <a onclick="showPage('insights')" id="nav-insights" data-i18n="nav.insights">Insights</a>
+    <a onclick="showPage('media')" id="nav-media" data-i18n="nav.media">Media</a>
+    <a onclick="showPage('contact')" id="nav-contact" data-i18n="nav.contact">Contact</a>
+    <button class="nav-cta" onclick="showPage('contact')" data-i18n="nav.cta">Book Consultation</button>
+    <div class="lang-switch" id="lang-switch">
+      <button class="lang-pill" data-lang="en" onclick="setLanguage('en')"><span class="flag-emoji" data-code="GB">🇬🇧</span> English</button>
+      <button class="lang-pill" data-lang="es" onclick="setLanguage('es')"><span class="flag-emoji" data-code="ES">🇪🇸</span> Español</button>
+      <button class="lang-pill" data-lang="ur" onclick="setLanguage('ur')"><span class="flag-emoji" data-code="PK">🇵🇰</span> اردو</button>
+    </div>
+    <button class="calm-toggle" id="calm-toggle" onclick="toggleCalmMode()" title="Reduce motion">✦ <span id="calm-toggle-label">Calm</span></button>
+    <button class="cmdk-trigger" onclick="openCmdk()" title="Quick navigate">🔎 <span id="cmdk-trigger-label">Search</span></button>
   </div>
 </nav>
 
@@ -743,21 +944,21 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="orb orb5"></div>
     <div class="orb orb6"></div>
     <div class="hero-wm"><span class="wm1">USMAN KHAN</span><span class="wm2">ENTERPRISES</span></div>
-    <div class="hero-badge">Est. 2023 &nbsp;·&nbsp; Pakistan &nbsp;·&nbsp; Spain &nbsp;·&nbsp; International</div>
+    <div class="hero-badge" id="hero-badge">Est. 2023 &nbsp;·&nbsp; Pakistan &nbsp;·&nbsp; Spain &nbsp;·&nbsp; International</div>
     <h1 class="hero-title">USMAN <span class="gold">KHAN</span><span class="ent">ENTERPRISES</span></h1>
     <div class="hero-divider"><span></span><i>✦</i><span></span></div>
     <div class="tagline-rotator" id="tagline-rotator">Vision. Legacy. Purpose.</div>
-    <p class="hero-sub">A legacy built on vision, integrity, and an unrelenting commitment to excellence. More than a company — a statement that echoes across continents.</p>
-    <div class="hero-founder"><small>Founded By</small>Usman Khan Yousafzai</div>
+    <p class="hero-sub" id="hero-sub">A legacy built on vision, integrity, and an unrelenting commitment to excellence. More than a company — a statement that echoes across continents.</p>
+    <div class="hero-founder"><small id="hero-founder-label">Founded By</small>Usman Khan Yousafzai</div>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="showPage('ventures')">Explore Ventures</button>
-      <button class="btn-outline" onclick="showPage('about')">Our Story</button>
-      <button class="btn-outline" onclick="showPage('contact')">Get In Touch</button>
+      <button class="btn-gold" onclick="showPage('ventures')" id="btn-explore-ventures">Explore Ventures</button>
+      <button class="btn-outline" onclick="showPage('about')" id="btn-our-story">Our Story</button>
+      <button class="btn-outline" onclick="showPage('contact')" id="btn-get-in-touch">Get In Touch</button>
     </div>
     <div class="hero-flags">
-      <div class="hero-flag-pill"><span class="flag-emoji" data-code="PK">🇵🇰</span> Pakistan</div>
-      <div class="hero-flag-pill"><span class="flag-emoji" data-code="ES">🇪🇸</span> Spain</div>
-      <div class="hero-flag-pill">🌍 International</div>
+      <div class="hero-flag-pill"><span class="flag-emoji" data-code="PK">🇵🇰</span> <span id="hf-pk">Pakistan</span></div>
+      <div class="hero-flag-pill"><span class="flag-emoji" data-code="ES">🇪🇸</span> <span id="hf-es">Spain</span></div>
+      <div class="hero-flag-pill">🌍 <span id="hf-intl">International</span></div>
     </div>
     <div class="hero-ticker">
       <div class="ticker-inner">
@@ -781,10 +982,10 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   </section>
 
   <div class="stats-bar">
-    <div class="stat reveal"><div class="stat-num">2023</div><div class="stat-label">Year Founded</div></div>
-    <div class="stat reveal"><div class="stat-num">2+</div><div class="stat-label">Countries</div></div>
-    <div class="stat reveal"><div class="stat-num">8</div><div class="stat-label">Active Ventures</div></div>
-    <div class="stat reveal"><div class="stat-num">∞</div><div class="stat-label">Ambition</div></div>
+    <div class="stat reveal"><div class="stat-num">2023</div><div class="stat-label" id="stat-founded">Year Founded</div></div>
+    <div class="stat reveal"><div class="stat-num">2+</div><div class="stat-label" id="stat-countries">Countries</div></div>
+    <div class="stat reveal"><div class="stat-num">9</div><div class="stat-label" id="stat-ventures">Active Ventures</div></div>
+    <div class="stat reveal"><div class="stat-num">∞</div><div class="stat-label" id="stat-ambition">Ambition</div></div>
   </div>
 
   <div class="highlights reveal">
@@ -796,6 +997,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="highlight-card"><div class="highlight-icon">⚡</div><div class="highlight-title">No Bureaucracy</div><div class="highlight-text">Lean, fast, and decisive — we move at the speed of ambition.</div></div>
       <div class="highlight-card"><div class="highlight-icon">💎</div><div class="highlight-title">Quality Over Quantity</div><div class="highlight-text">We don't chase every opportunity — only the ones worth building.</div></div>
       <div class="highlight-card"><div class="highlight-icon">🏛</div><div class="highlight-title">Built to Last</div><div class="highlight-text">Every venture structured to outlive trends and stand the test of generations.</div></div>
+      <div class="highlight-card"><div class="highlight-icon">🗣</div><div class="highlight-title">Speaks Your Language</div><div class="highlight-text">English, Español, and اردو — we meet our partners where they are.</div></div>
     </div>
   </div>
 
@@ -837,6 +1039,43 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <p class="quote-text">Markets shift. Trends fade. What doesn't move is a name people can rely on — that's the only thing worth building twice.</p>
     <div class="quote-author">Usman Khan Yousafzai</div>
     <div class="quote-role">Founder · CEO · Director, Usman Khan Enterprises</div>
+    <button class="copy-quote-btn" onclick="copyQuote(this)" data-quote="Markets shift. Trends fade. What doesn't move is a name people can rely on — that's the only thing worth building twice. — Usman Khan Yousafzai">📋 <span id="copy-quote-label">Copy Quote</span></button>
+  </div>
+
+  <div class="converter-section reveal">
+    <p class="page-label" id="conv-label">Cross-Border Tool</p>
+    <h2 class="page-title" style="font-size:clamp(24px,4vw,40px)" id="conv-title">Quick Currency <span class="blue">Converter</span></h2>
+    <div class="converter-box">
+      <div class="converter-row">
+        <div class="converter-field">
+          <label id="conv-amount-label">Amount</label>
+          <input type="number" id="conv-amount" value="1000" min="0" oninput="runConvert()">
+        </div>
+        <div class="converter-field">
+          <label id="conv-from-label">From</label>
+          <select id="conv-from" onchange="runConvert()">
+            <option value="PKR">PKR — Pakistani Rupee</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="USD">USD — US Dollar</option>
+            <option value="GBP">GBP — British Pound</option>
+            <option value="AED">AED — UAE Dirham</option>
+          </select>
+        </div>
+        <button class="converter-swap" onclick="swapConvert()" title="Swap">⇄</button>
+        <div class="converter-field">
+          <label id="conv-to-label">To</label>
+          <select id="conv-to" onchange="runConvert()">
+            <option value="EUR">EUR — Euro</option>
+            <option value="PKR">PKR — Pakistani Rupee</option>
+            <option value="USD">USD — US Dollar</option>
+            <option value="GBP">GBP — British Pound</option>
+            <option value="AED">AED — UAE Dirham</option>
+          </select>
+        </div>
+      </div>
+      <div class="converter-result" id="conv-result">1,000 PKR ≈ 3.19 EUR</div>
+      <div class="converter-note" id="conv-note">Indicative rates for reference only — not live market data. Always confirm exact rates with your bank or partner before a transaction.</div>
+    </div>
   </div>
 
   <div class="timeline-section reveal">
@@ -846,7 +1085,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2023</div><div class="timeline-title">FOUNDED & INCORPORATED</div><div class="timeline-text">Usman Khan Enterprises (Pvt.) Ltd. officially incorporated — a multi-sector legacy brand is born.</div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2024</div><div class="timeline-title">INTERNATIONAL EXPANSION</div><div class="timeline-text">Dual operations established across Pakistan and Spain, opening cross-border trade routes.</div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2025</div><div class="timeline-title">PORTFOLIO GROWTH</div><div class="timeline-text">Growth across commerce, real estate, and consulting — a diversified portfolio with 8 active sectors.</div></div>
-      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026</div><div class="timeline-title">DIGITAL PRESENCE</div><div class="timeline-text">Launch of digital presence — bringing the Usman Khan Enterprises legacy online for the world.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026</div><div class="timeline-title">DIGITAL PRESENCE</div><div class="timeline-text">Launch of digital presence — bringing the Usman Khan Enterprises legacy online for the world, in English, Spanish and Urdu.</div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">2026</div><div class="timeline-title">MULTILINGUAL LAUNCH</div><div class="timeline-text">The website goes trilingual — welcoming partners in their own language, from Karachi to Madrid.</div></div>
       <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-year">Next</div><div class="timeline-title">THE FUTURE</div><div class="timeline-text">Expansion into hospitality, logistics and new international markets — the legacy continues.</div></div>
     </div>
   </div>
@@ -895,6 +1135,10 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
         <div class="building-top"><span class="building-name">Tech Division Setup</span><span class="building-pct" style="color:var(--violet)">40%</span></div>
         <div class="building-bar"><div class="building-fill" style="width:40%;background:var(--violet)"></div></div>
       </div>
+      <div class="building-item">
+        <div class="building-top"><span class="building-name">Multilingual Website</span><span class="building-pct" style="color:var(--emerald)">100%</span></div>
+        <div class="building-bar"><div class="building-fill" style="width:100%;background:var(--emerald)"></div></div>
+      </div>
     </div>
   </div>
 
@@ -909,22 +1153,29 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   </div>
 
   <div class="newsletter reveal">
-    <div class="newsletter-label">Exclusive Access</div>
-    <h2 class="newsletter-title">Join The Inner Circle</h2>
-    <p class="newsletter-sub">Exclusive updates on new ventures, opportunities, and insights — straight from the founder.</p>
+    <div class="newsletter-label i18n-newsletter-label">Exclusive Access</div>
+    <h2 class="newsletter-title i18n-newsletter-title">Join The Inner Circle</h2>
+    <p class="newsletter-sub i18n-newsletter-sub">Exclusive updates on new ventures, opportunities, and insights — straight from the founder.</p>
     <div class="newsletter-form">
-      <input type="email" placeholder="Enter your email address">
-      <button type="button">Subscribe</button>
+      <input type="email" class="i18n-newsletter-input" placeholder="Enter your email address">
+      <button type="button" class="i18n-subscribe-btn">Subscribe</button>
     </div>
   </div>
 
   <footer>
     <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
-      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-tag i18n-footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div class="fsize-controls">
+        <button class="fsize-btn" onclick="adjustFontSize(-1)" title="Decrease text size">A-</button>
+        <button class="fsize-btn" onclick="adjustFontSize(0)" title="Reset text size">A</button>
+        <button class="fsize-btn" onclick="adjustFontSize(1)" title="Increase text size">A+</button>
+      </div>
+      <div class="footer-right i18n-footer-rights">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    </div>
   </footer>
 </div>
 
@@ -932,12 +1183,23 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <div class="page" id="page-about">
 <div class="page-top-banner"></div>
   <div class="about-hero">
-    <p class="page-label">Who We Are</p>
-    <h1 class="page-title">The <span class="gold">Legacy</span><br>Behind the Name</h1>
+    <p class="page-label" id="about-hero-label">Who We Are</p>
+    <h1 class="page-title" id="about-hero-title">The <span class="gold">Legacy</span><br>Behind the Name</h1>
   </div>
 
   <div class="mission-banner reveal">
     <p class="mission-text">"We don't compete on who shouts the loudest. <strong>We compete on who's still standing</strong> when the noise dies down."</p>
+  </div>
+
+  <div class="reveal" style="padding:0 3rem 3rem;text-align:center">
+    <p class="page-label" id="age-label" style="margin-bottom:0">Live Since Day One</p>
+    <div class="age-counter" id="age-counter">
+      <div class="age-cell"><div class="age-num" id="age-years">0</div><div class="age-label" id="age-years-label">Years</div></div>
+      <div class="age-cell"><div class="age-num" id="age-days">0</div><div class="age-label" id="age-days-label">Days</div></div>
+      <div class="age-cell"><div class="age-num" id="age-hours">0</div><div class="age-label" id="age-hours-label">Hours</div></div>
+      <div class="age-cell"><div class="age-num" id="age-mins">0</div><div class="age-label" id="age-mins-label">Minutes</div></div>
+    </div>
+    <p style="font-size:10px;color:#444;margin-top:.8rem;letter-spacing:.5px" id="age-sub">...and counting, since incorporation in January 2023.</p>
   </div>
 
   <div class="about-quote reveal">
@@ -950,6 +1212,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <p>Usman Khan Enterprises is not simply a business — it is a declaration. Founded in 2023 by Usman Khan Yousafzai, the company was built on a foundation of ambition, discipline, and an unrelenting drive to create something that lasts.</p>
       <p>Operating across Pakistan and Spain, we bring an international perspective to everything we do — combining the rich entrepreneurial spirit of the East with the strategic precision of the West.</p>
       <p>Every venture, every decision, every partnership carries the full weight of a name that stands for excellence. This is not just business. This is legacy.</p>
+      <p>As our footprint grows, so does our responsibility to communicate clearly with everyone we work with. That's why this website — and every serious conversation we have — is available in English, Español and اردو, so that language is never the barrier between a good idea and a good partnership.</p>
     </div>
     <div class="about-visual reveal-right">
       <div class="info-row"><div class="info-label">Founded By</div><div class="info-val">Usman Khan Yousafzai</div></div>
@@ -959,6 +1222,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="info-row"><div class="info-label">Established</div><div class="info-val">2023 · Incorporated</div></div>
       <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Presence</div><div class="info-val">Pakistan <span class="flag-emoji" data-code="PK">🇵🇰</span> · Spain <span class="flag-emoji" data-code="ES">🇪🇸</span></div></div>
+      <div class="info-div"></div>
+      <div class="info-row"><div class="info-label">Languages</div><div class="info-val">English · Español · اردو</div></div>
       <div class="info-div"></div>
       <div class="info-row"><div class="info-label">Email</div><div class="info-val" style="font-size:15px">kh11n.enterprises@gmail.com</div></div>
       <div class="info-div"></div>
@@ -976,7 +1241,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div>
         <div class="leader-name">Usman Khan Yousafzai</div>
         <div class="leader-title">FOUNDER · CEO · DIRECTOR</div>
-        <p class="leader-bio">The driving force behind Usman Khan Enterprises. With a vision for building lasting institutions across Pakistan and Spain, Usman leads every venture with discipline, ambition, and an unwavering commitment to integrity. A name that stands for excellence — in business, and in life.</p>
+        <p class="leader-bio">The driving force behind Usman Khan Enterprises. With a vision for building lasting institutions across Pakistan and Spain, Usman leads every venture with discipline, ambition, and an unwavering commitment to integrity. A name that stands for excellence — in business, and in life. Fluent in English, Urdu and conversational Spanish, he personally reviews every serious inquiry regardless of the language it arrives in.</p>
         <div class="leader-skills">
           <span class="skill-tag">Strategy</span>
           <span class="skill-tag">Leadership</span>
@@ -1020,6 +1285,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="award-item"><div class="award-icon">🌐</div><div class="award-title">International</div><div class="award-desc">Cross-border vision with roots in Pakistan and Spain.</div></div>
       <div class="award-item"><div class="award-icon">🔐</div><div class="award-title">Trust</div><div class="award-desc">Every relationship built on confidentiality and mutual respect.</div></div>
       <div class="award-item"><div class="award-icon">🚀</div><div class="award-title">Innovation</div><div class="award-desc">Forward thinking across every sector we enter.</div></div>
+      <div class="award-item"><div class="award-icon">🗣</div><div class="award-title">Accessibility</div><div class="award-desc">A multilingual door open to partners from any market we serve.</div></div>
     </div>
   </div>
 
@@ -1032,15 +1298,27 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     </div>
   </div>
 
+  <div class="culture-section reveal" style="border-bottom:1px solid rgba(201,168,76,.08)">
+    <p class="page-label" id="tip-label">A Little Wisdom</p>
+    <h2 class="page-title" style="font-size:clamp(24px,4vw,40px)" id="tip-title">Founder's <span class="orange">Tip</span> Generator</h2>
+    <div class="tip-box">
+      <div class="tip-text" id="tip-text">Click below for a piece of founder wisdom.</div>
+      <button class="btn-outline tip-btn" onclick="newFounderTip()" id="tip-btn">Give Me Another ↻</button>
+    </div>
+  </div>
+
   <div class="faq-section reveal">
     <p class="page-label">Common Questions</p>
-    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:2rem">Frequently <span class="gold">Asked</span></h2>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:.5rem">Frequently <span class="gold">Asked</span></h2>
+    <div class="mini-search"><input type="text" id="faq-search-about" placeholder="Search questions..." oninput="searchFaq('about')"></div>
+    <div style="margin-top:1.5rem"></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What does Usman Khan Enterprises do? <span class="faq-icon">+</span></div><div class="faq-a">We operate across multiple sectors including commerce, real estate, technology, consulting, international trade and strategic investments — all under one unified brand committed to excellence.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Where are you based? <span class="faq-icon">+</span></div><div class="faq-a">We operate with a dual presence — headquartered in Pakistan with an international office in Spain, giving us a unique cross-continental perspective and reach.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How can I partner with Usman Khan Enterprises? <span class="faq-icon">+</span></div><div class="faq-a">We welcome serious inquiries from individuals and businesses. Reach out via our contact page and the founder will get back to you directly.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Is Usman Khan Enterprises officially registered? <span class="faq-icon">+</span></div><div class="faq-a">Yes. Usman Khan Enterprises (Pvt.) Ltd. is a privately registered company, incorporated in 2023.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I contact the founder directly? <span class="faq-icon">+</span></div><div class="faq-a">You can reach Usman Khan Yousafzai directly via email at kh11n.enterprises@gmail.com or through the contact form on our Contact page.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What makes Usman Khan Enterprises different? <span class="faq-icon">+</span></div><div class="faq-a">Our cross-continental presence, founder-led approach, and commitment to building lasting institutions rather than short-term ventures sets us apart. We are not just a business — we are a legacy brand.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I contact you in Urdu or Spanish? <span class="faq-icon">+</span></div><div class="faq-a">Absolutely. Feel free to write to us in English, اردو، or Español — use the language switcher in the top navigation to browse the whole site in your preferred language, and message us the same way.</div></div>
   </div>
 
   <div class="culture-section reveal">
@@ -1056,10 +1334,17 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   <footer>
     <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
-      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-tag i18n-footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div class="fsize-controls">
+        <button class="fsize-btn" onclick="adjustFontSize(-1)" title="Decrease text size">A-</button>
+        <button class="fsize-btn" onclick="adjustFontSize(0)" title="Reset text size">A</button>
+        <button class="fsize-btn" onclick="adjustFontSize(1)" title="Increase text size">A+</button>
+      </div>
+      <div class="footer-right i18n-footer-rights">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    </div>
   </footer>
 </div>
 
@@ -1067,8 +1352,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <div class="page" id="page-ventures">
 <div class="page-top-banner"></div>
   <div class="ventures-hero">
-    <p class="page-label">What We Do</p>
-    <h1 class="page-title">Our <span class="gold">Ventures</span></h1>
+    <p class="page-label" id="ventures-hero-label">What We Do</p>
+    <h1 class="page-title" id="ventures-hero-title">Our <span class="gold">Ventures</span></h1>
   </div>
   <div class="ventures-stats">
     <div class="v-stat"><div class="v-stat-num">6</div><div class="v-stat-label">Active</div></div>
@@ -1094,6 +1379,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="venture-card reveal" data-status="active"><div class="venture-icon">📊</div><div class="venture-num">06</div><div class="venture-name">Investments</div><p class="venture-desc">Calculated, strategic investments in high-potential ventures across multiple sectors.</p><div class="venture-tag"><span class="status-dot active"></span>ACTIVE</div></div>
     <div class="venture-card reveal" data-status="upcoming"><div class="venture-icon">🏨</div><div class="venture-num">07</div><div class="venture-name">Hospitality</div><p class="venture-desc">Curated hospitality ventures bringing premium experiences to growing markets across two continents.</p><div class="venture-tag"><span class="status-dot upcoming"></span>UPCOMING</div></div>
     <div class="venture-card reveal" data-status="growing"><div class="venture-icon">🚚</div><div class="venture-num">08</div><div class="venture-name">Logistics</div><p class="venture-desc">Reliable supply chain and logistics solutions connecting Pakistan and Spain seamlessly.</p><div class="venture-tag"><span class="status-dot growing"></span>GROWING</div></div>
+    <div class="venture-card reveal" data-status="upcoming"><div class="venture-icon">🎓</div><div class="venture-num">09</div><div class="venture-name">Education & Training</div><p class="venture-desc">Skill-building and advisory programs designed to prepare the next generation of cross-border entrepreneurs.</p><div class="venture-tag"><span class="status-dot upcoming"></span>UPCOMING</div></div>
   </div>
 
   <div class="process-section reveal">
@@ -1120,10 +1406,18 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   <div class="testimonials reveal">
     <p class="page-label">Word On The Street</p>
     <h2 class="page-title" style="font-size:clamp(28px,5vw,48px)">What Partners <span class="gold">Say</span></h2>
-    <div class="testi-grid">
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Professional from day one. The level of clarity and ambition behind every conversation made it easy to trust the vision."</p><div class="testi-author">A. RAHMAN</div><div class="testi-role">Business Partner, Lahore</div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Working across two markets isn't easy, but the cross-border insight Usman brings made the process seamless and rewarding."</p><div class="testi-author">M. GARCIA</div><div class="testi-role">Associate, Madrid</div></div>
-      <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"A name that stands behind its word. Looking forward to where this enterprise goes next — truly building something special."</p><div class="testi-author">S. KHAN</div><div class="testi-role">Early Investor</div></div>
+    <div class="testi-carousel" id="testi-carousel">
+      <div class="testi-track" id="testi-track">
+        <div class="testi-slide"><div class="testi-card" style="border-left-color:var(--gold)"><div class="testi-stars">★★★★★</div><p class="testi-text">"Professional from day one. The level of clarity and ambition behind every conversation made it easy to trust the vision."</p><div class="testi-author">A. RAHMAN</div><div class="testi-role">Business Partner, Lahore</div></div></div>
+        <div class="testi-slide"><div class="testi-card" style="border-left-color:var(--burgundy)"><div class="testi-stars">★★★★★</div><p class="testi-text">"Working across two markets isn't easy, but the cross-border insight Usman brings made the process seamless and rewarding."</p><div class="testi-author">M. GARCIA</div><div class="testi-role">Associate, Madrid</div></div></div>
+        <div class="testi-slide"><div class="testi-card" style="border-left-color:var(--emerald)"><div class="testi-stars">★★★★★</div><p class="testi-text">"A name that stands behind its word. Looking forward to where this enterprise goes next — truly building something special."</p><div class="testi-author">S. KHAN</div><div class="testi-role">Early Investor</div></div></div>
+        <div class="testi-slide"><div class="testi-card" style="border-left-color:var(--sapphire)"><div class="testi-stars">★★★★★</div><p class="testi-text">"They replied to my email in Urdu within a day — small thing, but it told me a lot about how seriously they take every partner."</p><div class="testi-author">F. AHMED</div><div class="testi-role">Supplier, Karachi</div></div></div>
+      </div>
+      <div class="testi-arrows">
+        <button class="testi-arrow" onclick="testiMove(-1)">‹</button>
+        <button class="testi-arrow" onclick="testiMove(1)">›</button>
+      </div>
+      <div class="testi-dots" id="testi-dots"></div>
     </div>
   </div>
 
@@ -1157,10 +1451,17 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   <footer>
     <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
-      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-tag i18n-footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div class="fsize-controls">
+        <button class="fsize-btn" onclick="adjustFontSize(-1)" title="Decrease text size">A-</button>
+        <button class="fsize-btn" onclick="adjustFontSize(0)" title="Reset text size">A</button>
+        <button class="fsize-btn" onclick="adjustFontSize(1)" title="Increase text size">A+</button>
+      </div>
+      <div class="footer-right i18n-footer-rights">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    </div>
   </footer>
 </div>
 
@@ -1169,9 +1470,9 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <div class="page-top-banner"></div>
 
   <div class="insights-hero">
-    <p class="page-label">Thinking Out Loud</p>
-    <h1 class="page-title">Notes &amp; <span class="gold">Insights</span></h1>
-    <p class="insights-sub">Reflections on business, markets, and building things that last — straight from the founder's desk.</p>
+    <p class="page-label" id="insights-hero-label">Thinking Out Loud</p>
+    <h1 class="page-title" id="insights-hero-title">Notes &amp; <span class="gold">Insights</span></h1>
+    <p class="insights-sub" id="insights-hero-sub">Reflections on business, markets, and building things that last — straight from the founder's desk.</p>
   </div>
 
   <div class="insights-categories">
@@ -1180,6 +1481,11 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <button class="filter-btn" onclick="filterInsights('strategy',this)">Strategy</button>
     <button class="filter-btn" onclick="filterInsights('markets',this)">Markets</button>
     <button class="filter-btn" onclick="filterInsights('leadership',this)">Leadership</button>
+  </div>
+  <div style="padding:0 3rem">
+    <div class="mini-search">
+      <input type="text" id="insights-search" placeholder="Search insights by keyword..." oninput="searchInsights()">
+    </div>
   </div>
 
   <div class="insights-featured reveal">
@@ -1191,44 +1497,94 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <span>⏱️ 6 min read</span>
       <span>👤 Usman Khan Yousafzai</span>
     </div>
+    <button class="share-btn" style="margin-top:1.5rem" onclick="shareContent('Why Cross-Border Thinking Beats Single-Market Focus')" id="share-insight-btn">🔗 Share This</button>
   </div>
 
   <div class="insights-grid" id="insights-grid">
+    <div class="no-results" id="insights-no-results">No insights match your search — try a different keyword.</div>
     <article class="insight-card reveal" data-cat="strategy">
       <div class="insight-cat-tag" style="color:var(--gold);border-color:var(--gold)">STRATEGY</div>
       <h3 class="insight-title">The Discipline of Saying No</h3>
       <p class="insight-excerpt">Every opportunity we decline makes room for the one that actually matters. A look at how selective focus drives long-term growth.</p>
       <div class="insight-meta">May 2026 · 4 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(1,true,this)">👍 <span class="vc" id="vote-up-1">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(1,false,this)">👎 <span class="vc" id="vote-down-1">0</span></button>
+      </div>
+    
     </article>
     <article class="insight-card reveal" data-cat="markets">
       <div class="insight-cat-tag" style="color:var(--sapphire);border-color:var(--sapphire)">MARKETS</div>
       <h3 class="insight-title">Reading Pakistan's Growth Sectors in 2026</h3>
       <p class="insight-excerpt">A breakdown of where capital is moving domestically, and why certain overlooked sectors deserve more attention than they're getting.</p>
       <div class="insight-meta">April 2026 · 7 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(2,true,this)">👍 <span class="vc" id="vote-up-2">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(2,false,this)">👎 <span class="vc" id="vote-down-2">0</span></button>
+      </div>
+    
     </article>
     <article class="insight-card reveal" data-cat="leadership">
       <div class="insight-cat-tag" style="color:var(--burgundy);border-color:var(--burgundy)">LEADERSHIP</div>
       <h3 class="insight-title">Founder-Led Doesn't Mean Founder-Only</h3>
       <p class="insight-excerpt">Staying close to every decision while still building something bigger than yourself — the balance every growing enterprise has to strike.</p>
       <div class="insight-meta">April 2026 · 5 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(3,true,this)">👍 <span class="vc" id="vote-up-3">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(3,false,this)">👎 <span class="vc" id="vote-down-3">0</span></button>
+      </div>
+    
     </article>
     <article class="insight-card reveal" data-cat="markets">
       <div class="insight-cat-tag" style="color:var(--sapphire);border-color:var(--sapphire)">MARKETS</div>
       <h3 class="insight-title">What Spain Taught Us About Patience</h3>
       <p class="insight-excerpt">Entering a new market is rarely about speed. Notes from establishing our European presence the right way, not the fast way.</p>
       <div class="insight-meta">March 2026 · 6 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(4,true,this)">👍 <span class="vc" id="vote-up-4">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(4,false,this)">👎 <span class="vc" id="vote-down-4">0</span></button>
+      </div>
+    
     </article>
     <article class="insight-card reveal" data-cat="strategy">
       <div class="insight-cat-tag" style="color:var(--gold);border-color:var(--gold)">STRATEGY</div>
       <h3 class="insight-title">Diversification Without Dilution</h3>
       <p class="insight-excerpt">How we run eight different ventures without losing focus — the framework behind keeping a portfolio coherent.</p>
       <div class="insight-meta">February 2026 · 5 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(5,true,this)">👍 <span class="vc" id="vote-up-5">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(5,false,this)">👎 <span class="vc" id="vote-down-5">0</span></button>
+      </div>
+    
     </article>
     <article class="insight-card reveal" data-cat="leadership">
       <div class="insight-cat-tag" style="color:var(--burgundy);border-color:var(--burgundy)">LEADERSHIP</div>
       <h3 class="insight-title">Building Trust Before Building Revenue</h3>
       <p class="insight-excerpt">Why every partnership conversation starts with character, not numbers — and what that's meant for how we grow.</p>
       <div class="insight-meta">January 2026 · 4 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(6,true,this)">👍 <span class="vc" id="vote-up-6">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(6,false,this)">👎 <span class="vc" id="vote-down-6">0</span></button>
+      </div>
+    
+    </article>
+    <article class="insight-card reveal" data-cat="strategy">
+      <div class="insight-cat-tag" style="color:var(--gold);border-color:var(--gold)">STRATEGY</div>
+      <h3 class="insight-title">Why We Built This Site in Three Languages</h3>
+      <p class="insight-excerpt">Language shouldn't decide who gets a fair shot at a partnership. Notes on going trilingual and what it's already taught us.</p>
+      <div class="insight-meta">July 2026 · 3 min read</div>
+      <div class="insight-vote">
+        <span style="font-size:9px;color:#555;letter-spacing:1px" class="vote-prompt">Helpful?</span>
+        <button class="vote-btn" onclick="voteInsight(7,true,this)">👍 <span class="vc" id="vote-up-7">0</span></button>
+        <button class="vote-btn" onclick="voteInsight(7,false,this)">👎 <span class="vc" id="vote-down-7">0</span></button>
+      </div>
+    
     </article>
   </div>
 
@@ -1255,10 +1611,17 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   <footer>
     <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
-      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-tag i18n-footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div class="fsize-controls">
+        <button class="fsize-btn" onclick="adjustFontSize(-1)" title="Decrease text size">A-</button>
+        <button class="fsize-btn" onclick="adjustFontSize(0)" title="Reset text size">A</button>
+        <button class="fsize-btn" onclick="adjustFontSize(1)" title="Increase text size">A+</button>
+      </div>
+      <div class="footer-right i18n-footer-rights">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    </div>
   </footer>
 </div>
 
@@ -1267,9 +1630,9 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <div class="page-top-banner"></div>
 
   <div class="media-hero">
-    <p class="page-label">Press &amp; Brand</p>
-    <h1 class="page-title">Media <span class="gold">Kit</span></h1>
-    <p class="media-sub">Official brand assets, founder biography, and press information for Usman Khan Enterprises. All materials are approved for media use.</p>
+    <p class="page-label" id="media-hero-label">Press &amp; Brand</p>
+    <h1 class="page-title" id="media-hero-title">Media <span class="gold">Kit</span></h1>
+    <p class="media-sub" id="media-hero-sub">Official brand assets, founder biography, and press information for Usman Khan Enterprises. All materials are approved for media use.</p>
   </div>
 
   <div class="media-quick reveal">
@@ -1277,8 +1640,14 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="mq-card"><div class="mq-icon">👤</div><div class="mq-title">Founder</div><div class="mq-val">Usman Khan Yousafzai</div></div>
     <div class="mq-card"><div class="mq-icon">📅</div><div class="mq-title">Founded</div><div class="mq-val">2023, Incorporated</div></div>
     <div class="mq-card"><div class="mq-icon">🌍</div><div class="mq-title">Presence</div><div class="mq-val">Pakistan &amp; Spain</div></div>
-    <div class="mq-card"><div class="mq-icon">📊</div><div class="mq-title">Sectors</div><div class="mq-val">8 Active Ventures</div></div>
+    <div class="mq-card"><div class="mq-icon">📊</div><div class="mq-title">Sectors</div><div class="mq-val">9 Active Ventures</div></div>
+    <div class="mq-card"><div class="mq-icon">🗣</div><div class="mq-title">Languages</div><div class="mq-val">English, Español, اردو</div></div>
     <div class="mq-card"><div class="mq-icon">📧</div><div class="mq-title">Press Contact</div><div class="mq-val email-val">kh11n.enterprises@gmail.com</div></div>
+  </div>
+  <div style="padding:1.5rem 3rem;display:flex;gap:1rem;flex-wrap:wrap;border-bottom:1px solid rgba(201,168,76,.08)">
+    <button class="share-btn" onclick="window.print()" id="print-kit-btn">🖨️ Print Media Kit</button>
+    <button class="share-btn" onclick="copyBio()" id="copy-bio-btn">📋 Copy Founder Bio</button>
+    <button class="share-btn" onclick="shareContent('Usman Khan Enterprises — Media Kit')" id="share-kit-btn">🔗 Share Media Kit</button>
   </div>
 
   <div class="bio-section reveal">
@@ -1300,11 +1669,12 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="bio-text">
         <h3 class="bio-name">Usman Khan Yousafzai</h3>
         <p class="bio-short">Usman Khan Yousafzai is the Founder, CEO and Director of Usman Khan Enterprises (Pvt.) Ltd., a privately registered multi-sector enterprise operating across Pakistan and Spain.</p>
-        <p class="bio-long">Founded in 2023, the company has grown to encompass eight active ventures spanning commerce, real estate, technology, consulting, international trade, investments, hospitality and logistics. Operating with a dual presence between South Asia and Europe, Usman has built a company defined by founder-led decision-making, cross-border thinking, and a long-term approach to building institutions rather than chasing short-term gains.</p>
+        <p class="bio-long">Founded in 2023, the company has grown to encompass nine active ventures spanning commerce, real estate, technology, consulting, international trade, investments, hospitality, logistics and education. Operating with a dual presence between South Asia and Europe, Usman has built a company defined by founder-led decision-making, cross-border thinking, and a long-term approach to building institutions rather than chasing short-term gains.</p>
         <div class="bio-highlights">
           <div class="bio-hl"><span class="bhl-num" style="color:var(--gold)">2023</span><span class="bhl-label">Founded</span></div>
-          <div class="bio-hl"><span class="bhl-num" style="color:var(--teal)">8</span><span class="bhl-label">Ventures</span></div>
+          <div class="bio-hl"><span class="bhl-num" style="color:var(--teal)">9</span><span class="bhl-label">Ventures</span></div>
           <div class="bio-hl"><span class="bhl-num" style="color:var(--sapphire)">2</span><span class="bhl-label">Countries</span></div>
+          <div class="bio-hl"><span class="bhl-num" style="color:var(--violet)">3</span><span class="bhl-label">Languages</span></div>
         </div>
       </div>
     </div>
@@ -1332,11 +1702,14 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 
   <div class="media-faq reveal">
     <p class="page-label">Press Enquiries</p>
-    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:2rem">Common <span class="blue">Questions</span></h2>
+    <h2 class="page-title" style="font-size:clamp(28px,5vw,48px);margin-bottom:.5rem">Common <span class="blue">Questions</span></h2>
+    <div class="mini-search"><input type="text" id="faq-search-media" placeholder="Search questions..." oninput="searchFaq('media')"></div>
+    <div style="margin-top:1.5rem"></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How do I request an interview? <span class="faq-icon">+</span></div><div class="faq-a">Send a message to kh11n.enterprises@gmail.com with the outlet, format, and topic you have in mind, and we'll get back to you as soon as we can.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I mention Usman Khan Enterprises in my article? <span class="faq-icon">+</span></div><div class="faq-a">Yes, factual mentions with correct attribution are welcome. If you'd like to use the logo, please email first so we can confirm the details.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do you take speaking or event invites? <span class="faq-icon">+</span></div><div class="faq-a">It depends on the event and timing — send over the date, audience, and topic and we'll see if it lines up.</div></div>
     <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What's the correct way to write the company name? <span class="faq-icon">+</span></div><div class="faq-a">"Usman Khan Enterprises (Pvt.) Ltd." is the full legal name. "Usman Khan Enterprises" is fine for general or editorial use.</div></div>
+    <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do you publish press materials in other languages? <span class="faq-icon">+</span></div><div class="faq-a">Yes — this media kit and the full site are available in English, Español and اردو via the language switcher in the navigation bar.</div></div>
   </div>
 
   <div class="media-cta reveal">
@@ -1348,10 +1721,17 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   <footer>
     <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
-      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-tag i18n-footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div class="fsize-controls">
+        <button class="fsize-btn" onclick="adjustFontSize(-1)" title="Decrease text size">A-</button>
+        <button class="fsize-btn" onclick="adjustFontSize(0)" title="Reset text size">A</button>
+        <button class="fsize-btn" onclick="adjustFontSize(1)" title="Increase text size">A+</button>
+      </div>
+      <div class="footer-right i18n-footer-rights">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    </div>
   </footer>
 </div>
 
@@ -1360,11 +1740,12 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <div class="page-top-banner"></div>
   <div class="avail-strip">
     <div class="avail-dot"></div>
-    <div class="avail-text">AVAILABLE FOR NEW PARTNERSHIPS & INQUIRIES</div>
+    <div class="avail-text" id="avail-text">AVAILABLE FOR NEW PARTNERSHIPS & INQUIRIES</div>
+    <div class="live-badge"><span class="lb-dot"></span><span id="live-viewers-text">3 people viewing this page</span></div>
   </div>
   <div class="contact-hero">
-    <p class="page-label">Get In Touch</p>
-    <h1 class="page-title">Let's <span class="gold">Connect</span></h1>
+    <p class="page-label" id="contact-hero-label">Get In Touch</p>
+    <h1 class="page-title" id="contact-hero-title">Let's <span class="gold">Connect</span></h1>
   </div>
 
   <div class="contact-cards reveal">
@@ -1374,6 +1755,9 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="contact-card"><div class="cc-icon">📸</div><div class="cc-title">Instagram</div><div class="cc-val">@kh1n.enterprises</div></div>
       <div class="contact-card"><div class="cc-icon"><span class="flag-emoji" data-code="PK">🇵🇰</span></div><div class="cc-title">Headquarters</div><div class="cc-val">Pakistan</div></div>
       <div class="contact-card"><div class="cc-icon"><span class="flag-emoji" data-code="ES">🇪🇸</span></div><div class="cc-title">International</div><div class="cc-val">Spain</div></div>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <button class="vcard-btn" onclick="downloadVCard()">📇 <span id="vcard-btn-label">Save Contact Card</span></button>
     </div>
   </div>
 
@@ -1385,6 +1769,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="contact-item"><div class="contact-label">Headquarters</div><div class="contact-val">Pakistan <span class="flag-emoji" data-code="PK">🇵🇰</span></div></div>
       <div class="contact-item"><div class="contact-label">International Office</div><div class="contact-val">Spain <span class="flag-emoji" data-code="ES">🇪🇸</span></div></div>
       <div class="contact-item"><div class="contact-label">Availability</div><div class="contact-val">International</div></div>
+      <div class="contact-item"><div class="contact-label">Languages Spoken</div><div class="contact-val">English · Español · اردو</div></div>
       <div class="contact-item"><div class="contact-label">Founded By</div><div class="contact-val">Usman Khan Yousafzai</div></div>
       <div class="contact-item"><div class="contact-label">Response Time</div><div class="contact-val" style="font-size:15px;color:#888">Within 24–48 hours</div></div>
     </div>
@@ -1392,20 +1777,27 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <input type="hidden" name="_replyto" value="kh11n.enterprises@gmail.com">
         <input type="hidden" name="_subject" value="New inquiry via Usman Khan Enterprises website">
-        <div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="Full name" required></div>
-        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="form-group"><label>Phone (Optional)</label><input type="tel" name="phone" placeholder="+1 234 567 8900"></div>
-        <div class="form-group"><label>Company / Organisation</label><input type="text" name="company" placeholder="Your company name (if applicable)"></div>
-        <div class="form-group"><label>Engagement Type</label>
-          <select name="engagement">
-            <option>Advisory</option>
-            <option>Partnership</option>
-            <option>Enterprise</option>
-            <option>Investment</option>
-            <option>General Inquiry</option>
+        <div class="form-group"><label id="lbl-name">Your Name</label><input type="text" name="name" id="ph-name" placeholder="Full name" required></div>
+        <div class="form-group"><label id="lbl-email">Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label id="lbl-phone">Phone (Optional)</label><input type="tel" name="phone" id="ph-phone" placeholder="+1 234 567 8900"></div>
+        <div class="form-group"><label id="lbl-company">Company / Organisation</label><input type="text" name="company" id="ph-company" placeholder="Your company name (if applicable)"></div>
+        <div class="form-group"><label id="lbl-preflang">Preferred Language</label>
+          <select name="language">
+            <option>English</option>
+            <option>Español</option>
+            <option>اردو</option>
           </select>
         </div>
-        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell us about your inquiry..." required></textarea></div>
+        <div class="form-group"><label id="lbl-engagement">Engagement Type</label>
+          <select name="engagement" id="sel-engagement">
+            <option value="Advisory">Advisory</option>
+            <option value="Partnership">Partnership</option>
+            <option value="Enterprise">Enterprise</option>
+            <option value="Investment">Investment</option>
+            <option value="General Inquiry">General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group"><label id="lbl-message">Message</label><textarea name="message" id="ph-message" placeholder="Tell us about your inquiry..." required></textarea></div>
         <button class="btn-gold" type="submit" style="width:100%" id="submit-btn">Send Message ↗</button>
         <div class="form-success" id="form-success">✓ Message sent! We'll get back to you within 24–48 hours.</div>
         <div class="form-error" id="form-error">✕ Something went wrong. Please email us directly at kh11n.enterprises@gmail.com</div>
@@ -1426,7 +1818,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     <div class="next-steps-grid">
       <div class="next-step"><div class="ns-num">1</div><div class="ns-title">Message Received</div><p class="ns-text">Your inquiry lands directly in the founder's inbox — no sales team, no filters.</p></div>
       <div class="next-step"><div class="ns-num">2</div><div class="ns-title">Initial Review</div><p class="ns-text">We take time to understand the request before replying, not just to reply fast.</p></div>
-      <div class="next-step"><div class="ns-num">3</div><div class="ns-title">Direct Response</div><p class="ns-text">You hear back within 24–48 hours, typically from Usman Khan Yousafzai personally.</p></div>
+      <div class="next-step"><div class="ns-num">3</div><div class="ns-title">Direct Response</div><p class="ns-text">You hear back within 24–48 hours, typically from Usman Khan Yousafzai personally, in the language you wrote to us in.</p></div>
       <div class="next-step"><div class="ns-num">4</div><div class="ns-title">Next Conversation</div><p class="ns-text">If there's a fit, we schedule a proper call to go deeper into the details.</p></div>
     </div>
   </div>
@@ -1439,16 +1831,24 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
       <div class="prep-item">🎯 Mention which sector or engagement tier fits your goal, if you know it.</div>
       <div class="prep-item">⏱️ Include any timelines you're working with — it helps us prioritise.</div>
       <div class="prep-item">🔒 Sensitive details can wait for the call — a clear overview is enough to start.</div>
+      <div class="prep-item">🗣 Write in whichever language you're most comfortable in — English, Español or اردو all work.</div>
     </div>
   </div>
 
   <footer>
     <div class="footer-left">
       <div class="footer-logo">Usman Khan Enterprises</div>
-      <div class="footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
+      <div class="footer-tag i18n-footer-tag">(PVT.) LTD. · PRIVATELY REGISTERED COMPANY</div>
       <div class="footer-email">kh11n.enterprises@gmail.com</div>
     </div>
-    <div class="footer-right">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div class="fsize-controls">
+        <button class="fsize-btn" onclick="adjustFontSize(-1)" title="Decrease text size">A-</button>
+        <button class="fsize-btn" onclick="adjustFontSize(0)" title="Reset text size">A</button>
+        <button class="fsize-btn" onclick="adjustFontSize(1)" title="Increase text size">A+</button>
+      </div>
+      <div class="footer-right i18n-footer-rights">© 2023 Usman Khan Enterprises.<br>All rights reserved.</div>
+    </div>
   </footer>
 </div>
 
@@ -1459,8 +1859,6 @@ let mx=0,my=0,rx=0,ry=0;
 const isMobile = /Android|iPhone|iPad|iPod|Touch/i.test(navigator.userAgent) || ('ontouchstart' in window) || window.innerWidth < 768;
 
 /* ── FLAG BADGES (desktop only) ── */
-/* Mobile keeps the real emoji as-is. Desktop always shows accurate SVG flag graphics,
-   since emoji flag support is unreliable across browsers/OS (especially Windows). */
 (function(){
   if(isMobile) return;
   const names={PK:'Pakistan',ES:'Spain',GB:'United Kingdom',AE:'United Arab Emirates',TR:'Turkey'};
@@ -1488,12 +1886,10 @@ if(!isMobile){
     cursor.style.left=mx-6+'px'; cursor.style.top=my-6+'px';
   });
 } else {
-  /* Mobile: no custom cursor, no touch effects — native scrolling only, for max performance */
   if(cursor) cursor.remove();
   if(document.getElementById('cursor-ring')) document.getElementById('cursor-ring').remove();
 }
 
-/* ── CUSTOM CURSOR + GLOW (desktop only) ── */
 const glow=document.getElementById('glow-follow');
 const glowColors=['rgba(212,168,67,1)','rgba(212,92,92,1)','rgba(77,203,168,1)','rgba(92,150,212,1)','rgba(168,108,212,1)','rgba(212,122,60,1)'];
 let glowIdx=0;
@@ -1512,7 +1908,6 @@ if(!isMobile){
     el.addEventListener('mouseleave',()=>{if(cursor){cursor.style.transform='scale(1)'} if(ring){ring.style.transform='scale(1)';ring.style.borderColor='rgba(212,168,67,.5)'}});
   });
 
-  /* ── RIPPLE ON CLICK (desktop only) ── */
   document.addEventListener('click',e=>{
     const r=document.createElement('div');
     r.className='ripple';
@@ -1523,7 +1918,6 @@ if(!isMobile){
   });
 }
 
-/* ── INTRO CANVAS PARTICLES ── */
 const introCanvas=document.getElementById('intro-canvas');
 if(introCanvas){
   const ictx=introCanvas.getContext('2d');
@@ -1545,14 +1939,13 @@ if(introCanvas){
   drawIntro();
 }
 
-/* ── SITE-WIDE PARTICLES (adaptive for performance) ── */
 const heroCanvas=document.getElementById('hero-canvas');
 if(heroCanvas){
   const ctx=heroCanvas.getContext('2d');
   const particles=[];
   const pColors=['rgba(212,168,67,','rgba(212,92,92,','rgba(77,203,168,','rgba(92,150,212,','rgba(168,108,212,','rgba(212,122,60,','rgba(60,184,212,','rgba(240,201,106,'];
   const particleCount = isMobile ? 35 : 160;
-  const connectDistance = isMobile ? 0 : 90; /* 0 disables connecting lines on mobile */
+  const connectDistance = isMobile ? 0 : 90;
   function resizeCanvas(){heroCanvas.width=window.innerWidth;heroCanvas.height=window.innerHeight}
   resizeCanvas();
   window.addEventListener('resize',resizeCanvas);
@@ -1560,7 +1953,7 @@ if(heroCanvas){
     particles.push({x:Math.random()*heroCanvas.width,y:Math.random()*heroCanvas.height,r:Math.random()*2.6+.4,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,c:pColors[Math.floor(Math.random()*pColors.length)],o:Math.random()*.45+.1,pulse:Math.random()*Math.PI*2});
   }
   let lastFrame=0;
-  const frameInterval = isMobile ? 1000/30 : 1000/60; /* cap mobile to 30fps */
+  const frameInterval = isMobile ? 1000/30 : 1000/60;
   function drawParticles(ts){
     if(ts-lastFrame < frameInterval){ requestAnimationFrame(drawParticles); return; }
     lastFrame=ts;
@@ -1593,7 +1986,6 @@ if(heroCanvas){
   requestAnimationFrame(drawParticles);
 }
 
-/* ── TAGLINE ROTATOR ── */
 const taglines=['Vision. Legacy. Purpose.','Pakistan 🇵🇰 · Spain 🇪🇸 · Beyond 🌍','Founded 2023, Building Steadily Since','Usman Khan Yousafzai — Founder & CEO','One Step At A Time.','Built Slowly. Built Properly.'];
 let tIdx=0;
 const tEl=document.getElementById('tagline-rotator');
@@ -1605,7 +1997,6 @@ if(tEl){
   },2800);
 }
 
-/* ── SCROLL PROGRESS ── */
 const prog=document.getElementById('nav-progress');
 const backTop=document.getElementById('back-top');
 window.addEventListener('scroll',()=>{
@@ -1615,7 +2006,6 @@ window.addEventListener('scroll',()=>{
   if(backTop) backTop.classList.toggle('show',s>300);
 });
 
-/* ── MAGNETIC CARD TILT ── */
 document.querySelectorAll('.venture-card,.highlight-card,.testi-card,.tier-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
@@ -1653,7 +2043,6 @@ window.addEventListener('scroll',checkReveal);
 window.addEventListener('load',checkReveal);
 setTimeout(checkReveal,400);
 
-/* ── COPY EMAIL ON CLICK ── */
 document.querySelectorAll('a[href^="mailto:"]').forEach(link=>{
   link.addEventListener('click',function(e){
     const email=this.href.replace('mailto:','').split('?')[0];
@@ -1661,7 +2050,6 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(link=>{
   });
 });
 
-/* ── LIVE OFFICE CLOCKS ── */
 function updateClocks(){
   const pk=document.getElementById('clock-pk');
   const es=document.getElementById('clock-es');
@@ -1703,6 +2091,8 @@ if(form){
       if(res.ok){
         success.style.display='block'; error.style.display='none';
         form.reset(); btn.textContent='Sent ✓';
+        launchConfetti();
+        showToast(currentLang==='es' ? '✓ ¡Mensaje enviado con éxito!' : currentLang==='ur' ? '✓ پیغام کامیابی سے بھیج دیا گیا!' : '✓ Message sent successfully!');
       } else throw new Error();
     } catch{
       error.style.display='block'; success.style.display='none';
@@ -1710,5 +2100,716 @@ if(form){
     }
   });
 }
+
+/* ══════════════════════════════════════════════
+   MULTI-LANGUAGE SYSTEM — English / Español / اردو
+   ══════════════════════════════════════════════ */
+const I18N = {
+  en: {
+    "nav.home":"Home","nav.about":"About","nav.ventures":"Ventures","nav.insights":"Insights",
+    "nav.media":"Media","nav.contact":"Contact","nav.cta":"Book Consultation",
+    "hero-badge":"Est. 2023 &nbsp;·&nbsp; Pakistan &nbsp;·&nbsp; Spain &nbsp;·&nbsp; International",
+    "hero-sub":"A legacy built on vision, integrity, and an unrelenting commitment to excellence. More than a company — a statement that echoes across continents.",
+    "hero-founder-label":"Founded By",
+    "btn-explore-ventures":"Explore Ventures","btn-our-story":"Our Story","btn-get-in-touch":"Get In Touch",
+    "hf-pk":"Pakistan","hf-es":"Spain","hf-intl":"International",
+    "stat-founded":"Year Founded","stat-countries":"Countries","stat-ventures":"Active Ventures","stat-ambition":"Ambition",
+    "i18n-newsletter-label":"Exclusive Access","i18n-newsletter-title":"Join The Inner Circle",
+    "i18n-newsletter-sub":"Exclusive updates on new ventures, opportunities, and insights — straight from the founder.",
+    "i18n-newsletter-input-ph":"Enter your email address","i18n-subscribe-btn":"Subscribe",
+    "i18n-footer-tag":"(PVT.) LTD. · PRIVATELY REGISTERED COMPANY",
+    "i18n-footer-rights":"© 2023 Usman Khan Enterprises.<br>All rights reserved.",
+    "about-hero-label":"Who We Are","about-hero-title":"The <span class=\"gold\">Legacy</span><br>Behind the Name",
+    "ventures-hero-label":"What We Do","ventures-hero-title":"Our <span class=\"gold\">Ventures</span>",
+    "insights-hero-label":"Thinking Out Loud","insights-hero-title":"Notes &amp; <span class=\"gold\">Insights</span>",
+    "insights-hero-sub":"Reflections on business, markets, and building things that last — straight from the founder's desk.",
+    "media-hero-label":"Press &amp; Brand","media-hero-title":"Media <span class=\"gold\">Kit</span>",
+    "media-hero-sub":"Official brand assets, founder biography, and press information for Usman Khan Enterprises. All materials are approved for media use.",
+    "avail-text":"AVAILABLE FOR NEW PARTNERSHIPS & INQUIRIES",
+    "contact-hero-label":"Get In Touch","contact-hero-title":"Let's <span class=\"gold\">Connect</span>",
+    "lbl-name":"Your Name","lbl-email":"Email Address","lbl-phone":"Phone (Optional)","lbl-company":"Company / Organisation",
+    "lbl-preflang":"Preferred Language","lbl-engagement":"Engagement Type","lbl-message":"Message",
+    "ph-name":"Full name","ph-phone":"+1 234 567 8900","ph-company":"Your company name (if applicable)","ph-message":"Tell us about your inquiry...",
+    "submit-btn":"Send Message ↗",
+    "form-success":"✓ Message sent! We'll get back to you within 24–48 hours.",
+    "form-error":"✕ Something went wrong. Please email us directly at kh11n.enterprises@gmail.com",
+    "taglines":["Vision. Legacy. Purpose.","Pakistan 🇵🇰 · Spain 🇪🇸 · Beyond 🌍","Founded 2023, Building Steadily Since","Usman Khan Yousafzai — Founder & CEO","One Step At A Time.","Built Slowly. Built Properly."]
+  },
+  es: {
+    "nav.home":"Inicio","nav.about":"Nosotros","nav.ventures":"Empresas","nav.insights":"Ideas",
+    "nav.media":"Prensa","nav.contact":"Contacto","nav.cta":"Reservar Consulta",
+    "hero-badge":"Fundada en 2023 &nbsp;·&nbsp; Pakistán &nbsp;·&nbsp; España &nbsp;·&nbsp; Internacional",
+    "hero-sub":"Un legado construido sobre visión, integridad y un compromiso inquebrantable con la excelencia. Más que una empresa — una declaración que resuena en todos los continentes.",
+    "hero-founder-label":"Fundada Por",
+    "btn-explore-ventures":"Ver Empresas","btn-our-story":"Nuestra Historia","btn-get-in-touch":"Contáctanos",
+    "hf-pk":"Pakistán","hf-es":"España","hf-intl":"Internacional",
+    "stat-founded":"Año De Fundación","stat-countries":"Países","stat-ventures":"Empresas Activas","stat-ambition":"Ambición",
+    "i18n-newsletter-label":"Acceso Exclusivo","i18n-newsletter-title":"Únete Al Círculo Íntimo",
+    "i18n-newsletter-sub":"Actualizaciones exclusivas sobre nuevas empresas, oportunidades e ideas — directamente del fundador.",
+    "i18n-newsletter-input-ph":"Ingresa tu correo electrónico","i18n-subscribe-btn":"Suscribirse",
+    "i18n-footer-tag":"(PVT.) LTD. · EMPRESA PRIVADA REGISTRADA",
+    "i18n-footer-rights":"© 2023 Usman Khan Enterprises.<br>Todos los derechos reservados.",
+    "about-hero-label":"Quiénes Somos","about-hero-title":"El <span class=\"gold\">Legado</span><br>Detrás Del Nombre",
+    "ventures-hero-label":"Qué Hacemos","ventures-hero-title":"Nuestras <span class=\"gold\">Empresas</span>",
+    "insights-hero-label":"Pensando En Voz Alta","insights-hero-title":"Notas E <span class=\"gold\">Ideas</span>",
+    "insights-hero-sub":"Reflexiones sobre negocios, mercados y cómo construir cosas duraderas — directamente desde el escritorio del fundador.",
+    "media-hero-label":"Prensa Y Marca","media-hero-title":"Kit De <span class=\"gold\">Prensa</span>",
+    "media-hero-sub":"Activos oficiales de marca, biografía del fundador e información de prensa de Usman Khan Enterprises. Todo el material está aprobado para uso mediático.",
+    "avail-text":"DISPONIBLE PARA NUEVAS ALIANZAS Y CONSULTAS",
+    "contact-hero-label":"Contáctanos","contact-hero-title":"Conectemos <span class=\"gold\"></span>",
+    "lbl-name":"Tu Nombre","lbl-email":"Correo Electrónico","lbl-phone":"Teléfono (Opcional)","lbl-company":"Empresa / Organización",
+    "lbl-preflang":"Idioma Preferido","lbl-engagement":"Tipo De Colaboración","lbl-message":"Mensaje",
+    "ph-name":"Nombre completo","ph-phone":"+1 234 567 8900","ph-company":"Nombre de tu empresa (si aplica)","ph-message":"Cuéntanos sobre tu consulta...",
+    "submit-btn":"Enviar Mensaje ↗",
+    "form-success":"✓ ¡Mensaje enviado! Te responderemos dentro de 24–48 horas.",
+    "form-error":"✕ Algo salió mal. Por favor escríbenos directamente a kh11n.enterprises@gmail.com",
+    "taglines":["Visión. Legado. Propósito.","Pakistán 🇵🇰 · España 🇪🇸 · Más Allá 🌍","Fundada en 2023, Creciendo Con Firmeza","Usman Khan Yousafzai — Fundador Y CEO","Paso A Paso.","Construido Con Calma. Construido Bien."]
+  },
+  ur: {
+    "nav.home":"ہوم","nav.about":"ہمارے بارے میں","nav.ventures":"کاروبار","nav.insights":"بصیرت",
+    "nav.media":"میڈیا","nav.contact":"رابطہ","nav.cta":"مشاورت بک کریں",
+    "hero-badge":"قائم 2023 &nbsp;·&nbsp; پاکستان &nbsp;·&nbsp; اسپین &nbsp;·&nbsp; بین الاقوامی",
+    "hero-sub":"ایک ایسا ورثہ جو وژن، دیانتداری اور بہترین معیار کے غیر متزلزل عزم پر استوار ہے۔ یہ محض ایک کمپنی نہیں — یہ ایک ایسا اعلان ہے جو براعظموں میں گونجتا ہے۔",
+    "hero-founder-label":"بانی",
+    "btn-explore-ventures":"کاروبار دیکھیں","btn-our-story":"ہماری کہانی","btn-get-in-touch":"رابطہ کریں",
+    "hf-pk":"پاکستان","hf-es":"اسپین","hf-intl":"بین الاقوامی",
+    "stat-founded":"سالِ قیام","stat-countries":"ممالک","stat-ventures":"فعال کاروبار","stat-ambition":"عزم",
+    "i18n-newsletter-label":"خصوصی رسائی","i18n-newsletter-title":"ہمارے حلقے میں شامل ہوں",
+    "i18n-newsletter-sub":"نئے کاروباری منصوبوں، مواقع اور بصیرت سے متعلق خصوصی اپڈیٹس — براہ راست بانی کی طرف سے۔",
+    "i18n-newsletter-input-ph":"اپنا ای میل ایڈریس درج کریں","i18n-subscribe-btn":"سبسکرائب کریں",
+    "i18n-footer-tag":"(پرائیویٹ) لمیٹڈ · نجی طور پر رجسٹرڈ کمپنی",
+    "i18n-footer-rights":"© 2023 عثمان خان انٹرپرائزز۔<br>جملہ حقوق محفوظ ہیں۔",
+    "about-hero-label":"ہم کون ہیں","about-hero-title":"نام کے پیچھے <span class=\"gold\">ورثہ</span>",
+    "ventures-hero-label":"ہم کیا کرتے ہیں","ventures-hero-title":"ہمارے <span class=\"gold\">کاروبار</span>",
+    "insights-hero-label":"کھل کر سوچنا","insights-hero-title":"نوٹس اور <span class=\"gold\">بصیرت</span>",
+    "insights-hero-sub":"کاروبار، منڈیوں اور دیرپا چیزیں تعمیر کرنے سے متعلق خیالات — براہ راست بانی کی میز سے۔",
+    "media-hero-label":"پریس اور برانڈ","media-hero-title":"میڈیا <span class=\"gold\">کٹ</span>",
+    "media-hero-sub":"عثمان خان انٹرپرائزز کے سرکاری برانڈ اثاثے، بانی کی سوانح حیات اور پریس معلومات۔ تمام مواد میڈیا کے استعمال کے لیے منظور شدہ ہے۔",
+    "avail-text":"نئی شراکت داریوں اور استفسارات کے لیے دستیاب",
+    "contact-hero-label":"رابطہ کریں","contact-hero-title":"آئیے <span class=\"gold\">جڑیں</span>",
+    "lbl-name":"آپ کا نام","lbl-email":"ای میل ایڈریس","lbl-phone":"فون (اختیاری)","lbl-company":"کمپنی / ادارہ",
+    "lbl-preflang":"پسندیدہ زبان","lbl-engagement":"شراکت کی قسم","lbl-message":"پیغام",
+    "ph-name":"مکمل نام","ph-phone":"+1 234 567 8900","ph-company":"آپ کی کمپنی کا نام (اگر ہو)","ph-message":"اپنے استفسار کے بارے میں بتائیں...",
+    "submit-btn":"پیغام بھیجیں ↗",
+    "form-success":"✓ پیغام بھیج دیا گیا! ہم 24–48 گھنٹوں میں آپ سے رابطہ کریں گے۔",
+    "form-error":"✕ کچھ غلط ہو گیا۔ براہ کرم ہمیں براہ راست kh11n.enterprises@gmail.com پر ای میل کریں",
+    "taglines":["وژن۔ ورثہ۔ مقصد۔","پاکستان 🇵🇰 · اسپین 🇪🇸 · اور آگے 🌍","قائم 2023، مسلسل ترقی کی راہ پر","عثمان خان یوسفزئی — بانی و سی ای او","ایک وقت میں ایک قدم۔","آہستہ تعمیر کریں۔ درست تعمیر کریں۔"]
+  }
+};
+
+let currentLang = 'en';
+
+function applyLanguage(lang){
+  const dict = I18N[lang] || I18N.en;
+  // simple text/html targets by id
+  const idKeys = ["hero-founder-label","btn-explore-ventures","btn-our-story","btn-get-in-touch",
+    "hf-pk","hf-es","hf-intl","stat-founded","stat-countries","stat-ventures","stat-ambition",
+    "avail-text","lbl-name","lbl-email","lbl-phone","lbl-company","lbl-preflang","lbl-engagement","lbl-message",
+    "submit-btn","form-success","form-error"];
+  idKeys.forEach(k=>{ const el=document.getElementById(k); if(el && dict[k]!==undefined) el.textContent = dict[k]; });
+
+  const htmlIdKeys = ["hero-badge","about-hero-title","ventures-hero-title","insights-hero-title","media-hero-title","contact-hero-title"];
+  htmlIdKeys.forEach(k=>{ const el=document.getElementById(k); if(el && dict[k]!==undefined) el.innerHTML = dict[k]; });
+
+  const textIdKeys2 = ["hero-sub","about-hero-label","ventures-hero-label","insights-hero-label","insights-hero-sub","media-hero-label","media-hero-sub","contact-hero-label"];
+  textIdKeys2.forEach(k=>{ const el=document.getElementById(k); if(el && dict[k]!==undefined) el.textContent = dict[k]; });
+
+  const phIdKeys = ["ph-name","ph-phone","ph-company","ph-message"];
+  phIdKeys.forEach(k=>{ const el=document.getElementById(k); if(el && dict[k]!==undefined) el.placeholder = dict[k]; });
+
+  // classed repeated elements (footer, newsletter) — apply to every occurrence
+  document.querySelectorAll('.i18n-footer-tag').forEach(el=>{ el.textContent = dict["i18n-footer-tag"]; });
+  document.querySelectorAll('.i18n-footer-rights').forEach(el=>{ el.innerHTML = dict["i18n-footer-rights"]; });
+  document.querySelectorAll('.i18n-newsletter-label').forEach(el=>{ el.textContent = dict["i18n-newsletter-label"]; });
+  document.querySelectorAll('.i18n-newsletter-title').forEach(el=>{ el.textContent = dict["i18n-newsletter-title"]; });
+  document.querySelectorAll('.i18n-newsletter-sub').forEach(el=>{ el.textContent = dict["i18n-newsletter-sub"]; });
+  document.querySelectorAll('.i18n-newsletter-input').forEach(el=>{ el.placeholder = dict["i18n-newsletter-input-ph"]; });
+  document.querySelectorAll('.i18n-subscribe-btn').forEach(el=>{ el.textContent = dict["i18n-subscribe-btn"]; });
+
+  // nav data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key]!==undefined) el.textContent = dict[key];
+  });
+
+  // taglines rotator
+  window.__taglines = dict.taglines || I18N.en.taglines;
+  tIdx = 0;
+  if(tEl) tEl.textContent = window.__taglines[0];
+
+  // direction + lang attrs
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === 'ur') ? 'rtl' : 'ltr';
+
+  // lang pill active state
+  document.querySelectorAll('.lang-pill').forEach(o=>o.classList.toggle('active', o.dataset.lang===lang));
+
+  // translate other new UI bits
+  const EXTRA = {
+    en:{conv:"Cross-Border Tool",convt:"Quick Currency <span class=\"blue\">Converter</span>",amt:"Amount",from:"From",to:"To",
+        tiplabel:"A Little Wisdom",tiptitle:"Founder's <span class=\"orange\">Tip</span> Generator",tipbtn:"Give Me Another ↻",
+        tipdefault:"Click below for a piece of founder wisdom.",
+        insSearch:"Search insights by keyword...",noRes:"No insights match your search — try a different keyword.",
+        faqSearchAbout:"Search questions...",faqSearchMedia:"Search questions...",
+        calm:"Calm",calmOn:"Calm: On",liveViewers:" people viewing this page",
+        emailLbl:"Email Us",instaLbl:"Instagram",bookLbl:"Book Now",shareLbl:"Share Site",
+        shareInsight:"🔗 Share This",printKit:"🖨️ Print Media Kit",copyBio:"📋 Copy Founder Bio",shareKit:"🔗 Share Media Kit",
+        convNote:"Indicative rates for reference only — not live market data. Always confirm exact rates with your bank or partner before a transaction.",
+        votePrompt:"Helpful?"},
+    es:{conv:"Herramienta Transfronteriza",convt:"Conversor Rápido De <span class=\"blue\">Divisas</span>",amt:"Monto",from:"De",to:"A",
+        tiplabel:"Un Poco De Sabiduría",tiptitle:"Generador De <span class=\"orange\">Consejos</span> Del Fundador",tipbtn:"Dame Otro ↻",
+        tipdefault:"Haz clic abajo para recibir un consejo del fundador.",
+        insSearch:"Busca ideas por palabra clave...",noRes:"Ninguna idea coincide con tu búsqueda — prueba otra palabra.",
+        faqSearchAbout:"Buscar preguntas...",faqSearchMedia:"Buscar preguntas...",
+        calm:"Calma",calmOn:"Calma: Activada",liveViewers:" personas viendo esta página",
+        emailLbl:"Escríbenos",instaLbl:"Instagram",bookLbl:"Reservar",shareLbl:"Compartir Sitio",
+        shareInsight:"🔗 Compartir",printKit:"🖨️ Imprimir Kit",copyBio:"📋 Copiar Biografía",shareKit:"🔗 Compartir Kit",
+        convNote:"Tasas indicativas solo de referencia — no son datos de mercado en vivo. Confirma siempre las tasas exactas con tu banco o socio antes de una transacción.",
+        votePrompt:"¿Útil?"},
+    ur:{conv:"کراس بارڈر ٹول",convt:"فوری کرنسی <span class=\"blue\">کنورٹر</span>",amt:"رقم",from:"سے",to:"تک",
+        tiplabel:"تھوڑی سی حکمت",tiptitle:"بانی کی <span class=\"orange\">تجویز</span> جنریٹر",tipbtn:"ایک اور دیں ↻",
+        tipdefault:"بانی کی حکمت کے لیے نیچے کلک کریں۔",
+        insSearch:"کلیدی لفظ سے بصیرت تلاش کریں...",noRes:"آپ کی تلاش سے کوئی بصیرت مماثل نہیں — مختلف لفظ آزمائیں۔",
+        faqSearchAbout:"سوالات تلاش کریں...",faqSearchMedia:"سوالات تلاش کریں...",
+        calm:"پرسکون","calmOn":"پرسکون: آن",liveViewers:" افراد یہ صفحہ دیکھ رہے ہیں",
+        emailLbl:"ای میل کریں",instaLbl:"انسٹاگرام",bookLbl:"ابھی بک کریں",shareLbl:"سائٹ شیئر کریں",
+        shareInsight:"🔗 شیئر کریں",printKit:"🖨️ میڈیا کٹ پرنٹ کریں",copyBio:"📋 سوانح کاپی کریں",shareKit:"🔗 کٹ شیئر کریں",
+        convNote:"یہ صرف اندازاً نرخ ہیں — لائیو مارکیٹ ڈیٹا نہیں۔ لین دین سے پہلے ہمیشہ اپنے بینک یا پارٹنر سے درست نرخ کی تصدیق کریں۔",
+        votePrompt:"مددگار؟"}
+  };
+  const ex = EXTRA[lang] || EXTRA.en;
+  const setText=(id,val)=>{const el=document.getElementById(id); if(el) el.textContent=val;};
+  const setHtml=(id,val)=>{const el=document.getElementById(id); if(el) el.innerHTML=val;};
+  setText('conv-label',ex.conv); setHtml('conv-title',ex.convt);
+  setText('conv-amount-label',ex.amt); setText('conv-from-label',ex.from); setText('conv-to-label',ex.to);
+  setText('conv-note',ex.convNote);
+  setText('tip-label',ex.tiplabel); setHtml('tip-title',ex.tiptitle); setText('tip-btn',ex.tipbtn);
+  if(!window.__tipShown){ setText('tip-text',ex.tipdefault); }
+  const insS=document.getElementById('insights-search'); if(insS) insS.placeholder=ex.insSearch;
+  setText('insights-no-results',ex.noRes);
+  const faqA=document.getElementById('faq-search-about'); if(faqA) faqA.placeholder=ex.faqSearchAbout;
+  const faqM=document.getElementById('faq-search-media'); if(faqM) faqM.placeholder=ex.faqSearchMedia;
+  const calmLbl=document.getElementById('calm-toggle-label'); if(calmLbl) calmLbl.textContent = document.body.classList.contains('calm-mode') ? ex.calmOn : ex.calm;
+  setText('fab-label-email',ex.emailLbl); setText('fab-label-insta',ex.instaLbl); setText('fab-label-book',ex.bookLbl); setText('fab-label-share',ex.shareLbl);
+  setText('share-insight-btn',ex.shareInsight); setText('print-kit-btn',ex.printKit); setText('copy-bio-btn',ex.copyBio); setText('share-kit-btn',ex.shareKit);
+  document.querySelectorAll('.vote-prompt').forEach(el=>el.textContent=ex.votePrompt);
+  const liveN = document.getElementById('live-count-num');
+  const liveT = document.getElementById('live-viewers-text');
+  if(liveT){ const n = liveN ? liveN.textContent : (window.__liveCount||3); liveT.innerHTML = '<span id="live-count-num">'+n+'</span>'+ex.liveViewers; }
+
+  currentLang = lang;
+  try{ localStorage.setItem('uke-lang', lang); }catch(e){}
+}
+
+function setLanguage(lang){ applyLanguage(lang); }
+
+/* ── TOAST NOTIFICATIONS ── */
+function showToast(msg, ms){
+  const wrap = document.getElementById('toast-wrap');
+  if(!wrap) return;
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  wrap.appendChild(t);
+  requestAnimationFrame(()=> t.classList.add('show'));
+  setTimeout(()=>{
+    t.classList.remove('show');
+    setTimeout(()=> t.remove(), 400);
+  }, ms || 3200);
+}
+
+/* ── FLOATING QUICK ACTIONS ── */
+function toggleFab(){
+  const wrap = document.getElementById('fab-wrap');
+  const btn = document.getElementById('fab-main');
+  wrap.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeFab(){
+  document.getElementById('fab-wrap').classList.remove('open');
+  document.getElementById('fab-main').classList.remove('open');
+}
+function shareSite(){
+  shareContent('Usman Khan Enterprises');
+  closeFab();
+}
+function shareContent(title){
+  const url = window.location.href;
+  if(navigator.share){
+    navigator.share({title:title, url:url}).catch(()=>{});
+  } else {
+    navigator.clipboard?.writeText(url).then(()=>{
+      showToast(currentLang==='es' ? '🔗 Enlace copiado al portapapeles' : currentLang==='ur' ? '🔗 لنک کاپی ہو گیا' : '🔗 Link copied to clipboard');
+    }).catch(()=>{});
+  }
+}
+function copyBio(){
+  const bio = document.querySelector('.bio-long');
+  const text = bio ? bio.textContent : '';
+  navigator.clipboard?.writeText(text).then(()=>{
+    showToast(currentLang==='es' ? '📋 Biografía copiada' : currentLang==='ur' ? '📋 سوانح کاپی ہو گئی' : '📋 Bio copied to clipboard');
+  }).catch(()=>{});
+}
+
+/* ── CALM / REDUCED MOTION MODE ── */
+function toggleCalmMode(){
+  const on = document.body.classList.toggle('calm-mode');
+  const btn = document.getElementById('calm-toggle');
+  const label = document.getElementById('calm-toggle-label');
+  btn.classList.toggle('on', on);
+  const dict = I18N[currentLang] || I18N.en;
+  if(label) label.textContent = on ? (currentLang==='es'?'Calma: Activada':currentLang==='ur'?'پرسکون: آن':'Calm: On') : (currentLang==='es'?'Calma':currentLang==='ur'?'پرسکون':'Calm');
+  try{ localStorage.setItem('uke-calm', on ? '1':'0'); }catch(e){}
+}
+
+/* ── CURRENCY CONVERTER (static indicative rates, base = PKR) ── */
+const RATES_FROM_PKR = { PKR:1, EUR:0.00319, USD:0.00358, GBP:0.00281, AED:0.01315 };
+function runConvert(){
+  const amt = parseFloat(document.getElementById('conv-amount').value) || 0;
+  const from = document.getElementById('conv-from').value;
+  const to = document.getElementById('conv-to').value;
+  const inPkr = amt / RATES_FROM_PKR[from];
+  const result = inPkr * RATES_FROM_PKR[to];
+  const fmt = (n)=> n>=1000 ? n.toLocaleString(undefined,{maximumFractionDigits:2}) : n.toLocaleString(undefined,{maximumFractionDigits:4});
+  const el = document.getElementById('conv-result');
+  if(el) el.textContent = `${fmt(amt)} ${from} ≈ ${fmt(result)} ${to}`;
+}
+function swapConvert(){
+  const f = document.getElementById('conv-from');
+  const t = document.getElementById('conv-to');
+  const tmp = f.value; f.value = t.value; t.value = tmp;
+  runConvert();
+}
+
+/* ── INSIGHTS SEARCH (combines with category filter) ── */
+function searchInsights(){
+  const q = (document.getElementById('insights-search').value || '').toLowerCase().trim();
+  const cards = document.querySelectorAll('.insight-card');
+  let visibleCount = 0;
+  cards.forEach(card=>{
+    const text = card.textContent.toLowerCase();
+    const matches = !q || text.includes(q);
+    if(matches){ card.style.display='block'; visibleCount++; } else { card.style.display='none'; }
+  });
+  const noRes = document.getElementById('insights-no-results');
+  if(noRes) noRes.style.display = visibleCount===0 ? 'block' : 'none';
+}
+
+/* ── FAQ SEARCH ── */
+function searchFaq(which){
+  const inputId = which==='about' ? 'faq-search-about' : 'faq-search-media';
+  const containerSel = which==='about' ? '.faq-section .faq-item' : '.media-faq .faq-item';
+  const q = (document.getElementById(inputId).value || '').toLowerCase().trim();
+  document.querySelectorAll(containerSel).forEach(item=>{
+    const text = item.textContent.toLowerCase();
+    item.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+}
+
+/* ── INSIGHT VOTING (session-only, playful engagement) ── */
+const voteState = {};
+function voteInsight(idx, up, btn){
+  if(voteState[idx]) return; // one vote per card per session
+  voteState[idx] = up ? 'up' : 'down';
+  const span = document.getElementById((up?'vote-up-':'vote-down-')+idx);
+  if(span) span.textContent = (parseInt(span.textContent)||0) + 1;
+  btn.classList.add('voted');
+  const siblingSel = up ? '[onclick*="voteInsight('+idx+',false"]' : '[onclick*="voteInsight('+idx+',true"]';
+  const sibling = btn.parentElement.querySelector(siblingSel);
+  if(sibling) sibling.style.opacity = '.4';
+  showToast(currentLang==='es' ? '¡Gracias por tu opinión!' : currentLang==='ur' ? 'آپ کی رائے کا شکریہ!' : 'Thanks for your feedback!', 1800);
+}
+
+/* ── FOUNDER TIP GENERATOR ── */
+const FOUNDER_TIPS = {
+  en:["Move slowly in the right direction — it beats moving fast in the wrong one.","Say no often, so your yes actually means something.","Trust is built in years and lost in minutes — guard it accordingly.","A good handshake is worth more than a bad contract.","Build institutions, not just income.","The right partner is worth more than the fastest deal.","Quiet consistency beats loud promises, every time."],
+  es:["Avanza despacio en la dirección correcta — es mejor que avanzar rápido en la equivocada.","Di que no con frecuencia, para que tu sí realmente signifique algo.","La confianza se construye en años y se pierde en minutos — cuídala bien.","Un buen apretón de manos vale más que un mal contrato.","Construye instituciones, no solo ingresos.","El socio correcto vale más que el trato más rápido.","La constancia silenciosa vence a las promesas ruidosas, siempre."],
+  ur:["صحیح سمت میں آہستہ چلیں — یہ غلط سمت میں تیز چلنے سے بہتر ہے۔","اکثر انکار کریں، تاکہ آپ کی ہاں کا واقعی مطلب ہو۔","اعتماد برسوں میں بنتا ہے اور منٹوں میں ٹوٹ جاتا ہے — اس کی حفاظت کریں۔","اچھی مصافحہ ایک برے معاہدے سے زیادہ قیمتی ہے۔","آمدنی نہیں، ادارے تعمیر کریں۔","صحیح ساتھی تیز ترین ڈیل سے زیادہ قیمتی ہوتا ہے۔","خاموش استقامت ہمیشہ بلند وعدوں پر غالب آتی ہے۔"]
+};
+let lastTipIdx = -1;
+function newFounderTip(){
+  window.__tipShown = true;
+  const tips = FOUNDER_TIPS[currentLang] || FOUNDER_TIPS.en;
+  let idx;
+  do{ idx = Math.floor(Math.random()*tips.length); } while(idx===lastTipIdx && tips.length>1);
+  lastTipIdx = idx;
+  const el = document.getElementById('tip-text');
+  if(el){
+    el.style.opacity = '0';
+    setTimeout(()=>{ el.textContent = '"' + tips[idx] + '"'; el.style.transition='opacity .3s'; el.style.opacity='1'; }, 200);
+  }
+}
+
+/* ── CONFETTI BURST ── */
+function launchConfetti(){
+  const colors = ['#d4a843','#d45c5c','#4dcba8','#5c96d4','#a86cd4','#d47a3c'];
+  for(let i=0;i<60;i++){
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    const size = 6 + Math.random()*6;
+    el.style.width = size+'px';
+    el.style.height = (size*0.4)+'px';
+    el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    el.style.left = Math.random()*100+'vw';
+    el.style.transform = `rotate(${Math.random()*360}deg)`;
+    document.body.appendChild(el);
+    const duration = 2200 + Math.random()*1400;
+    const drift = (Math.random()-0.5)*200;
+    el.animate([
+      { transform: el.style.transform + ' translate(0,0)', opacity: 1 },
+      { transform: `rotate(${Math.random()*720}deg) translate(${drift}px, 100vh)`, opacity: 0.9 }
+    ], { duration: duration, easing: 'cubic-bezier(.25,.46,.45,.94)' });
+    setTimeout(()=> el.remove(), duration+100);
+  }
+}
+
+/* ── FONT SIZE CONTROLS ── */
+let fontScale = 100;
+function adjustFontSize(dir){
+  if(dir===0){ fontScale = 100; } else { fontScale = Math.max(85, Math.min(120, fontScale + dir*5)); }
+  document.documentElement.style.fontSize = fontScale + '%';
+  try{ localStorage.setItem('uke-fontscale', fontScale); }catch(e){}
+}
+
+/* ── COUNT-UP STAT ANIMATION ── */
+let statsAnimated = false;
+function animateStats(){
+  if(statsAnimated) return;
+  const statBar = document.querySelector('.stats-bar');
+  if(!statBar || statBar.getBoundingClientRect().top > window.innerHeight) return;
+  statsAnimated = true;
+  document.querySelectorAll('.stat-num').forEach(el=>{
+    const raw = el.textContent.trim();
+    const match = raw.match(/^(\d+)(\+?)$/);
+    if(!match) return; // skip non-numeric like 2023, ∞
+    const target = parseInt(match[1]);
+    const suffix = match[2];
+    if(target > 100) return; // skip year-like numbers just in case
+    let cur = 0;
+    const step = Math.max(1, Math.ceil(target/30));
+    const tick = ()=>{
+      cur += step;
+      if(cur >= target){ el.textContent = target + suffix; }
+      else { el.textContent = cur + suffix; requestAnimationFrame(tick); }
+    };
+    tick();
+  });
+}
+window.addEventListener('scroll', animateStats);
+window.addEventListener('load', animateStats);
+
+/* ── LIVE VIEWERS (playful, session-simulated) ── */
+window.__liveCount = 3 + Math.floor(Math.random()*9);
+function tickLiveViewers(){
+  window.__liveCount = Math.max(2, Math.min(24, window.__liveCount + (Math.random()>0.5?1:-1)));
+  const numEl = document.getElementById('live-count-num');
+  if(numEl) numEl.textContent = window.__liveCount;
+}
+setInterval(tickLiveViewers, 6000);
+
+/* ── KEYBOARD SHORTCUTS (1-6 to jump pages, when not typing) ── */
+document.addEventListener('keydown', function(e){
+  const tag = (e.target.tagName||'').toLowerCase();
+  if(tag==='input' || tag==='textarea' || tag==='select') return;
+  const map = {'1':'home','2':'about','3':'ventures','4':'insights','5':'media','6':'contact'};
+  if(map[e.key]) showPage(map[e.key]);
+});
+
+document.addEventListener('click', function(e){
+  const fab = document.getElementById('fab-wrap');
+  if(fab && !fab.contains(e.target)) closeFab();
+});
+
+/* restore calm mode + font scale preferences */
+(function restorePrefs(){
+  try{
+    if(localStorage.getItem('uke-calm')==='1'){
+      document.body.classList.add('calm-mode');
+      const btn=document.getElementById('calm-toggle'); if(btn) btn.classList.add('on');
+    }
+    const fs = parseInt(localStorage.getItem('uke-fontscale'));
+    if(fs){ fontScale = fs; document.documentElement.style.fontSize = fs + '%'; }
+  }catch(e){}
+})();
+
+
+
+// init language: saved preference, else browser language hint, else English
+(function initLang(){
+  let saved = null;
+  try{ saved = localStorage.getItem('uke-lang'); }catch(e){}
+  if(!saved){
+    const nav = (navigator.language || '').toLowerCase();
+    if(nav.startsWith('es')) saved = 'es';
+    else if(nav.startsWith('ur')) saved = 'ur';
+    else saved = 'en';
+  }
+  applyLanguage(saved);
+  maybeShowLangBanner();
+})();
+
+/* ══════════════════════════════════════════════
+   LANGUAGE SUGGESTION BANNER
+   ══════════════════════════════════════════════ */
+function maybeShowLangBanner(){
+  try{
+    if(localStorage.getItem('uke-lang')) return; // user already made an explicit choice
+    if(localStorage.getItem('uke-lang-banner-dismissed')) return;
+    const nav = (navigator.language || '').toLowerCase();
+    let suggested = null;
+    if(nav.startsWith('es') && currentLang !== 'es') suggested = 'es';
+    else if(nav.startsWith('ur') && currentLang !== 'ur') suggested = 'ur';
+    if(!suggested) return;
+    window.__suggestedLang = suggested;
+    const names = {es:'Español', ur:'اردو'};
+    const texts = {
+      es: `Parece que prefieres ${names[suggested]} — ¿cambiamos?`,
+      ur: `لگتا ہے آپ ${names[suggested]} کو ترجیح دیتے ہیں — کیا ہم تبدیل کر دیں؟`
+    };
+    const btnTexts = { es:'Cambiar', ur:'تبدیل کریں' };
+    document.getElementById('lang-banner-text').textContent = texts[suggested];
+    document.getElementById('lang-banner-accept').textContent = btnTexts[suggested];
+    document.getElementById('lang-banner').classList.add('show');
+  }catch(e){}
+}
+function acceptLangSuggestion(){
+  if(window.__suggestedLang) setLanguage(window.__suggestedLang);
+  document.getElementById('lang-banner').classList.remove('show');
+  try{ localStorage.setItem('uke-lang-banner-dismissed','1'); }catch(e){}
+}
+function dismissLangBanner(){
+  document.getElementById('lang-banner').classList.remove('show');
+  try{ localStorage.setItem('uke-lang-banner-dismissed','1'); }catch(e){}
+}
+
+/* ══════════════════════════════════════════════
+   COMMAND PALETTE (press "/" or click Search)
+   ══════════════════════════════════════════════ */
+const CMDK_ACTIONS = [
+  {label:'Go to Home', tag:'Page', action:()=>showPage('home')},
+  {label:'Go to About', tag:'Page', action:()=>showPage('about')},
+  {label:'Go to Ventures', tag:'Page', action:()=>showPage('ventures')},
+  {label:'Go to Insights', tag:'Page', action:()=>showPage('insights')},
+  {label:'Go to Media Kit', tag:'Page', action:()=>showPage('media')},
+  {label:'Go to Contact', tag:'Page', action:()=>showPage('contact')},
+  {label:'Switch to English', tag:'Language', action:()=>setLanguage('en')},
+  {label:'Cambiar a Español', tag:'Language', action:()=>setLanguage('es')},
+  {label:'اردو میں تبدیل کریں', tag:'Language', action:()=>setLanguage('ur')},
+  {label:'Toggle Calm / Reduced Motion Mode', tag:'Action', action:()=>toggleCalmMode()},
+  {label:'Email Us', tag:'Action', action:()=>window.location.href='mailto:kh11n.enterprises@gmail.com'},
+  {label:'Open Instagram', tag:'Action', action:()=>window.open('https://instagram.com/kh1n.enterprises','_blank')},
+  {label:'Book a Consultation', tag:'Action', action:()=>showPage('contact')},
+  {label:'Save Contact Card (vCard)', tag:'Action', action:()=>downloadVCard()},
+  {label:'Print Media Kit', tag:'Action', action:()=>{showPage('media'); setTimeout(()=>window.print(), 400);}},
+  {label:'Scroll to Top', tag:'Action', action:()=>window.scrollTo({top:0,behavior:'smooth'})},
+];
+let cmdkActive = 0;
+function openCmdk(){
+  document.getElementById('cmdk-overlay').classList.add('open');
+  document.getElementById('cmdk-input').value = '';
+  document.getElementById('cmdk-input').focus();
+  cmdkActive = 0;
+  renderCmdk(CMDK_ACTIONS);
+}
+function closeCmdk(){
+  document.getElementById('cmdk-overlay').classList.remove('open');
+}
+function renderCmdk(list){
+  const el = document.getElementById('cmdk-list');
+  if(list.length===0){
+    el.innerHTML = '<div class="cmdk-empty">No matching pages or actions.</div>';
+    return;
+  }
+  el.innerHTML = list.map((item,i)=>`<div class="cmdk-item${i===cmdkActive?' active':''}" data-idx="${i}" onclick="runCmdk(${i})"><span>${item.label}</span><span class="cmdk-tag">${item.tag}</span></div>`).join('');
+}
+let cmdkFiltered = CMDK_ACTIONS;
+function cmdkFilter(){
+  const q = document.getElementById('cmdk-input').value.toLowerCase().trim();
+  cmdkFiltered = CMDK_ACTIONS.filter(a => a.label.toLowerCase().includes(q));
+  cmdkActive = 0;
+  renderCmdk(cmdkFiltered);
+}
+function runCmdk(i){
+  const item = cmdkFiltered[i];
+  if(item){ item.action(); closeCmdk(); }
+}
+document.addEventListener('keydown', function(e){
+  const overlay = document.getElementById('cmdk-overlay');
+  const isOpen = overlay.classList.contains('open');
+  const tag = (e.target.tagName||'').toLowerCase();
+  if(!isOpen && e.key === '/' && tag!=='input' && tag!=='textarea'){
+    e.preventDefault();
+    openCmdk();
+    return;
+  }
+  if(isOpen){
+    if(e.key === 'Escape'){ closeCmdk(); }
+    else if(e.key === 'ArrowDown'){ e.preventDefault(); cmdkActive = Math.min(cmdkActive+1, cmdkFiltered.length-1); renderCmdk(cmdkFiltered); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); cmdkActive = Math.max(cmdkActive-1, 0); renderCmdk(cmdkFiltered); }
+    else if(e.key === 'Enter'){ e.preventDefault(); runCmdk(cmdkActive); }
+  }
+});
+
+/* ══════════════════════════════════════════════
+   VCARD DOWNLOAD
+   ══════════════════════════════════════════════ */
+function downloadVCard(){
+  const vcard = [
+    'BEGIN:VCARD','VERSION:3.0',
+    'N:Yousafzai;Usman;Khan;;',
+    'FN:Usman Khan Yousafzai',
+    'ORG:Usman Khan Enterprises (Pvt.) Ltd.',
+    'TITLE:Founder · CEO · Director',
+    'EMAIL;TYPE=WORK:kh11n.enterprises@gmail.com',
+    'URL:https://instagram.com/kh1n.enterprises',
+    'ADR;TYPE=WORK:;;Headquarters;Pakistan;;;',
+    'NOTE:Multi-sector enterprise across Pakistan and Spain — Commerce, Real Estate, Technology, Consulting, International Trade, Investments, Hospitality, Logistics, Education.',
+    'END:VCARD'
+  ].join('\r\n');
+  const blob = new Blob([vcard], {type:'text/vcard'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'Usman-Khan-Enterprises.vcf';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  showToast(currentLang==='es' ? '📇 Tarjeta de contacto descargada' : currentLang==='ur' ? '📇 کانٹیکٹ کارڈ ڈاؤن لوڈ ہو گیا' : '📇 Contact card downloaded');
+}
+
+/* ══════════════════════════════════════════════
+   COPY QUOTE
+   ══════════════════════════════════════════════ */
+function copyQuote(btn){
+  const text = btn.dataset.quote;
+  navigator.clipboard?.writeText(text).then(()=>{
+    showToast(currentLang==='es' ? '📋 Cita copiada' : currentLang==='ur' ? '📋 اقتباس کاپی ہو گیا' : '📋 Quote copied to clipboard');
+  }).catch(()=>{});
+}
+
+/* ══════════════════════════════════════════════
+   TESTIMONIAL CAROUSEL
+   ══════════════════════════════════════════════ */
+let testiIdx = 0;
+let testiTimer = null;
+function testiInit(){
+  const track = document.getElementById('testi-track');
+  if(!track) return;
+  const slides = track.children.length;
+  const dotsWrap = document.getElementById('testi-dots');
+  if(dotsWrap && dotsWrap.children.length===0){
+    for(let i=0;i<slides;i++){
+      const d = document.createElement('button');
+      d.className = 'testi-dot' + (i===0?' active':'');
+      d.onclick = ()=> testiGoTo(i);
+      dotsWrap.appendChild(d);
+    }
+  }
+  testiRender();
+  if(!testiTimer) testiTimer = setInterval(()=>testiMove(1), 6000);
+}
+function testiRender(){
+  const track = document.getElementById('testi-track');
+  if(!track) return;
+  track.style.transform = `translateX(-${testiIdx*100}%)`;
+  document.querySelectorAll('.testi-dot').forEach((d,i)=> d.classList.toggle('active', i===testiIdx));
+}
+function testiMove(dir){
+  const track = document.getElementById('testi-track');
+  if(!track) return;
+  const total = track.children.length;
+  testiIdx = (testiIdx + dir + total) % total;
+  testiRender();
+}
+function testiGoTo(i){ testiIdx = i; testiRender(); }
+testiInit();
+
+/* ══════════════════════════════════════════════
+   LIVE COMPANY AGE COUNTER
+   ══════════════════════════════════════════════ */
+const FOUNDING_DATE = new Date('2023-01-15T00:00:00Z');
+function tickAgeCounter(){
+  const now = new Date();
+  let diffMs = now - FOUNDING_DATE;
+  if(diffMs < 0) diffMs = 0;
+  const totalDays = Math.floor(diffMs / 86400000);
+  const years = Math.floor(totalDays / 365.25);
+  const remDays = Math.floor(totalDays - years*365.25);
+  const hours = Math.floor((diffMs % 86400000) / 3600000);
+  const mins = Math.floor((diffMs % 3600000) / 60000);
+  const y=document.getElementById('age-years'), d=document.getElementById('age-days'), h=document.getElementById('age-hours'), m=document.getElementById('age-mins');
+  if(y) y.textContent = years;
+  if(d) d.textContent = remDays;
+  if(h) h.textContent = hours;
+  if(m) m.textContent = mins;
+}
+tickAgeCounter();
+setInterval(tickAgeCounter, 60000);
+
+/* ══════════════════════════════════════════════
+   NEWSLETTER SUBSCRIBE (client-side demo validation)
+   ══════════════════════════════════════════════ */
+document.querySelectorAll('.i18n-subscribe-btn').forEach(btn=>{
+  btn.addEventListener('click', function(){
+    const input = this.parentElement.querySelector('input[type="email"]');
+    const val = input ? input.value.trim() : '';
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    if(!emailOk){
+      showToast(currentLang==='es' ? 'Por favor ingresa un correo válido' : currentLang==='ur' ? 'براہ کرم درست ای میل درج کریں' : 'Please enter a valid email address');
+      input?.focus();
+      return;
+    }
+    showToast(currentLang==='es' ? `✓ ¡Gracias! Te contactaremos en ${val}` : currentLang==='ur' ? `✓ شکریہ! ہم ${val} پر رابطہ کریں گے` : `✓ Thanks! We'll be in touch at ${val}`);
+    input.value = '';
+  });
+});
+
+/* ══════════════════════════════════════════════
+   EASTER EGG — click the nav logo 5 times
+   ══════════════════════════════════════════════ */
+let logoClicks = 0;
+let logoClickTimer = null;
+const navLogoEl = document.querySelector('.nav-logo');
+if(navLogoEl){
+  navLogoEl.style.cursor = 'pointer';
+  navLogoEl.addEventListener('click', function(){
+    logoClicks++;
+    clearTimeout(logoClickTimer);
+    logoClickTimer = setTimeout(()=> logoClicks = 0, 2000);
+    if(logoClicks >= 5){
+      logoClicks = 0;
+      document.getElementById('egg-modal').classList.add('show');
+      launchConfetti();
+    }
+  });
+}
+
+/* extra translation pass for newly added widgets */
+(function extendI18nHooks(){
+  const origApply = applyLanguage;
+  applyLanguage = function(lang){
+    origApply(lang);
+    const T = {
+      en:{ageLabel:"Live Since Day One",ageSub:"...and counting, since incorporation in January 2023.",
+           years:"Years",days:"Days",hours:"Hours",mins:"Minutes",
+           vcard:"Save Contact Card",copyQuote:"Copy Quote",cmdk:"Search",
+           cmdkPh:"Jump to a page or action..."},
+      es:{ageLabel:"Activos Desde El Primer Día",ageSub:"...y contando, desde la incorporación en enero de 2023.",
+          years:"Años",days:"Días",hours:"Horas",mins:"Minutos",
+          vcard:"Guardar Tarjeta",copyQuote:"Copiar Cita",cmdk:"Buscar",
+          cmdkPh:"Ir a una página o acción..."},
+      ur:{ageLabel:"پہلے دن سے فعال",ageSub:"...اور جاری ہے، جنوری 2023 میں رجسٹریشن کے بعد سے۔",
+          years:"سال",days:"دن",hours:"گھنٹے",mins:"منٹ",
+          vcard:"کانٹیکٹ کارڈ محفوظ کریں",copyQuote:"اقتباس کاپی کریں",cmdk:"تلاش کریں",
+          cmdkPh:"کسی صفحے یا عمل پر جائیں..."}
+    };
+    const t = T[lang] || T.en;
+    const set = (id,val)=>{ const el=document.getElementById(id); if(el) el.textContent=val; };
+    set('age-label', t.ageLabel); set('age-sub', t.ageSub);
+    set('age-years-label', t.years); set('age-days-label', t.days); set('age-hours-label', t.hours); set('age-mins-label', t.mins);
+    set('vcard-btn-label', t.vcard); set('copy-quote-label', t.copyQuote); set('cmdk-trigger-label', t.cmdk);
+    const cmdkInput = document.getElementById('cmdk-input');
+    if(cmdkInput) cmdkInput.placeholder = t.cmdkPh;
+  };
+})();
+
 </script>
 </html>
