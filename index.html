@@ -61,6 +61,7 @@ body.calm-mode #hero-canvas,body.calm-mode #glow-follow{display:none}
 .converter-field{flex:1;min-width:140px}
 .converter-field label{display:block;font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;text-transform:uppercase}
 .converter-field input,.converter-field select{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);color:#fff;padding:10px 14px;font-family:'Montserrat',sans-serif;font-size:14px;outline:none}
+.converter-field select,.form-group select{-webkit-tap-highlight-color:transparent;touch-action:manipulation;transform:translateZ(0)}
 .converter-swap{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-size:14px;margin-top:20px;transition:all .3s}
 .converter-swap:hover{background:var(--gold);color:var(--black);transform:rotate(180deg)}
 .converter-result{margin-top:1.5rem;padding:1.2rem;text-align:center;border:1px dashed rgba(201,168,76,.3);font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold)}
@@ -195,7 +196,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--whi
 @keyframes introFade{to{opacity:0;visibility:hidden;pointer-events:none}}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem;background:rgba(8,8,8,.92);border-bottom:1px solid rgba(201,168,76,.18);backdrop-filter:blur(14px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem}
+.nav-bg{position:absolute;inset:0;z-index:-1;background:rgba(8,8,8,.92);border-bottom:1px solid rgba(201,168,76,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--gold);letter-spacing:1px}
 .nav-links{display:flex;gap:2rem;align-items:center}
 .nav-links a{font-size:10px;letter-spacing:2px;color:#aaa;text-decoration:none;text-transform:uppercase;transition:color .3s;cursor:pointer;position:relative;padding-bottom:2px}
@@ -204,6 +206,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-cta{padding:8px 20px;border:1px solid var(--gold);color:var(--gold);font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;background:transparent;font-family:'Montserrat',sans-serif}
 .nav-cta:hover{background:var(--gold);color:var(--black);transform:scale(1.03)}
+.hamburger-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:transparent;border:none;cursor:pointer;padding:0;flex-shrink:0}
+.hamburger-btn span{display:block;width:100%;height:2px;background:var(--gold);transition:all .3s}
+.hamburger-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger-btn.open span:nth-child(2){opacity:0}
+.hamburger-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 .page{display:none;min-height:100vh;padding-top:70px}
 .page.active{display:block}
@@ -541,13 +548,23 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 .footer-email{font-size:10px;color:#444;margin-top:5px}
 .footer-right{font-size:10px;color:#333;letter-spacing:1px;text-align:right}
 
-@media(max-width:700px){
-  nav{padding:.8rem 1rem;flex-wrap:wrap;gap:.5rem}
-  .nav-logo{font-size:12px;flex:1}
-  .nav-links{gap:.6rem;font-size:9px;flex-wrap:wrap;justify-content:flex-end}
-  .nav-links a{font-size:9px;letter-spacing:1px}
+@media(max-width:860px){
+  nav{padding:.7rem 1rem;flex-wrap:nowrap;gap:.5rem;height:56px;box-sizing:border-box}
+  .nav-logo{font-size:12px;flex:1;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nav-cta{display:none}
-  .page{padding-top:65px}
+  .hamburger-btn{display:flex}
+  .nav-links{position:fixed;top:56px;left:0;right:0;bottom:0;z-index:150;background:rgba(6,6,6,.98);backdrop-filter:blur(16px);flex-direction:column;align-items:stretch;gap:0;padding:1rem 0 2rem;overflow-y:auto;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+  .nav-links.mobile-open{opacity:1;transform:translateY(0);pointer-events:auto}
+  .nav-links a{font-size:13px;letter-spacing:2px;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.05);width:100%;box-sizing:border-box}
+  .nav-links a::after{display:none}
+  .nav-links a.active{background:rgba(201,168,76,.08)}
+  .nav-links .nav-cta{display:block;margin:1rem 1.5rem;width:calc(100% - 3rem);text-align:center}
+  .nav-links .lang-switch{margin:1rem 1.5rem;width:calc(100% - 3rem);justify-content:center}
+  .nav-links .calm-toggle,.nav-links .cmdk-trigger{margin:.5rem 1.5rem 0;width:calc(100% - 3rem);text-align:center;justify-content:center}
+  .page{padding-top:56px}
+  .lang-pill{font-size:11px;padding:9px 10px}
+}
+@media(max-width:700px){
   .hero{padding:4rem 1.2rem 2.5rem;min-height:auto}
   .hero-title{font-size:clamp(34px,12vw,60px)}
   .hero-flags{gap:.6rem;flex-wrap:wrap}
@@ -588,11 +605,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   .footer-right{font-size:9px;text-align:left}
   .v-stat{padding:1.2rem .5rem}
   .v-stat-num{font-size:26px}
-  .lang-switch{position:static;margin-top:.4rem}
 }
 @media(max-width:420px){
-  .nav-links{gap:.4rem}
-  .nav-links a{font-size:8.5px}
   .hero-title{font-size:clamp(28px,11vw,50px)}
   .page-title{font-size:clamp(28px,9vw,48px)}
 }
@@ -913,22 +927,24 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 
 <!-- NAV -->
 <nav>
+  <div class="nav-bg"></div>
   <div class="nav-logo">Usman Khan Enterprises</div>
-  <div class="nav-links">
-    <a onclick="showPage('home')" class="active" id="nav-home" data-i18n="nav.home">Home</a>
-    <a onclick="showPage('about')" id="nav-about" data-i18n="nav.about">About</a>
-    <a onclick="showPage('ventures')" id="nav-ventures" data-i18n="nav.ventures">Ventures</a>
-    <a onclick="showPage('insights')" id="nav-insights" data-i18n="nav.insights">Insights</a>
-    <a onclick="showPage('media')" id="nav-media" data-i18n="nav.media">Media</a>
-    <a onclick="showPage('contact')" id="nav-contact" data-i18n="nav.contact">Contact</a>
-    <button class="nav-cta" onclick="showPage('contact')" data-i18n="nav.cta">Book Consultation</button>
+  <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="nav-links">
+    <a onclick="showPage('home');closeMobileNav()" class="active" id="nav-home" data-i18n="nav.home">Home</a>
+    <a onclick="showPage('about');closeMobileNav()" id="nav-about" data-i18n="nav.about">About</a>
+    <a onclick="showPage('ventures');closeMobileNav()" id="nav-ventures" data-i18n="nav.ventures">Ventures</a>
+    <a onclick="showPage('insights');closeMobileNav()" id="nav-insights" data-i18n="nav.insights">Insights</a>
+    <a onclick="showPage('media');closeMobileNav()" id="nav-media" data-i18n="nav.media">Media</a>
+    <a onclick="showPage('contact');closeMobileNav()" id="nav-contact" data-i18n="nav.contact">Contact</a>
+    <button class="nav-cta" onclick="showPage('contact');closeMobileNav()" data-i18n="nav.cta">Book Consultation</button>
     <div class="lang-switch" id="lang-switch">
       <button class="lang-pill" data-lang="en" onclick="setLanguage('en')"><span class="flag-emoji" data-code="GB">🇬🇧</span> English</button>
       <button class="lang-pill" data-lang="es" onclick="setLanguage('es')"><span class="flag-emoji" data-code="ES">🇪🇸</span> Español</button>
       <button class="lang-pill" data-lang="ur" onclick="setLanguage('ur')"><span class="flag-emoji" data-code="PK">🇵🇰</span> اردو</button>
     </div>
     <button class="calm-toggle" id="calm-toggle" onclick="toggleCalmMode()" title="Reduce motion">✦ <span id="calm-toggle-label">Calm</span></button>
-    <button class="cmdk-trigger" onclick="openCmdk()" title="Quick navigate">🔎 <span id="cmdk-trigger-label">Search</span></button>
+    <button class="cmdk-trigger" onclick="openCmdk();closeMobileNav()" title="Quick navigate">🔎 <span id="cmdk-trigger-label">Search</span></button>
   </div>
 </nav>
 
@@ -2015,11 +2031,27 @@ document.querySelectorAll('.venture-card,.highlight-card,.testi-card,.tier-card'
   card.addEventListener('mouseleave',()=>{card.style.transform='';});
 });
 
+/* ── MOBILE HAMBURGER NAV ── */
+function toggleMobileNav(){
+  document.getElementById('nav-links').classList.toggle('mobile-open');
+  document.getElementById('hamburger-btn').classList.toggle('open');
+}
+function closeMobileNav(){
+  document.getElementById('nav-links').classList.remove('mobile-open');
+  document.getElementById('hamburger-btn').classList.remove('open');
+}
+
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  document.getElementById('page-'+name).classList.add('active');
+  const target = document.getElementById('page-'+name);
+  target.classList.add('active');
   document.getElementById('nav-'+name).classList.add('active');
+  // force a layout reflow on the freshly-shown page — fixes an iOS Safari bug
+  // where form controls (e.g. <select>) inside content just toggled from
+  // display:none to display:block need an extra tap before they respond.
+  void target.offsetHeight;
+  target.querySelectorAll('select, input, textarea').forEach(el=>{ void el.offsetHeight; });
   window.scrollTo({top:0,behavior:'smooth'});
   setTimeout(checkReveal,100);
 }
@@ -2027,7 +2059,20 @@ function showPage(name){
 function checkReveal(){
   document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>{
     if(el.getBoundingClientRect().top < window.innerHeight-60){
-      el.classList.add('visible');
+      if(!el.classList.contains('visible')){
+        el.classList.add('visible');
+        // once the fade/slide-in transition finishes, drop the transition &
+        // transform entirely — a lingering CSS transform on an ancestor is a
+        // known cause of <select> elements needing two taps to open on iOS Safari.
+        const settle = (e)=>{
+          if(e && e.target !== el) return;
+          el.style.transition = 'none';
+          el.style.transform = 'none';
+          el.removeEventListener('transitionend', settle);
+        };
+        el.addEventListener('transitionend', settle);
+        setTimeout(settle, 900); // fallback in case transitionend doesn't fire
+      }
       el.querySelectorAll('.building-fill,.alloc-bar').forEach(f=>{
         if(!f.classList.contains('filled')){
           const w=f.style.width;
