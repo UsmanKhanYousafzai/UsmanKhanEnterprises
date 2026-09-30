@@ -195,6 +195,38 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--whi
 @keyframes introLine{to{width:min(140px,50vw)}}
 @keyframes introFade{to{opacity:0;visibility:hidden;pointer-events:none}}
 
+
+
+/* desktop: keep logo on one line and never clip the language pills */
+@media(min-width:1041px){
+  .nav-logo{white-space:nowrap;flex-shrink:0}
+  .lang-switch{flex-shrink:0}
+  .lang-pill{flex-shrink:0}
+}
+@media(min-width:1041px) and (max-width:1500px){
+  nav{padding-left:1rem;padding-right:1rem}
+  .nav-logo{font-size:13px}
+  .nav-links{gap:.7rem}
+  .nav-links a{letter-spacing:.8px;font-size:9.5px}
+  .nav-cta{padding:7px 9px;letter-spacing:1px}
+  .lang-pill{padding:6px 8px}
+  .calm-toggle,.cmdk-trigger{padding:6px 8px;letter-spacing:.5px}
+  .nav-links .nav-cta{display:none}
+}
+@media(min-width:1041px) and (max-width:1120px){
+  .nav-logo{font-size:11px}
+  .nav-links{gap:.45rem}
+  .nav-links a{letter-spacing:.3px;font-size:9px}
+  .lang-pill{padding:5px 6px;font-size:8.5px}
+  .calm-toggle,.cmdk-trigger{padding:5px 6px;font-size:8.5px}
+  #calm-toggle-label,#cmdk-trigger-label{display:none}
+  .nav-logo{font-size:10.5px}
+  nav{padding-left:.6rem;padding-right:.6rem}
+  .nav-links a{padding-bottom:0}
+  .calm-toggle{display:none}
+}
+/* ── MOBILE COMPACT BAR ── */
+.m-lang,.m-search,.m-strip{display:none}
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3rem}
 .nav-bg{position:absolute;inset:0;z-index:-1;background:rgba(8,8,8,.92);border-bottom:1px solid rgba(201,168,76,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
@@ -548,12 +580,25 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 .footer-email{font-size:10px;color:#444;margin-top:5px}
 .footer-right{font-size:10px;color:#333;letter-spacing:1px;text-align:right}
 
-@media(max-width:860px){
-  nav{padding:.7rem 1rem;flex-wrap:nowrap;gap:.5rem;height:56px;box-sizing:border-box}
-  .nav-logo{font-size:12px;flex:1;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1040px){
+  nav{padding:.4rem .8rem 0;flex-wrap:wrap;align-items:center;gap:.4rem;box-sizing:border-box}
+  .nav-logo{order:1}
+  .m-lang{order:2;display:inline-flex;border:1px solid rgba(201,168,76,.3);border-radius:14px;overflow:hidden;flex-shrink:0}
+  .m-lang .flag-emoji.is-badge{width:18px;height:12px;flex-shrink:0;display:inline-block}
+  .m-lang .lang-pill{font-size:10px;padding:5px 7px;letter-spacing:.3px;gap:4px}
+  .m-search{order:3;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid rgba(201,168,76,.3);border-radius:50%;background:transparent;color:var(--gold);font-size:13px;cursor:pointer;flex-shrink:0;padding:0}
+  .hamburger-btn{order:4}
+  .m-strip{order:5;display:flex;flex-basis:100%;width:100%;overflow-x:auto;overflow-y:hidden;gap:.2rem;padding:0 0 .35rem;max-height:34px;opacity:1;transition:max-height .25s ease,opacity .2s ease,padding .25s ease;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .m-strip::-webkit-scrollbar{display:none}
+  .m-strip a{flex:0 0 auto;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#aaa;text-decoration:none;padding:7px 11px;border-radius:14px;cursor:pointer;white-space:nowrap;transition:all .25s}
+  .m-strip a.active{background:var(--gold);color:var(--black);font-weight:600}
+  nav.strip-hidden .m-strip{max-height:0;opacity:0;padding-bottom:0;pointer-events:none}
+  nav.strip-hidden{padding-bottom:.4rem}
+  .nav-links .lang-switch,.nav-links .cmdk-trigger{display:none}
+  .nav-logo{font-size:12px;flex:1;min-width:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .nav-cta{display:none}
   .hamburger-btn{display:flex}
-  .nav-links{position:fixed;top:56px;left:0;right:0;bottom:0;z-index:150;background:rgba(6,6,6,.98);backdrop-filter:blur(16px);flex-direction:column;align-items:stretch;gap:0;padding:1rem 0 2rem;overflow-y:auto;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+  .nav-links{position:fixed;top:46px;left:0;right:0;bottom:0;z-index:150;background:rgba(6,6,6,.98);backdrop-filter:blur(16px);flex-direction:column;align-items:stretch;gap:0;padding:1rem 0 2rem;overflow-y:auto;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
   .nav-links.mobile-open{opacity:1;transform:translateY(0);pointer-events:auto}
   .nav-links a{font-size:13px;letter-spacing:2px;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.05);width:100%;box-sizing:border-box}
   .nav-links a::after{display:none}
@@ -561,7 +606,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
   .nav-links .nav-cta{display:block;margin:1rem 1.5rem;width:calc(100% - 3rem);text-align:center}
   .nav-links .lang-switch{margin:1rem 1.5rem;width:calc(100% - 3rem);justify-content:center}
   .nav-links .calm-toggle,.nav-links .cmdk-trigger{margin:.5rem 1.5rem 0;width:calc(100% - 3rem);text-align:center;justify-content:center}
-  .page{padding-top:56px}
+  .page{padding-top:84px}
   .lang-pill{font-size:11px;padding:9px 10px}
 }
 @media(max-width:700px){
@@ -929,6 +974,12 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
 <nav>
   <div class="nav-bg"></div>
   <div class="nav-logo">Usman Khan Enterprises</div>
+  <div class="m-lang">
+    <button class="lang-pill" data-lang="en" onclick="setLanguage('en')"><span class="flag-emoji" data-code="GB">🇬🇧</span> EN</button>
+    <button class="lang-pill" data-lang="es" onclick="setLanguage('es')"><span class="flag-emoji" data-code="ES">🇪🇸</span> ES</button>
+    <button class="lang-pill" data-lang="ur" onclick="setLanguage('ur')"><span class="flag-emoji" data-code="PK">🇵🇰</span> اردو</button>
+  </div>
+  <button class="m-search" onclick="openCmdk()" aria-label="Search">🔎</button>
   <button class="hamburger-btn" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links" id="nav-links">
     <a onclick="showPage('home');closeMobileNav()" class="active" id="nav-home" data-i18n="nav.home">Home</a>
@@ -945,6 +996,14 @@ footer{padding:2.5rem 3rem;border-top:1px solid rgba(201,168,76,.12);display:fle
     </div>
     <button class="calm-toggle" id="calm-toggle" onclick="toggleCalmMode()" title="Reduce motion">✦ <span id="calm-toggle-label">Calm</span></button>
     <button class="cmdk-trigger" onclick="openCmdk();closeMobileNav()" title="Quick navigate">🔎 <span id="cmdk-trigger-label">Search</span></button>
+  </div>
+  <div class="m-strip">
+    <a class="m-tab active" data-page="home" onclick="showPage('home')" data-i18n="nav.home">Home</a>
+    <a class="m-tab" data-page="about" onclick="showPage('about')" data-i18n="nav.about">About</a>
+    <a class="m-tab" data-page="ventures" onclick="showPage('ventures')" data-i18n="nav.ventures">Ventures</a>
+    <a class="m-tab" data-page="insights" onclick="showPage('insights')" data-i18n="nav.insights">Insights</a>
+    <a class="m-tab" data-page="media" onclick="showPage('media')" data-i18n="nav.media">Media</a>
+    <a class="m-tab" data-page="contact" onclick="showPage('contact')" data-i18n="nav.contact">Contact</a>
   </div>
 </nav>
 
@@ -1874,9 +1933,8 @@ const ring = document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
 const isMobile = /Android|iPhone|iPad|iPod|Touch/i.test(navigator.userAgent) || ('ontouchstart' in window) || window.innerWidth < 768;
 
-/* ── FLAG BADGES (desktop only) ── */
+/* ── FLAG BADGES (all devices, drawn as images so they always show) ── */
 (function(){
-  if(isMobile) return;
   const names={PK:'Pakistan',ES:'Spain',GB:'United Kingdom',AE:'United Arab Emirates',TR:'Turkey'};
   const flagSVGs={
     PK:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24"><rect width="36" height="24" fill="#FFFFFF"/><rect x="9" width="27" height="24" fill="#01411C"/><g fill="#FFFFFF" transform="translate(24,12)"><circle r="6.4"/><circle r="6.4" fill="#01411C" cx="3.3"/><path d="M5.5,-3.2 L6.23,-1.01 L8.54,-0.99 L6.69,0.39 L7.38,2.59 L5.5,1.25 L3.62,2.59 L4.31,0.39 L2.46,-0.99 L4.77,-1.01 Z"/></g></svg>',
@@ -2036,6 +2094,17 @@ function toggleMobileNav(){
   document.getElementById('nav-links').classList.toggle('mobile-open');
   document.getElementById('hamburger-btn').classList.toggle('open');
 }
+/* auto-hide page tabs on scroll down, show on scroll up */
+(function(){
+  let last=window.scrollY;
+  window.addEventListener('scroll',()=>{
+    const nv=document.querySelector('nav'); if(!nv) return;
+    const y=window.scrollY;
+    if(y>last+6 && y>90) nv.classList.add('strip-hidden');
+    else if(y<last-6 || y<40) nv.classList.remove('strip-hidden');
+    last=y;
+  },{passive:true});
+})();
 function closeMobileNav(){
   document.getElementById('nav-links').classList.remove('mobile-open');
   document.getElementById('hamburger-btn').classList.remove('open');
@@ -2047,6 +2116,11 @@ function showPage(name){
   const target = document.getElementById('page-'+name);
   target.classList.add('active');
   document.getElementById('nav-'+name).classList.add('active');
+  document.querySelectorAll('.m-tab').forEach(t=>{
+    const on=t.dataset.page===name; t.classList.toggle('active',on);
+    if(on) t.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  });
+  const _nv=document.querySelector('nav'); if(_nv) _nv.classList.remove('strip-hidden');
   // force a layout reflow on the freshly-shown page — fixes an iOS Safari bug
   // where form controls (e.g. <select>) inside content just toggled from
   // display:none to display:block need an extra tap before they respond.
